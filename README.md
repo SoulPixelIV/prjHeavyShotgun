@@ -4,4 +4,4 @@ This is my new game idea about a first person shooter with an interconnected wor
 
 I accept suggestions and feedback!
 
-This project uses the Unity3D Version 5 engine.
+This project uses the Unity3D 2018.2 engine.
