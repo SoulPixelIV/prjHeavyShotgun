@@ -66,6 +66,7 @@ public class FPCharacterController : MonoBehaviour
         float sideSpeed = Input.GetAxis("Horizontal") * speedMov;
 
         //Sprint
+        /*
         if (Input.GetKey(KeyCode.LeftShift) && duckLock == true)
         {
             speedMov = 10.7f;
@@ -73,9 +74,8 @@ public class FPCharacterController : MonoBehaviour
         }
         else
         {
-            speedMov = 7.5f;
-            stepSpeed = 1.6f;
-        }
+        */
+            speedMov = 12;
 
         //Duck
         if (Input.GetKeyDown(KeyCode.LeftControl) && cc.isGrounded)

@@ -61,6 +61,8 @@ public class ShootingBehaviour : MonoBehaviour {
                     objHit.GetComponent<Rigidbody>().AddForce(-dir * power / 8, ForceMode.Impulse);
                     objHit.GetComponent<HealthSystem>().HealthLoss(damage);
                 }
+                //Play Hitmarker
+                Camera.main.gameObject.GetComponent<AudioSource>().Play();
             }
         }
         
