@@ -65,17 +65,15 @@ public class FPCharacterController : MonoBehaviour
         float forwardSpeed = Input.GetAxis("Vertical") * speedMov;
         float sideSpeed = Input.GetAxis("Horizontal") * speedMov;
 
-        //Sprint
-        /*
+        //Slow Walk
         if (Input.GetKey(KeyCode.LeftShift) && duckLock == true)
         {
-            speedMov = 10.7f;
-            stepSpeed = 2.5f;
+            speedMov = 4.3f;
         }
         else
         {
-        */
             speedMov = 12;
+        }
 
         //Duck
         if (Input.GetKeyDown(KeyCode.LeftControl) && cc.isGrounded)
@@ -108,17 +106,8 @@ public class FPCharacterController : MonoBehaviour
             jumpNum = jumpCount;
         }
 
-        //Wallrunning
-        /*
-        if (cc.collisionFlags == CollisionFlags.Sides && forwardSpeed != 0 && sideSpeed != 0)
-        {
-            //Camera.main.transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, new Vector3(0, 20, 0), Time.deltaTime);
-            verVelocity = -0.3f;
-            jumpNum = jumpCount + 1;
-        }
-        */
-
         //Dash
+        /*
         if (Input.GetKey(KeyCode.F) && dashLength > 0)
         {
             dashLength -= Time.deltaTime;
@@ -128,6 +117,7 @@ public class FPCharacterController : MonoBehaviour
         {
             dashLength = dashTime;
         }
+        */
     }
 
     void OnGUI()
