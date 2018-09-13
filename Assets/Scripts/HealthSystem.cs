@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HealthSystem : MonoBehaviour {
 
@@ -23,6 +24,12 @@ public class HealthSystem : MonoBehaviour {
         if (health <= 0)
         {
             dead = true;
+
+            //Deactivate NavMeshAgent
+            if (gameObject.GetComponent<NavMeshAgent>() != null)
+            {
+                gameObject.GetComponent<NavMeshAgent>().enabled = false; 
+            }
         }
         return dead;
     }
