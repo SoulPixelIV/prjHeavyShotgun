@@ -18,18 +18,12 @@ public class EnemyAI : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) < sightDistance && Vector3.Distance(gameObject.transform.position, player.transform.position) > 5)
         {
-            if (GetComponent<NavMeshAgent>().isStopped == true)
-            {
-                GetComponent<NavMeshAgent>().isStopped = false;
-                gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
-            }
+            GetComponent<NavMeshAgent>().speed = 2.5f;
+            gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
         }
         else
         {
-            if (GetComponent<NavMeshAgent>().isStopped == false)
-            {
-                GetComponent<NavMeshAgent>().isStopped = true;
-            }
+            GetComponent<NavMeshAgent>().speed = 0;
         }
 	}
 }

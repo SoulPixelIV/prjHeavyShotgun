@@ -5,6 +5,8 @@ using UnityEngine;
 public class ShootingBehaviour : MonoBehaviour {
 
     public Rigidbody bullet;
+    public GameObject bullethole;
+
     public int damage;
     public int power;
 	
@@ -47,7 +49,7 @@ public class ShootingBehaviour : MonoBehaviour {
                 objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
             }
             //Enemy Hit
-            if (objHit.tag == "Enemy")
+            else if (objHit.tag == "Enemy")
             {
                 //Direction between player and enemy
                 Vector3 dir = (transform.position - objHit.transform.position).normalized;
@@ -63,6 +65,11 @@ public class ShootingBehaviour : MonoBehaviour {
                 }
                 //Play Hitmarker
                 Camera.main.gameObject.GetComponent<AudioSource>().Play();
+            }
+            else
+            {
+                Debug.Log("Bullethole");
+                Instantiate(bullethole, hit.point + (hit.normal * 0.01f), Quaternion.LookRotation(hit.normal));
             }
         }
         

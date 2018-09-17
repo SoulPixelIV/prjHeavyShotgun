@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class FPCharacterController : MonoBehaviour
 {
@@ -7,7 +8,10 @@ public class FPCharacterController : MonoBehaviour
     public Texture crosshairTexture;
     public float crosshairPercentage = 0.05f;
 
+    public Text healthTxt;
+
     [Header("Movement")]
+    public int health;
     public float speedCam;
     public float jumpSpeed;
     public float gravity;
@@ -51,6 +55,9 @@ public class FPCharacterController : MonoBehaviour
 
     void Update()
     {
+        //Health
+        healthTxt.text = "Health: " + health;
+
         //Mouse Movement
         float rotH = Input.GetAxis("Mouse X") * speedCam;
         rotV -= Input.GetAxis("Mouse Y") * speedCam;
