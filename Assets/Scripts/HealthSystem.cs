@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour {
 
     public int health;
     public bool dead;
 
-	// Use this for initialization
-	void Start () {
+    public Text healthTxt;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //Debug.Log("Health: " + health);
-	}
+        healthTxt.text = "Health: " + health;
+    }
 
     public bool HealthLoss (int damage)
     {
@@ -30,6 +33,12 @@ public class HealthSystem : MonoBehaviour {
             {
                 gameObject.GetComponent<NavMeshAgent>().enabled = false; 
             }
+        }
+
+        //AI
+        if (gameObject.GetComponent<EnemyAI>() != null)
+        {
+            gameObject.GetComponent<EnemyAI>().aggro = true;
         }
         return dead;
     }

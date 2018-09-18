@@ -5,19 +5,24 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour {
 
-    public int sightDistance;
+    public float attackCooldown;
     public GameObject player;
-    
-    // Use this for initialization
-    void Start () {
-        
+
+    public bool aggro;
+    float attackCooldownSave;
+
+    void Start()
+    {
+        attackCooldownSave = attackCooldown;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         player = GameObject.FindGameObjectWithTag("Player");
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) < sightDistance && Vector3.Distance(gameObject.transform.position, player.transform.position) > 5)
+        if (aggro)
         {
+            attackCooldown -= 1 * Time.deltaTime;
+
             GetComponent<NavMeshAgent>().speed = 2.5f;
             gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
         }
@@ -25,5 +30,25 @@ public class EnemyAI : MonoBehaviour {
         {
             GetComponent<NavMeshAgent>().speed = 0;
         }
+
+        //Attack
+        if (attackCooldown <= 0 && aggro)
+        {
+            Attack();
+            attackCooldown = attackCooldownSave;
+        }
+
+        if (attackCooldown < 1)
+        {
+            transform.Find("AttackHitbox").gameObject.SetActive(false);
+        }
 	}
+
+    void Attack ()
+    {
+        Animator anim = GetComponent<Animator>();
+
+        anim.Play("zombieAttack");
+        transform.Find("AttackHitbox").gameObject.SetActive(true);
+    }
 }

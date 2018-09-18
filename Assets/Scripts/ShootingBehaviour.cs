@@ -66,7 +66,7 @@ public class ShootingBehaviour : MonoBehaviour {
                 //Play Hitmarker
                 Camera.main.gameObject.GetComponent<AudioSource>().Play();
             }
-            else
+            else if (objHit.tag == "Static")
             {
                 Debug.Log("Bullethole");
                 Instantiate(bullethole, hit.point + (hit.normal * 0.01f), Quaternion.LookRotation(hit.normal));
