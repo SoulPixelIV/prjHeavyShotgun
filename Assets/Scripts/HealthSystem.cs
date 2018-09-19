@@ -41,7 +41,7 @@ public class HealthSystem : MonoBehaviour {
         //AI
         if (gameObject.GetComponent<EnemyAI>() != null)
         {
-            gameObject.GetComponent<EnemyAI>().aggro = true;
+            gameObject.GetComponentInChildren<SightChecking>().aggro = true;
         }
         return dead;
     }

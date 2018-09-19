@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour {
     public float attackCooldown;
     public GameObject player;
 
-    public bool aggro;
+    bool aggro;
     float attackCooldownSave;
 
     void Start()
@@ -19,6 +19,12 @@ public class EnemyAI : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        if (gameObject.GetComponentInChildren<SightChecking>().aggro == true)
+        {
+            aggro = true;
+        }
+
         if (aggro)
         {
             attackCooldown -= 1 * Time.deltaTime;

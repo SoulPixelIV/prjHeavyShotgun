@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SightChecking : MonoBehaviour {
 
+    public bool aggro;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -14,11 +16,11 @@ public class SightChecking : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            transform.parent.gameObject.GetComponent<EnemyAI>().aggro = true;
+            aggro = true;
         }
     }
 }
