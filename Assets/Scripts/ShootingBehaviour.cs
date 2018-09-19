@@ -72,7 +72,7 @@ public class ShootingBehaviour : MonoBehaviour {
             }
             else if (objHit.tag == "Static")
             {
-                Debug.Log("Bullethole");
+                //Create Bullethole
                 Instantiate(bullethole, hit.point + (hit.normal * 0.01f), Quaternion.LookRotation(hit.normal));
             }
         }
