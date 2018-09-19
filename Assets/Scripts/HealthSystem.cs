@@ -18,7 +18,10 @@ public class HealthSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        healthTxt.text = "Health: " + health;
+        if (healthTxt != null)
+        {
+            healthTxt.text = "Health: " + health;
+        }
     }
 
     public bool HealthLoss (int damage)

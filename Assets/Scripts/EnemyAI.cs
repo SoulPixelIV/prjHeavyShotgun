@@ -23,8 +23,11 @@ public class EnemyAI : MonoBehaviour {
         {
             attackCooldown -= 1 * Time.deltaTime;
 
-            GetComponent<NavMeshAgent>().speed = 2.5f;
-            gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
+            if (gameObject.GetComponent<NavMeshAgent>().enabled == true)
+            {
+                GetComponent<NavMeshAgent>().speed = 5.6f;
+                gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
+            }
         }
         else
         {

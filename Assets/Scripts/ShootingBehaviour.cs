@@ -28,9 +28,13 @@ public class ShootingBehaviour : MonoBehaviour {
         Animator anim = GetComponent<Animator>();
         RaycastHit hit;
 
+        //Set Sight Layer
+        int layerMask = 1 << 10;
+        layerMask = ~layerMask;
+
         var direction = Camera.main.transform.TransformDirection(new Vector3(0, 0, 1));
         
-        if (Physics.Raycast (Camera.main.transform.position, direction, out hit, 300))
+        if (Physics.Raycast (Camera.main.transform.position, direction, out hit, 300, layerMask))
         {
             GameObject objHit = hit.collider.gameObject;
             Debug.Log("Hit object:" + objHit);
@@ -60,7 +64,7 @@ public class ShootingBehaviour : MonoBehaviour {
                 }
                 else
                 {
-                    objHit.GetComponent<Rigidbody>().AddForce(-dir * power / 8, ForceMode.Impulse);
+                    //objHit.GetComponent<Rigidbody>().AddForce(-dir * power / 8, ForceMode.Impulse);
                     objHit.GetComponent<HealthSystem>().HealthLoss(damage);
                 }
                 //Play Hitmarker
