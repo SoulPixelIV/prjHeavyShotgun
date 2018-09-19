@@ -22,6 +22,7 @@ public class WeaponCollected : MonoBehaviour {
         {
             if (weapon == 1)
             {
+                GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<WeaponSwitching>().shotgunUnlocked = true;
                 GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<WeaponSwitching>().WeaponSwitch(1);
             }
 

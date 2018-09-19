@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Bullet
   - Static
+  - Hands
+  - Shotgun
   layers:
   - Default
   - TransparentFX

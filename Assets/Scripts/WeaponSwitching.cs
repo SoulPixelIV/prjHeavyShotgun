@@ -7,6 +7,8 @@ public class WeaponSwitching : MonoBehaviour {
     public GameObject hands;
     public GameObject shotgun;
 
+    public bool shotgunUnlocked;
+
 	// Use this for initialization
 	void Start () {
         hands = GameObject.FindGameObjectWithTag("Hands").gameObject;
@@ -14,9 +16,24 @@ public class WeaponSwitching : MonoBehaviour {
 
         WeaponSwitch(0);
     }
-	
-	// Update is called once per frame
-	public void WeaponSwitch (int weapon) {
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !GameObject.FindGameObjectWithTag("Shotgun").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("shoot"))
+        {
+            WeaponSwitch(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (shotgunUnlocked)
+            {
+                WeaponSwitch(1);
+            }
+        }
+    }
+
+    // Update is called once per frame
+    public void WeaponSwitch (int weapon) {
         if (weapon == 0)
         {
             hands.SetActive(true);
