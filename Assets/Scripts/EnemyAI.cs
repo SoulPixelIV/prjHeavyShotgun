@@ -42,6 +42,12 @@ public class EnemyAI : MonoBehaviour {
             GetComponent<NavMeshAgent>().speed = 0;
         }
 
+        //Stop near player
+        if (Vector3.Distance(transform.position, player.transform.position) <= 4)
+        {
+            GetComponent<NavMeshAgent>().speed = 0;
+        }
+
         //Attack
         if (attackCooldown <= 0 && aggro)
         {

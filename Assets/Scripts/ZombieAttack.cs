@@ -7,6 +7,7 @@ public class ZombieAttack : MonoBehaviour {
     public int damage;
 
     bool dealtDamage;
+    float attackCooldown = 0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +16,13 @@ public class ZombieAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        attackCooldown -= 1 * Time.deltaTime;
+
+        if (attackCooldown <= 0)
+        {
+            dealtDamage = false;
+            attackCooldown = 0.5f;
+        }
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +36,7 @@ public class ZombieAttack : MonoBehaviour {
             }
         }
     }
-
+    /*
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
@@ -37,4 +44,5 @@ public class ZombieAttack : MonoBehaviour {
             dealtDamage = false;
         }
     }
+    */
 }
