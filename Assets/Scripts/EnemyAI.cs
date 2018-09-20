@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        Animator anim = GetComponent<Animator>();
+
         player = GameObject.FindGameObjectWithTag("Player");
 
         if (gameObject.GetComponentInChildren<SightChecking>().aggro == true)
