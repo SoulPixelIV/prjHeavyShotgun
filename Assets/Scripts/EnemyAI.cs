@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour {
         if (gameObject.GetComponentInChildren<SightChecking>().aggro == true)
         {
             aggro = true;
+            Debug.Log("AGGRO");
         }
 
         if (aggro)
