@@ -6420,6 +6420,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114413137702832140, guid: e8550fa55bcbf484996e4f9f65084be6,
+        type: 2}
+      propertyPath: damage
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8550fa55bcbf484996e4f9f65084be6, type: 2}
   m_IsPrefabAsset: 0
