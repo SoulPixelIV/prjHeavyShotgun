@@ -6316,6 +6316,28 @@ Prefab:
       propertyPath: damage
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 4651251623169500, guid: e8550fa55bcbf484996e4f9f65084be6, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651251623169500, guid: e8550fa55bcbf484996e4f9f65084be6, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651251623169500, guid: e8550fa55bcbf484996e4f9f65084be6, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114413137702832140, guid: e8550fa55bcbf484996e4f9f65084be6,
+        type: 2}
+      propertyPath: bullets
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114413137702832140, guid: e8550fa55bcbf484996e4f9f65084be6,
+        type: 2}
+      propertyPath: magazines
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8550fa55bcbf484996e4f9f65084be6, type: 2}
   m_IsPrefabAsset: 0
@@ -48845,7 +48867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 386, y: -210.14}
+  m_AnchoredPosition: {x: 344.34998, y: -210.14}
   m_SizeDelta: {x: 111.3, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &847750786
@@ -49454,6 +49476,23 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!1 &982234159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1580499296263140, guid: e8550fa55bcbf484996e4f9f65084be6,
+    type: 2}
+  m_PrefabInternal: {fileID: 61224436}
+--- !u!114 &982234165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 982234159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d16cc262cfe374794f71b0066be268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoTxt: {fileID: 847750786}
 --- !u!1001 &983230946
 Prefab:
   m_ObjectHideFlags: 0

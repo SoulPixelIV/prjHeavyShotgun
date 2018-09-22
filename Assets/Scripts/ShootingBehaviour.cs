@@ -9,16 +9,37 @@ public class ShootingBehaviour : MonoBehaviour {
 
     public int damage;
     public int power;
-	
-	// Update is called once per frame
-	void Update () {
+
+    public int bullets;
+    public int magazines;
+
+    int bulletsMax;
+
+    void Start()
+    {
+        bulletsMax = bullets;
+    }
+
+    // Update is called once per frame
+    void Update () {
         Animator anim = GetComponent<Animator>();
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("shoot") && bullets > 0)
             {
                 Shoot();
+            }
+        }
+
+        //Reload
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (bullets < bulletsMax && magazines > 0)
+            {
+                anim.Play("shotgunReload");
+                magazines -= bulletsMax - bullets;
+                bullets = bulletsMax;
             }
         }
 	}
@@ -27,6 +48,9 @@ public class ShootingBehaviour : MonoBehaviour {
     {
         Animator anim = GetComponent<Animator>();
         RaycastHit hit;
+
+        //Ammo
+        bullets -= 1;
 
         //Set Sight Layer
         int layerMask = 1 << 10;
