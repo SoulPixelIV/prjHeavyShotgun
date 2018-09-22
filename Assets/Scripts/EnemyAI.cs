@@ -7,6 +7,9 @@ public class EnemyAI : MonoBehaviour {
 
     public float attackCooldown;
     public GameObject player;
+    public float speed;
+
+    public string attack;
 
     bool aggro;
     float attackCooldownSave;
@@ -33,7 +36,7 @@ public class EnemyAI : MonoBehaviour {
 
             if (gameObject.GetComponent<NavMeshAgent>().enabled == true)
             {
-                GetComponent<NavMeshAgent>().speed = 5.6f;
+                GetComponent<NavMeshAgent>().speed = speed;
                 gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
             }
         }
@@ -65,7 +68,7 @@ public class EnemyAI : MonoBehaviour {
     {
         Animator anim = GetComponent<Animator>();
 
-        anim.Play("zombieAttack");
+        anim.Play("" + attack);
         transform.Find("AttackHitbox").gameObject.SetActive(true);
     }
 }
