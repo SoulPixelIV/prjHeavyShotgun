@@ -13432,7 +13432,9 @@ MonoBehaviour:
   crosshairTexture: {fileID: 10914, guid: 0000000000000000f000000000000000, type: 0}
   crosshairPercentage: 3
   speedCam: 0.75
-  jumpSpeed: 9
+  speedMov: 8
+  speedMovSlow: 2
+  jumpSpeed: 7
   gravity: 22
   tiltRange: 70
   jumpNum: 1

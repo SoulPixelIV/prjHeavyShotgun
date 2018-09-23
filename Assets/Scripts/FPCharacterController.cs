@@ -13,13 +13,15 @@ public class FPCharacterController : MonoBehaviour
     [Header("Movement")]
     //public int health;
     public float speedCam;
+    public float speedMov;
+    public float speedMovSlow;
     public float jumpSpeed;
     public float gravity;
     public float tiltRange;
     public int jumpNum;
     public float dashLength;
 
-    float speedMov;
+    float speedMovSave;
     float rotV = 0;
     bool duckLock = true;
     float verVelocity;
@@ -40,6 +42,8 @@ public class FPCharacterController : MonoBehaviour
         //Character Controller
         cc = GetComponent<CharacterController>();
 
+        speedMovSave = speedMov;
+
         //Reset
         jumpCount = jumpNum;
         dashTime = dashLength;
@@ -55,9 +59,6 @@ public class FPCharacterController : MonoBehaviour
 
     void Update()
     {
-        //Health
-        //healthTxt.text = "Health: " + health;
-
         //Mouse Movement
         float rotH = Input.GetAxis("Mouse X") * speedCam;
         rotV -= Input.GetAxis("Mouse Y") * speedCam;
@@ -75,14 +76,15 @@ public class FPCharacterController : MonoBehaviour
         //Slow Walk
         if (Input.GetKey(KeyCode.LeftShift) && duckLock == true)
         {
-            speedMov = 4.3f;
+            speedMov = speedMovSlow;
         }
         else
         {
-            speedMov = 12;
+            speedMov = speedMovSave;
         }
 
         //Duck
+        /*
         if (Input.GetKeyDown(KeyCode.LeftControl) && cc.isGrounded)
         {
             duckLock = false;
@@ -95,6 +97,7 @@ public class FPCharacterController : MonoBehaviour
             Vector3 duck = new Vector3(0, 1.5f, 0);
             UnityEngine.Camera.main.transform.position = Vector3.Lerp(UnityEngine.Camera.main.transform.position, UnityEngine.Camera.main.transform.position + duck, 25f * Time.deltaTime);
         }
+        */
 
         //Gravity
         verVelocity -= gravity * Time.deltaTime;
@@ -111,6 +114,10 @@ public class FPCharacterController : MonoBehaviour
         if (cc.isGrounded)
         {
             jumpNum = jumpCount;
+            if (!Input.GetKeyDown(KeyCode.Space))
+            {
+                verVelocity = 0;
+            }
         }
 
         //Dash
