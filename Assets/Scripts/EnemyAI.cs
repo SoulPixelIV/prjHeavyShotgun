@@ -58,7 +58,7 @@ public class EnemyAI : MonoBehaviour {
             attackCooldown = attackCooldownSave;
         }
 
-        if (attackCooldown < 1)
+        if (attackCooldown < attackCooldownSave - 0.1f)
         {
             transform.Find("AttackHitbox").gameObject.SetActive(false);
         }

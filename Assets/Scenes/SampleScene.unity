@@ -71355,7 +71355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarEmpty: {fileID: 2800000, guid: 15521dcb22576b947983309f4dc4d1b0, type: 3}
   healthbarProgress: {fileID: 2800000, guid: 0235a59cefccec6418ebdcfb7737c3e8, type: 3}
-  barProgress: 1
+  barProgress: 0
   posX: 30
   posY: 20
   sizeX: 215
