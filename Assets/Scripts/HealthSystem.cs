@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour {
 
-    public int health;
+    public float health;
     public bool dead;
 
     public Text healthTxt;
@@ -24,7 +24,7 @@ public class HealthSystem : MonoBehaviour {
         }
     }
 
-    public bool HealthLoss (int damage)
+    public bool HealthLoss (float damage)
     {
         health -= damage;
         if (health <= 0)
