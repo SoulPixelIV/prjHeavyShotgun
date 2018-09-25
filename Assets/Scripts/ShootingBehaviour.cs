@@ -57,8 +57,8 @@ public class ShootingBehaviour : MonoBehaviour {
         layerMask = ~layerMask;
 
         var direction = Camera.main.transform.TransformDirection(new Vector3(0, 0, 1));
-        
-        if (Physics.Raycast (Camera.main.transform.position, direction, out hit, 300, layerMask))
+
+        if (Physics.Raycast(Camera.main.transform.position, direction, out hit, 300, layerMask))
         {
             GameObject objHit = hit.collider.gameObject;
             Debug.Log("Hit object:" + objHit);
