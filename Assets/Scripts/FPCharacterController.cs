@@ -113,10 +113,10 @@ public class FPCharacterController : MonoBehaviour
         cc.Move(speed * Time.deltaTime);
         if (cc.isGrounded)
         {
-            jumpNum = jumpCount;
             if (!Input.GetKeyDown(KeyCode.Space))
             {
                 verVelocity = 0;
+                jumpNum = jumpCount;
             }
         }
 
