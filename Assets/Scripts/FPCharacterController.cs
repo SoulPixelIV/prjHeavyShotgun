@@ -20,6 +20,10 @@ public class FPCharacterController : MonoBehaviour
     public float tiltRange;
     public int jumpNum;
     public float dashLength;
+    public bool aimingGun;
+
+    public float forwardSpeed;
+    public float sideSpeed;
 
     float speedMovSave;
     float rotV = 0;
@@ -70,8 +74,16 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Movement
-        float forwardSpeed = Input.GetAxis("Vertical") * speedMov;
-        float sideSpeed = Input.GetAxis("Horizontal") * speedMov;
+        if (aimingGun)
+        {
+            forwardSpeed = Input.GetAxis("Vertical") * speedMov / 8;
+            sideSpeed = Input.GetAxis("Horizontal") * speedMov / 8;
+        }
+        else
+        {
+            forwardSpeed = Input.GetAxis("Vertical") * speedMov;
+            sideSpeed = Input.GetAxis("Horizontal") * speedMov;
+        }      
 
         //Slow Walk
         if (Input.GetKey(KeyCode.LeftShift) && duckLock == true)
