@@ -129,9 +129,26 @@ public class ShootingBehaviour : MonoBehaviour {
                 //Direction between player and enemy
                 Vector3 dir = (transform.position - objHit.transform.position).normalized;
 
-                if (objHit.GetComponent<HealthSystem>().HealthLoss(damage) == true)
+                if (hit.distance < 1.5f)
                 {
-                    objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
+                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage * 2) == true)
+                    {
+                        objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
+                    }
+                }
+                if (hit.distance > 1.5f && hit.distance < 3)
+                {
+                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage) == true)
+                    {
+                        objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 1.5f), ForceMode.Impulse);
+                    }
+                }
+                if (hit.distance > 3)
+                {
+                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage / 2) == true)
+                    {
+                        objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 2.5f) , ForceMode.Impulse);
+                    }
                 }
 
                 //Play Hitmarker
