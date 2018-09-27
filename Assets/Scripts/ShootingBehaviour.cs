@@ -9,16 +9,21 @@ public class ShootingBehaviour : MonoBehaviour {
 
     public int damage;
     public int power;
+    public float shootCooldown;
 
     public int bullets;
     public int magazines;
     public bool aiming;
 
     int bulletsMax;
+    float shootCooldownSave;
+    bool startCooldown;
 
     void Start()
     {
         bulletsMax = bullets;
+        shootCooldownSave = shootCooldown;
+        startCooldown = true;
     }
 
     // Update is called once per frame
@@ -28,8 +33,10 @@ public class ShootingBehaviour : MonoBehaviour {
         //Left Mousebutton
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("shoot") && bullets > 0 && aiming)
+            if (shootCooldown <= 0 && bullets > 0 && aiming)
             {
+                startCooldown = true;
+                shootCooldown = shootCooldownSave;
                 Shoot();
             }
         }
@@ -54,14 +61,32 @@ public class ShootingBehaviour : MonoBehaviour {
             GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
         }
 
+        if (startCooldown)
+        {
+            shootCooldown -= 1 * Time.deltaTime;
+        }
+        if (shootCooldown <= 0)
+        {
+            startCooldown = false;
+        }
+
         //Reload
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (bullets < bulletsMax && magazines > 0)
             {
-                anim.Play("shotgunReload");
-                magazines -= bulletsMax - bullets;
-                bullets = bulletsMax;
+                if (bulletsMax - bullets <= magazines)
+                {
+                    anim.Play("shotgunReload");
+                    magazines -= bulletsMax - bullets;
+                    bullets = bulletsMax;
+                }
+                else
+                {
+                    anim.Play("shotgunReload");
+                    bullets += magazines;
+                    magazines = 0;
+                }
             }
         }
 	}
