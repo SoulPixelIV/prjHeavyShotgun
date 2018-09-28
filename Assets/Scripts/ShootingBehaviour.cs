@@ -37,36 +37,67 @@ public class ShootingBehaviour : MonoBehaviour {
     void Update () {
         Animator anim = GetComponent<Animator>();
 
-        //Left Mousebutton
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().dead)
         {
-            if (shootCooldown <= 0 && bullets > 0 && aiming)
+            //Left Mousebutton
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                startCooldown = true;
-                shootCooldown = shootCooldownSave;
-                Shoot();
+                if (shootCooldown <= 0 && bullets > 0 && aiming)
+                {
+                    startCooldown = true;
+                    shootCooldown = shootCooldownSave;
+                    Shoot();
+                }
             }
-        }
 
-        //Right Mousebutton
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            if (!aiming)
+            //Right Mousebutton
+            if (Input.GetKey(KeyCode.Mouse1))
             {
-                anim.Play("shotgunAim");
+                if (!aiming)
+                {
+                    anim.Play("shotgunAim");
+                }
+                dof.active = true;
+                aiming = true;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = true;
             }
-            dof.active = true;
-            aiming = true;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = true;
+            else
+            {
+                if (aiming && !anim.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
+                {
+                    anim.Play("shotgunMoveBack");
+                    aiming = false;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
+                    dof.active = false;
+                }
+            }
+
+            //Reload
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (bullets < bulletsMax && magazines > 0)
+                {
+                    if (bulletsMax - bullets <= magazines)
+                    {
+                        anim.Play("shotgunReload");
+                        magazines -= bulletsMax - bullets;
+                        bullets = bulletsMax;
+                    }
+                    else
+                    {
+                        anim.Play("shotgunReload");
+                        bullets += magazines;
+                        magazines = 0;
+                    }
+                }
+            }
         }
         else
         {
-            if (aiming && !anim.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
+            if (bullets < bulletsMax && magazines < bulletsMax)
             {
-                anim.Play("shotgunMoveBack");
-                aiming = false;
-                GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
-                dof.active = false;
+                bullets = bulletsMax;
+                magazines = bulletsMax;
             }
         }
 
@@ -77,26 +108,6 @@ public class ShootingBehaviour : MonoBehaviour {
         if (shootCooldown <= 0)
         {
             startCooldown = false;
-        }
-
-        //Reload
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (bullets < bulletsMax && magazines > 0)
-            {
-                if (bulletsMax - bullets <= magazines)
-                {
-                    anim.Play("shotgunReload");
-                    magazines -= bulletsMax - bullets;
-                    bullets = bulletsMax;
-                }
-                else
-                {
-                    anim.Play("shotgunReload");
-                    bullets += magazines;
-                    magazines = 0;
-                }
-            }
         }
 	}
 

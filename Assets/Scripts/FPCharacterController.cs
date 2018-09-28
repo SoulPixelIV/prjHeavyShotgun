@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class FPCharacterController : MonoBehaviour
 {
     //Crosshair
     Rect crosshairRect;
     public Texture crosshairTexture;
+    public Text gameOverText;
     public float crosshairPercentage = 0.05f;
 
     //public Text healthTxt;
@@ -21,9 +23,12 @@ public class FPCharacterController : MonoBehaviour
     public int jumpNum;
     public float dashLength;
     public bool aimingGun;
+    public bool dead;
 
     public float forwardSpeed;
     public float sideSpeed;
+
+    public Vector3 startPos;
 
     float speedMovSave;
     float rotV = 0;
@@ -39,6 +44,9 @@ public class FPCharacterController : MonoBehaviour
 
     CharacterController cc;
 
+    ChromaticAberration chrom = null;
+    Vignette vignette = null;
+
     void Start()
     {
         Cursor.visible = false;
@@ -47,6 +55,14 @@ public class FPCharacterController : MonoBehaviour
         cc = GetComponent<CharacterController>();
 
         speedMovSave = speedMov;
+
+        //Position
+        startPos = transform.position;
+
+        //Postprocessing
+        PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
+        volume.profile.TryGetSettings(out chrom);
+        volume.profile.TryGetSettings(out vignette);
 
         //Reset
         jumpCount = jumpNum;
@@ -74,16 +90,27 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Movement
-        if (aimingGun)
+        if (!dead)
         {
-            forwardSpeed = Input.GetAxis("Vertical") * speedMov / 6;
-            sideSpeed = Input.GetAxis("Horizontal") * speedMov / 6;
+            if (aimingGun)
+            {
+                forwardSpeed = Input.GetAxis("Vertical") * speedMov / 6;
+                sideSpeed = Input.GetAxis("Horizontal") * speedMov / 6;
+            }
+            else
+            {
+                forwardSpeed = Input.GetAxis("Vertical") * speedMov;
+                sideSpeed = Input.GetAxis("Horizontal") * speedMov;
+            }
         }
         else
         {
-            forwardSpeed = Input.GetAxis("Vertical") * speedMov;
-            sideSpeed = Input.GetAxis("Horizontal") * speedMov;
-        }      
+            gameOverText.gameObject.SetActive(true);
+            chrom.intensity.value = 1;
+            vignette.intensity.value = 1;
+            forwardSpeed = 0;
+            sideSpeed = 0;
+        }
 
         //Slow Walk
         if (Input.GetKey(KeyCode.LeftShift) && duckLock == true)
@@ -144,6 +171,17 @@ public class FPCharacterController : MonoBehaviour
             dashLength = dashTime;
         }
         */
+
+        //Game Over
+        if (dead && Input.GetKeyDown(KeyCode.Space))
+        {
+            gameOverText.gameObject.SetActive(false);
+            transform.position = startPos;
+            GetComponent<HealthSystem>().health = 100;
+            chrom.intensity.value = 0;
+            vignette.intensity.value = 0;
+            dead = false;
+        }
     }
 
     void OnGUI()

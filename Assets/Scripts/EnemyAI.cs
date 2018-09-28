@@ -13,10 +13,14 @@ public class EnemyAI : MonoBehaviour {
 
     bool aggro;
     float attackCooldownSave;
+    Vector3 startPos;
+    Quaternion startRot;
 
     void Start()
     {
         attackCooldownSave = attackCooldown;
+        startPos = transform.position;
+        startRot = transform.rotation;
     }
 
     // Update is called once per frame
@@ -61,6 +65,15 @@ public class EnemyAI : MonoBehaviour {
         if (attackCooldown < attackCooldownSave - 0.1f)
         {
             transform.Find("AttackHitbox").gameObject.SetActive(false);
+        }
+
+        //Reset
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().dead)
+        {
+            transform.position = startPos;
+            transform.rotation = startRot;
+            aggro = false;
+            GetComponentInChildren<SightChecking>().aggro = false;
         }
 	}
 

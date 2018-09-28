@@ -48,6 +48,10 @@ public class HealthSystem : MonoBehaviour {
         if (health <= 0)
         {
             dead = true;
+            if (gameObject.tag == "Player")
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().dead = true;
+            }
 
             //Deactivate NavMeshAgent
             if (gameObject.GetComponent<NavMeshAgent>() != null)
