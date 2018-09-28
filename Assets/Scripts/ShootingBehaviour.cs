@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class ShootingBehaviour : MonoBehaviour {
 
@@ -19,11 +20,17 @@ public class ShootingBehaviour : MonoBehaviour {
     float shootCooldownSave;
     bool startCooldown;
 
+    DepthOfField dof = null;
+
     void Start()
     {
         bulletsMax = bullets;
         shootCooldownSave = shootCooldown;
         startCooldown = true;
+
+        //Postprocessing
+        PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
+        volume.profile.TryGetSettings(out dof);
     }
 
     // Update is called once per frame
@@ -48,11 +55,13 @@ public class ShootingBehaviour : MonoBehaviour {
             {
                 anim.Play("shotgunAim");
             }
+            dof.active = true;
             aiming = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = true;
         }
         else
         {
+            dof.active = false;
             if (aiming)
             {
                 anim.Play("shotgunMoveBack");

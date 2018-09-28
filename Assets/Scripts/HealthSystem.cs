@@ -3,24 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class HealthSystem : MonoBehaviour {
 
     public float health;
     public bool dead;
+    public float hitTimer;
+
+    float hitTimerSave;
+    bool hit;
 
     public Text healthTxt;
 
+    ChromaticAberration chrom = null;
+    Vignette vignette = null;
+
     // Use this for initialization
     void Start () {
-		
-	}
+        hitTimerSave = hitTimer;
+
+        //Postprocessing
+        PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
+        volume.profile.TryGetSettings(out chrom);
+        volume.profile.TryGetSettings(out vignette);
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (healthTxt != null)
         {
             healthTxt.text = "Health: " + health;
+        }
+
+        if (hit)
+        {
+            hitTimer -= 1 * Time.deltaTime;
+        }
+        if (hitTimer < 0)
+        {
+            chrom.intensity.value = 0;
+            vignette.intensity.value = 0;
+            hit = false;
+            hitTimer = hitTimerSave;
         }
     }
 
@@ -43,6 +68,15 @@ public class HealthSystem : MonoBehaviour {
         {
             gameObject.GetComponentInChildren<SightChecking>().aggro = true;
         }
+
+        //Player
+        if (gameObject.tag == "Player")
+        {
+            hit = true;
+            chrom.intensity.value = 1;
+            vignette.intensity.value = 0.5f;
+        }
+
         return dead;
     }
 }
