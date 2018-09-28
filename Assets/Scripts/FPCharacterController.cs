@@ -76,8 +76,8 @@ public class FPCharacterController : MonoBehaviour
         //Movement
         if (aimingGun)
         {
-            forwardSpeed = Input.GetAxis("Vertical") * speedMov / 8;
-            sideSpeed = Input.GetAxis("Horizontal") * speedMov / 8;
+            forwardSpeed = Input.GetAxis("Vertical") * speedMov / 6;
+            sideSpeed = Input.GetAxis("Horizontal") * speedMov / 6;
         }
         else
         {

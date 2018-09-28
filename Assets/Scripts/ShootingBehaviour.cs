@@ -61,13 +61,13 @@ public class ShootingBehaviour : MonoBehaviour {
         }
         else
         {
-            dof.active = false;
-            if (aiming)
+            if (aiming && !anim.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
             {
                 anim.Play("shotgunMoveBack");
+                aiming = false;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
+                dof.active = false;
             }
-            aiming = false;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
         }
 
         if (startCooldown)
@@ -130,7 +130,18 @@ public class ShootingBehaviour : MonoBehaviour {
                     objHit.GetComponent<Destructible>().Destroy();
                 }
 
-                objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
+                if (hit.distance < 1.5f)
+                {
+                    objHit.GetComponent<Rigidbody>().AddForce(-dir * (power * 1.5f), ForceMode.Impulse);
+                }
+                if (hit.distance > 1.5f && hit.distance < 3)
+                {
+                    objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
+                }
+                if (hit.distance > 3)
+                {
+                    objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 2), ForceMode.Impulse);
+                }
             }
             //Enemy Hit
             else if (objHit.tag == "Enemy")

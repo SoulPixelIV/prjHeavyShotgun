@@ -14,8 +14,6 @@ public class HealthSystem : MonoBehaviour {
     float hitTimerSave;
     bool hit;
 
-    public Text healthTxt;
-
     ChromaticAberration chrom = null;
     Vignette vignette = null;
 
@@ -31,11 +29,6 @@ public class HealthSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (healthTxt != null)
-        {
-            healthTxt.text = "Health: " + health;
-        }
-
         if (hit)
         {
             hitTimer -= 1 * Time.deltaTime;

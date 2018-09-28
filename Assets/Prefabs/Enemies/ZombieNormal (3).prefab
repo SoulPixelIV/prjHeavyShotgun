@@ -1043,8 +1043,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308423474065860}
-  m_LocalRotation: {x: -0, y: 0.99995166, z: -0, w: -0.009834009}
-  m_LocalPosition: {x: -27.38, y: 0.00999999, z: 60.58}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 30.5, y: 7.79, z: 67.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4788978668818554}
@@ -1053,7 +1053,7 @@ Transform:
   - {fileID: 4773494682854308}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 181.127, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4372804584719678
 Transform:
   m_ObjectHideFlags: 1
@@ -1759,8 +1759,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.5, z: 2.2}
-  m_Center: {x: 0.000000002897976, y: 0, z: 0.12085095}
+  m_Size: {x: 2, y: 1.5, z: 1.6352153}
+  m_Center: {x: 0, y: 0, z: -0.16154067}
 --- !u!65 &65835609243919318
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1804,7 +1804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   dead: 0
-  healthTxt: {fileID: 0}
+  hitTimer: 0
 --- !u!114 &114263389320239780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1864,7 +1864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fd1c2a81d5a9747855c4fb13bf216a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 2
+  attackCooldown: 4.5
   player: {fileID: 0}
   speed: 6.2
   attack: zombieAttack
