@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieAttack : MonoBehaviour {
+public class BasicAttack : MonoBehaviour {
 
+    public bool enemy = true;
     public int damage;
 
     bool dealtDamage;
@@ -27,12 +28,29 @@ public class ZombieAttack : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {         
-            if (!dealtDamage)
+        if (enemy)
+        {
+            if (other.tag == "Player")
             {
-                other.GetComponent<HealthSystem>().HealthLoss(damage);
-                dealtDamage = true;
+                if (!dealtDamage)
+                {
+                    other.GetComponent<HealthSystem>().HealthLoss(damage);
+                    dealtDamage = true;
+                }
+            }
+        }
+        else
+        {
+            if (other.tag == "Enemy")
+            {
+                if (!dealtDamage)
+                {
+                    //Play Hitmarker
+                    Camera.main.gameObject.GetComponent<AudioSource>().Play();
+
+                    other.GetComponent<HealthSystem>().HealthLoss(damage);
+                    dealtDamage = true;
+                }
             }
         }
     }
