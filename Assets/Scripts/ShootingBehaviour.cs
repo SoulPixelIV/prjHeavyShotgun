@@ -160,23 +160,16 @@ public class ShootingBehaviour : MonoBehaviour {
                 //Direction between player and enemy
                 Vector3 dir = (transform.position - objHit.transform.position).normalized;
 
-                if (hit.distance < 1.5f)
+                if (hit.distance < 3)
                 {
-                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage * 2) == true)
+                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage) == true)
                     {
                         objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
                     }
                 }
-                if (hit.distance > 1.5f && hit.distance < 3)
+                else
                 {
-                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage) == true)
-                    {
-                        objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 1.5f), ForceMode.Impulse);
-                    }
-                }
-                if (hit.distance > 3)
-                {
-                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage / 2) == true)
+                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage / 1.5f) == true)
                     {
                         objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 2.5f) , ForceMode.Impulse);
                     }
