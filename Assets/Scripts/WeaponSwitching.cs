@@ -9,6 +9,8 @@ public class WeaponSwitching : MonoBehaviour {
 
     public bool shotgunUnlocked;
 
+    int lastUsed;
+
 	// Use this for initialization
 	void Start () {
         hands = GameObject.FindGameObjectWithTag("Hands").gameObject;
@@ -30,6 +32,19 @@ public class WeaponSwitching : MonoBehaviour {
                 WeaponSwitch(1);
             }
         }
+        /*
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (lastUsed == 0)
+            {
+                WeaponSwitch(0);
+            }
+            if (lastUsed == 1)
+            {
+                WeaponSwitch(1);
+            }
+        }
+        */
     }
 
     // Update is called once per frame

@@ -10,6 +10,7 @@ TagManager:
   - Static
   - Hands
   - Shotgun
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
