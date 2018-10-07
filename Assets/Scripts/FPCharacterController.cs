@@ -175,13 +175,24 @@ public class FPCharacterController : MonoBehaviour
         //Game Over
         if (dead && Input.GetKeyDown(KeyCode.Space))
         {
-            gameOverText.gameObject.SetActive(false);
-            transform.position = startPos;
-            GetComponent<HealthSystem>().health = 100;
-            chrom.intensity.value = 0;
-            vignette.intensity.value = 0;
-            dead = false;
+            Dead();
         }
+    }
+
+    void Dead()
+    {
+        //UI
+        gameOverText.gameObject.SetActive(false);
+
+        //Reset Player
+        transform.position = startPos;
+        GetComponent<HealthSystem>().health = 100;
+
+        //Reset Processing
+        chrom.intensity.value = 0;
+        vignette.intensity.value = 0;
+
+        dead = false;
     }
 
     void OnGUI()

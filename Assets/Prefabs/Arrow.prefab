@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23319899441601630}
   - component: {fileID: 65974444589156634}
   - component: {fileID: 54820019041455280}
+  - component: {fileID: 114083364525663050}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443258601444632}
   m_LocalRotation: {x: 0.000000030908623, y: 0.7071068, z: 0.7071067, w: 0.000000030908616}
-  m_LocalPosition: {x: -22.348, y: 5.529, z: 25.266}
+  m_LocalPosition: {x: -41.25319, y: 0.57627565, z: -0.09129369}
   m_LocalScale: {x: -0.904666, y: -28.242817, z: -0.98720425}
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,8 +108,21 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443258601444632}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.042830054, y: 0.008794475, z: 0.042830043}
-  m_Center: {x: -0.00000013317914, y: 0.007829326, z: 0.00000010368902}
+  m_Size: {x: 0.101107806, y: 0.013525118, z: 0.06868979}
+  m_Center: {x: -0.006025699, y: 0.010194624, z: 0.0010612315}
+--- !u!114 &114083364525663050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443258601444632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5535d011f9bbfea4d8273d5c5ac4436b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: 1
+  damage: 15

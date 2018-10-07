@@ -33,8 +33,13 @@ public class ArrowShooter : MonoBehaviour {
 
     void Shoot()
     {
-        arrow = Instantiate(arrow, spawnpoint.transform.position, Quaternion.identity);
-        arrow.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Impulse);
-        arrow.transform.rotation = rotation;
+        if (arrow != null)
+        {
+            arrow = Instantiate(arrow, spawnpoint.transform.position, Quaternion.identity);
+            arrow.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Impulse);
+            arrow.transform.rotation = rotation;
+            gameObject.GetComponent<AudioSource>().Play();
+            Destroy(arrow, 3);
+        }
     }
 }

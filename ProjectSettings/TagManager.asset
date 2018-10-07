@@ -11,6 +11,7 @@ TagManager:
   - Hands
   - Shotgun
   - Checkpoint
+  - ArrowShooter
   layers:
   - Default
   - TransparentFX

@@ -5,13 +5,25 @@ using UnityEngine;
 public class Despawn : MonoBehaviour {
 
     public float despawnTime;
+    public bool despawnOnContact;
 
 	void Update () {
-        despawnTime -= 1 * Time.deltaTime;
+        if (!despawnOnContact)
+        {
+            despawnTime -= 1 * Time.deltaTime;
+        }
 
         if (despawnTime <= 0)
         {
             Destroy(gameObject);
         }
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (despawnOnContact)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
