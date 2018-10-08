@@ -9,48 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1785024252251652}
+  m_RootGameObject: {fileID: 1217010731881586}
   m_IsPrefabAsset: 1
---- !u!1 &1785024252251652
+--- !u!1 &1217010731881586
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4067556977605118}
-  - component: {fileID: 23903628805036220}
-  - component: {fileID: 33422986754659980}
-  - component: {fileID: 114129888822902330}
-  - component: {fileID: 65146470766549942}
-  - component: {fileID: 114671367467718622}
-  - component: {fileID: 82058516394938516}
+  - component: {fileID: 4645886776759220}
+  - component: {fileID: 23790975262584032}
+  - component: {fileID: 33809895288237476}
+  - component: {fileID: 114586788340518902}
+  - component: {fileID: 114716862264609612}
+  - component: {fileID: 82301615953539900}
+  - component: {fileID: 65804513858619880}
   m_Layer: 0
   m_Name: Preassureplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4067556977605118
+--- !u!4 &4645886776759220
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1785024252251652}
+  m_GameObject: {fileID: 1217010731881586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.55, y: 0.544, z: 1.332}
+  m_LocalPosition: {x: -28.136309, y: 0.546678, z: 1.064294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23903628805036220
+--- !u!23 &23790975262584032
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1785024252251652}
+  m_GameObject: {fileID: 1217010731881586}
   m_Enabled: 1
   m_CastShadows: 2
   m_ReceiveShadows: 1
@@ -80,31 +80,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33422986754659980
+--- !u!33 &33809895288237476
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1785024252251652}
+  m_GameObject: {fileID: 1217010731881586}
   m_Mesh: {fileID: 0}
---- !u!65 &65146470766549942
+--- !u!65 &65804513858619880
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1785024252251652}
+  m_GameObject: {fileID: 1217010731881586}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.48725975, z: 1}
-  m_Center: {x: 0.5, y: 0.5, z: -0.5}
---- !u!82 &82058516394938516
+  m_Size: {x: 1, y: 1.0660522, z: 1}
+  m_Center: {x: 0.5, y: 0.5330261, z: -0.5}
+--- !u!82 &82301615953539900
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1785024252251652}
+  m_GameObject: {fileID: 1217010731881586}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -154,7 +154,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -194,12 +194,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114129888822902330
+--- !u!114 &114586788340518902
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1785024252251652}
+  m_GameObject: {fileID: 1217010731881586}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 232430130, guid: 4f0627da958b4bb78c260446066f065f, type: 3}
@@ -717,12 +717,12 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!114 &114671367467718622
+--- !u!114 &114716862264609612
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1785024252251652}
+  m_GameObject: {fileID: 1217010731881586}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a9f16b61743bf8439c99cc5b38989f9, type: 3}
