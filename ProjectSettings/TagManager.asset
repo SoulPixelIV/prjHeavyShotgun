@@ -12,6 +12,7 @@ TagManager:
   - Shotgun
   - Checkpoint
   - ArrowShooter
+  - Gate
   layers:
   - Default
   - TransparentFX

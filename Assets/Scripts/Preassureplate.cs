@@ -20,10 +20,14 @@ public class Preassureplate : MonoBehaviour {
     {
         if (other.tag == "Player" || other.tag == "Enemy")
         {
+            gameObject.GetComponent<AudioSource>().Play();
             if (target.gameObject.tag == "ArrowShooter")
-            {
-                gameObject.GetComponent<AudioSource>().Play();
+            {               
                 target.GetComponent<ArrowShooter>().activated = true;
+            }
+            if (target.gameObject.tag == "Gate")
+            {
+                target.GetComponent<GateOpen>().activated = true;
             }
         }
     }
