@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour {
     public float attackCooldown;
     public GameObject player;
     public float speed;
+    public bool dontAttack;
 
     public string attack;
 
@@ -36,7 +37,10 @@ public class EnemyAI : MonoBehaviour {
 
         if (aggro)
         {
-            attackCooldown -= 1 * Time.deltaTime;
+            if (!dontAttack)
+            {
+                attackCooldown -= 1 * Time.deltaTime;
+            }
 
             if (gameObject.GetComponent<NavMeshAgent>().enabled == true)
             {
@@ -56,7 +60,7 @@ public class EnemyAI : MonoBehaviour {
         }
 
         //Attack
-        if (attackCooldown <= 0 && aggro)
+        if (attackCooldown <= 0 && aggro && !dontAttack)
         {
             Attack();
             attackCooldown = attackCooldownSave;
