@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour {
     public float attackCooldown;
     public GameObject player;
     public float speed;
+    public float distanceToPlayer = 4;
     public bool dontAttack;
 
     public string attack;
@@ -47,6 +48,12 @@ public class EnemyAI : MonoBehaviour {
                 GetComponent<NavMeshAgent>().speed = speed;
                 gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
             }
+
+            //Activate Arrow Shooter
+            if (GetComponent<ArrowShooter>() != null)
+            {
+                GetComponent<ArrowShooter>().activated = true;
+            }
         }
         else
         {
@@ -54,9 +61,13 @@ public class EnemyAI : MonoBehaviour {
         }
 
         //Stop near player
-        if (Vector3.Distance(transform.position, player.transform.position) <= 4)
+        if (Vector3.Distance(transform.position, player.transform.position) <= distanceToPlayer)
         {
             GetComponent<NavMeshAgent>().speed = 0;
+            if (Vector3.Distance(transform.position, player.transform.position) >= 6)
+            {
+                transform.LookAt(player.transform.position);
+            }
         }
 
         //Attack
