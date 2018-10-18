@@ -8,7 +8,7 @@ public class BasicAttack : MonoBehaviour {
     public int damage;
 
     bool dealtDamage;
-    float attackCooldown = 0.15f;
+    float attackCooldown = 0.02f;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +22,7 @@ public class BasicAttack : MonoBehaviour {
         if (attackCooldown <= 0)
         {
             dealtDamage = false;
-            attackCooldown = 0.15f;
+            attackCooldown = 0.02f;
         }
 	}
 

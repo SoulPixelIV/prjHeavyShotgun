@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletBehaviour : MonoBehaviour {
+public class MoveToPlayer : MonoBehaviour {
 
-    public int speed;
+    public float speed;
     public float despawnTime;
 
     [HideInInspector] public GameObject player;
@@ -13,12 +13,15 @@ public class BulletBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
-        destination = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-	}
+        destination = (player.transform.position - transform.position).normalized;
+        Vector3 targetPoint = player.transform.position;
+        targetPoint.z = transform.position.z;
+        transform.LookAt(targetPoint);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+        transform.position += destination * speed * Time.deltaTime;
 
         despawnTime -= 1 * Time.deltaTime;
 

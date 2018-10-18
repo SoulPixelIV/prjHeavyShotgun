@@ -2159,6 +2159,8 @@ MonoBehaviour:
   shootTimer: 2.5
   arrowLifetime: 4.5
   arrow: {fileID: 1443258601444632, guid: dbf9749e4f6d8c64dba9dc8155ea72b8, type: 2}
+  arrowPlayerFocus: {fileID: 1443258601444632, guid: 4eb42352fc7a5db4d826a8bc8e1d402b,
+    type: 2}
   spawnpoint: {fileID: 1779975858607210}
   direction: {x: 1, y: 1, z: 1}
   rotation: {x: 0, y: 0, z: 0, w: 0}

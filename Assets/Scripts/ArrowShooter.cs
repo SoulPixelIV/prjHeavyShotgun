@@ -11,6 +11,7 @@ public class ArrowShooter : MonoBehaviour {
     public float shootTimer;
     public float arrowLifetime = 3;
     public GameObject arrow;
+    public GameObject arrowPlayerFocus;
     public GameObject spawnpoint;
     public Vector3 direction;
     public Quaternion rotation;
@@ -33,6 +34,14 @@ public class ArrowShooter : MonoBehaviour {
             Shoot();
             shootTimer = shootTimerSave;
         }
+
+        if (GetComponent<EnemyAI>() != null)
+        {
+            if (!GetComponentInChildren<SightChecking>().aggro)
+            {
+                activated = false;
+            }
+        }
 	}
 
     void Shoot()
@@ -49,15 +58,7 @@ public class ArrowShooter : MonoBehaviour {
             }
             else
             {
-                arrow = Instantiate(arrow, spawnpoint.transform.position, Quaternion.identity);
-
-                Vector3 targetPoint = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
-                Quaternion targetRotation = Quaternion.LookRotation(-targetPoint, direction);
-
-                arrow.GetComponent<Rigidbody>().AddForce(targetPoint / 10, ForceMode.Impulse);
-                arrow.transform.rotation = targetRotation;
-                gameObject.GetComponent<AudioSource>().Play();
-                Destroy(arrow, arrowLifetime);
+                Instantiate(arrowPlayerFocus, spawnpoint.transform.position, Quaternion.identity);
             }
         }
     }
