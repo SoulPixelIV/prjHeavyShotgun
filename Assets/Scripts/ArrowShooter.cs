@@ -14,7 +14,7 @@ public class ArrowShooter : MonoBehaviour {
     public GameObject arrowPlayerFocus;
     public GameObject spawnpoint;
     public Vector3 direction;
-    public Quaternion rotation;
+    public int rotation;
 
     float shootTimerSave;
 
@@ -52,9 +52,23 @@ public class ArrowShooter : MonoBehaviour {
             {
                 arrow = Instantiate(arrow, spawnpoint.transform.position, Quaternion.identity);
                 arrow.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Impulse);
-                arrow.transform.rotation = rotation;
                 gameObject.GetComponent<AudioSource>().Play();
                 Destroy(arrow, 3);
+                switch (rotation)
+                {
+                    case 0:
+                        arrow.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        break;
+                    case 1:
+                        arrow.transform.rotation = Quaternion.Euler(0, 0, 90);
+                        break;
+                    case 2:
+                        arrow.transform.rotation = Quaternion.Euler(0, 90, 0);
+                        break;
+                    case 3:
+                        arrow.transform.rotation = Quaternion.Euler(90, 0, 0);
+                        break;
+                }
             }
             else
             {

@@ -315,3 +315,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnTime: 15
+  despawnOnContact: 0
