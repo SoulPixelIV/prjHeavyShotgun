@@ -152,7 +152,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -236,14 +236,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96667735603e4c642afce0d13f61bd5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activated: 1
+  activated: 0
   playerFocus: 0
   player: {fileID: 0}
   shotSpeed: 1.2
   shootTimer: 1.289295
   arrowLifetime: 3
-  arrow: {fileID: 0}
-  arrowPlayerFocus: {fileID: 0}
+  arrow: {fileID: 1443258601444632, guid: dbf9749e4f6d8c64dba9dc8155ea72b8, type: 2}
+  arrowPlayerFocus: {fileID: 1443258601444632, guid: 4eb42352fc7a5db4d826a8bc8e1d402b,
+    type: 2}
   spawnpoint: {fileID: 1217955089924642}
   direction: {x: 0.8, y: 0, z: 0}
   rotation: 1
