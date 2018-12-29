@@ -1852,6 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5535d011f9bbfea4d8273d5c5ac4436b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: 1
   damage: 35
 --- !u!114 &114902302911324340
 MonoBehaviour:
@@ -1867,6 +1868,8 @@ MonoBehaviour:
   attackCooldown: 3.7
   player: {fileID: 0}
   speed: 6.2
+  distanceToPlayer: 4
+  dontAttack: 0
   attack: zombieAttack
 --- !u!136 &136120225982478718
 CapsuleCollider:
