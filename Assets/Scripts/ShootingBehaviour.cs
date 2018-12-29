@@ -51,7 +51,7 @@ public class ShootingBehaviour : MonoBehaviour {
             }
 
             //Right Mousebutton
-            if (Input.GetKey(KeyCode.Mouse1))
+            if (Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.LeftShift))
             {
                 if (!aiming)
                 {
@@ -60,6 +60,18 @@ public class ShootingBehaviour : MonoBehaviour {
                 dof.active = true;
                 aiming = true;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = true;
+            }
+            else
+            //Right Mousebutton + Sneak
+            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Mouse1))
+            {
+                if (!aiming)
+                {
+                    anim.Play("shotgunAimSneak");
+                    aiming = true;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = true;
+                    dof.active = true;
+                }
             }
             else
             {
