@@ -15,6 +15,7 @@ public class ShootingBehaviour : MonoBehaviour {
     public int bullets;
     public int magazines;
     public bool aiming;
+    public bool aimingSneak;
 
     int bulletsMax;
     float shootCooldownSave;
@@ -33,13 +34,14 @@ public class ShootingBehaviour : MonoBehaviour {
         volume.profile.TryGetSettings(out dof);
     }
 
-    // Update is called once per frame
-    void Update () {
+    void Update ()
+    {
         Animator anim = GetComponent<Animator>();
 
+        //### Shooting + Aiming ###
         if (!GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().dead)
         {
-            //Left Mousebutton
+            //Shooting
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (shootCooldown <= 0 && bullets > 0 && aiming)
@@ -50,37 +52,53 @@ public class ShootingBehaviour : MonoBehaviour {
                 }
             }
 
-            //Right Mousebutton
+            //Aiming
             if (Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.LeftShift))
             {
                 if (!aiming)
                 {
                     anim.Play("shotgunAim");
                 }
-                dof.active = true;
+                dof.active = true; //Depth of field
                 aiming = true;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = true;
             }
-            else
-            //Right Mousebutton + Sneak
+            //Aiming + Sneaking
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Mouse1))
             {
-                if (!aiming)
+                if (!aimingSneak)
                 {
                     anim.Play("shotgunAimSneak");
-                    aiming = true;
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = true;
-                    dof.active = true;
+                    aimingSneak = true;
+                    dof.active = true; //Depth of field
                 }
             }
-            else
+
+            //Stop aiming
+            if (!Input.GetKey(KeyCode.Mouse1))
             {
                 if (aiming && !anim.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
                 {
-                    anim.Play("shotgunMoveBack");
-                    aiming = false;
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
-                    dof.active = false;
+                    if (aiming)
+                    {
+                        anim.Play("shotgunMoveBack");
+                        aiming = false;
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
+                        dof.active = false; //Depth of field
+                    }
+                }
+            }
+            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.Mouse1))
+            {
+                if (aimingSneak && !anim.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
+                {
+                    if (aimingSneak)
+                    {
+                        anim.Play("shotgunMoveBackSneak");
+                        aimingSneak = false;
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
+                        dof.active = false; //Depth of field
+                    }
                 }
             }
 
