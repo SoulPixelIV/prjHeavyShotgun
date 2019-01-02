@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour {
 
     public float attackCooldown;
+    public float hitboxDelay;
+    public float hitboxLength;
     public GameObject player;
     public float speed;
     public float distanceToPlayer = 4;
@@ -15,12 +17,15 @@ public class EnemyAI : MonoBehaviour {
 
     bool aggro;
     float attackCooldownSave;
+    float hitboxDelaySave;
+    float hitboxLengthSave;
     Vector3 startPos;
     Quaternion startRot;
 
     void Start()
     {
         attackCooldownSave = attackCooldown;
+        hitboxDelaySave = hitboxDelay;
         startPos = transform.position;
         startRot = transform.rotation;
     }
@@ -35,14 +40,12 @@ public class EnemyAI : MonoBehaviour {
         {
             aggro = true;
         }
-
         if (aggro)
         {
             if (!dontAttack)
             {
-                attackCooldown -= 1 * Time.deltaTime;
+                attackCooldown -= 1 * Time.deltaTime; //Attack Cooldown going down
             }
-
             if (gameObject.GetComponent<NavMeshAgent>().enabled == true)
             {
                 GetComponent<NavMeshAgent>().speed = speed;
@@ -70,11 +73,16 @@ public class EnemyAI : MonoBehaviour {
             }
         }
 
-        //Attack
+        //Attack Animation
         if (attackCooldown <= 0 && aggro && !dontAttack)
         {
+            Animation();
+            hitboxDelay -= 1 * Time.deltaTime;
+            //attackCooldown = attackCooldownSave;
+        }
+        if (hitboxDelay <= 0)
+        {
             Attack();
-            attackCooldown = attackCooldownSave;
         }
 
         if (attackCooldown < attackCooldownSave - 0.1f)
@@ -92,11 +100,14 @@ public class EnemyAI : MonoBehaviour {
         }
 	}
 
-    void Attack ()
+    void Animation ()
     {
         Animator anim = GetComponent<Animator>();
-
         anim.Play("" + attack);
+    }
+
+    void Attack ()
+    {
         transform.Find("AttackHitbox").gameObject.SetActive(true);
     }
 }
