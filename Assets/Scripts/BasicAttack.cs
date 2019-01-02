@@ -9,13 +9,7 @@ public class BasicAttack : MonoBehaviour {
 
     bool dealtDamage;
     float attackCooldown = 0.02f;
-
-	// Use this for initialization
-	void Start () {
-
-	}
 	
-	// Update is called once per frame
 	void Update () {
         attackCooldown -= 1 * Time.deltaTime;
 
@@ -26,7 +20,7 @@ public class BasicAttack : MonoBehaviour {
         }
 	}
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (enemy)
         {
@@ -34,8 +28,7 @@ public class BasicAttack : MonoBehaviour {
             {
                 if (!dealtDamage)
                 {
-                    other.GetComponent<HealthSystem>().HealthLoss(damage);
-                    dealtDamage = true;
+                    PlayerDamage();
                 }
             }
         }
@@ -54,13 +47,11 @@ public class BasicAttack : MonoBehaviour {
             }
         }
     }
-    /*
-    private void OnTriggerExit(Collider other)
+
+    void PlayerDamage()
     {
-        if (other.tag == "Player")
-        {
-            dealtDamage = false;
-        }
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>().HealthLoss(damage);
+        dealtDamage = true;
+        gameObject.SetActive(false);
     }
-    */
 }
