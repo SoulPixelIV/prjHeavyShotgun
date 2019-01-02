@@ -3,70 +3,68 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour {
-
+public class EnemyAI : MonoBehaviour
+{
     public float attackCooldown;
-    public float hitboxDelay;
-    public float hitboxLength;
-    public GameObject player;
-    public float speed;
-    public float distanceToPlayer = 4;
-    public bool dontAttack;
+    public float hitboxLifetime;
+    public float walkSpeed;
+    public float ClosestDistanceToPlayer = 4;
+    [Header("[0,1] -> Non-Attack Animations|[>1] -> Attack Animations")]
+    public string[] animations;
+    public float[] hitboxDelays;
 
-    public string attack;
-
-    bool aggro;
     float attackCooldownSave;
-    float hitboxDelaySave;
-    float hitboxLengthSave;
+    float hitboxLifetimeSave;
+    [Header("Keep same number of arguments as Hitbox Delays")]
+    public float[] hitboxDelaysSave;
+    int randAttack;
+    bool dontAttack;
     Vector3 startPos;
     Quaternion startRot;
 
     void Start()
     {
         attackCooldownSave = attackCooldown;
-        hitboxDelaySave = hitboxDelay;
+        hitboxLifetimeSave = hitboxLifetime;
         startPos = transform.position;
         startRot = transform.rotation;
+        randAttack = Random.Range(2, animations.Length);
+        for (int i = 0; i < hitboxDelays.Length; i++)
+        {
+            hitboxDelaysSave[i] = hitboxDelays[i];
+        }
     }
 
-    // Update is called once per frame
-    void Update () {
+    void Update ()
+    {
         Animator anim = GetComponent<Animator>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        player = GameObject.FindGameObjectWithTag("Player");
-
-        if (gameObject.GetComponentInChildren<SightChecking>().aggro == true)
+        if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Player in Sight
         {
-            aggro = true;
-        }
-        if (aggro)
-        {
-            if (!dontAttack)
-            {
-                attackCooldown -= 1 * Time.deltaTime; //Attack Cooldown going down
-            }
+            //Set speed and destination
             if (gameObject.GetComponent<NavMeshAgent>().enabled == true)
             {
-                GetComponent<NavMeshAgent>().speed = speed;
+                GetComponent<NavMeshAgent>().speed = walkSpeed;
                 gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
             }
-
             //Activate Arrow Shooter
             if (GetComponent<ArrowShooter>() != null)
             {
                 GetComponent<ArrowShooter>().activated = true;
             }
+            attackCooldown -= 1 * Time.deltaTime; //Attack Cooldown going down
         }
         else
         {
-            GetComponent<NavMeshAgent>().speed = 0;
+            GetComponent<NavMeshAgent>().speed = 0; //Reset speed
+            anim.Play("" + animations[0]); //Play Idle animation
         }
 
         //Stop near player
-        if (Vector3.Distance(transform.position, player.transform.position) <= distanceToPlayer)
+        if (Vector3.Distance(transform.position, player.transform.position) <= ClosestDistanceToPlayer)
         {
-            GetComponent<NavMeshAgent>().speed = 0;
+            GetComponent<NavMeshAgent>().speed = 0; //Reset speed
             if (Vector3.Distance(transform.position, player.transform.position) >= 6)
             {
                 transform.LookAt(player.transform.position);
@@ -74,20 +72,32 @@ public class EnemyAI : MonoBehaviour {
         }
 
         //Attack Animation
-        if (attackCooldown <= 0 && aggro && !dontAttack)
+        if (attackCooldown < 0 && !dontAttack && gameObject.GetComponentInChildren<SightChecking>().aggro)
         {
             Animation();
-            hitboxDelay -= 1 * Time.deltaTime;
-            //attackCooldown = attackCooldownSave;
+            randAttack = Random.Range(2, animations.Length);
+            dontAttack = true;
         }
-        if (hitboxDelay <= 0)
+        if (attackCooldown < 0)
+        {
+            hitboxDelays[randAttack] -= 1 * Time.deltaTime;
+        }
+        //Attack Hitbox
+        if (hitboxDelays[randAttack] < 0)
         {
             Attack();
+            hitboxLifetime -= 1 * Time.deltaTime;
         }
-
-        if (attackCooldown < attackCooldownSave - 0.1f)
+        if (hitboxLifetime < 0)
         {
             transform.Find("AttackHitbox").gameObject.SetActive(false);
+            hitboxLifetime = hitboxLifetimeSave;
+            for (int i = 0; i < hitboxDelays.Length; i++)
+            {
+                hitboxDelays[i] = hitboxDelaysSave[i];
+            }
+            attackCooldown = attackCooldownSave;
+            dontAttack = false;
         }
 
         //Reset
@@ -95,15 +105,14 @@ public class EnemyAI : MonoBehaviour {
         {
             transform.position = startPos;
             transform.rotation = startRot;
-            aggro = false;
             GetComponentInChildren<SightChecking>().aggro = false;
         }
 	}
 
-    void Animation ()
+    void Animation()
     {
         Animator anim = GetComponent<Animator>();
-        anim.Play("" + attack);
+        anim.Play("" + animations[randAttack]);
     }
 
     void Attack ()

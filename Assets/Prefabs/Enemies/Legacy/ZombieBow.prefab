@@ -2163,7 +2163,7 @@ MonoBehaviour:
     type: 2}
   spawnpoint: {fileID: 1779975858607210}
   direction: {x: 1, y: 1, z: 1}
-  rotation: {x: 0, y: 0, z: 0, w: 0}
+  rotation: 0
 --- !u!114 &114961086406761032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2176,11 +2176,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0
-  player: {fileID: 0}
-  speed: 6.2
-  distanceToPlayer: 16
-  dontAttack: 1
-  attack: zombieAttack
+  hitboxLifetime: 0
+  walkSpeed: 0
+  ClosestDistanceToPlayer: 4
+  animations: []
+  hitboxDelays: []
+  hitboxDelaysSave: []
 --- !u!136 &136465895666028636
 CapsuleCollider:
   m_ObjectHideFlags: 1
