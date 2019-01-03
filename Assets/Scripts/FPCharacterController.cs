@@ -179,6 +179,16 @@ public class FPCharacterController : MonoBehaviour
         }
     }
 
+    //Damage
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hitbox")
+        {
+            GetComponent<HealthSystem>().HealthLoss(other.GetComponent<BasicAttack>().damage);
+            other.gameObject.SetActive(false);
+        }
+    }
+
     void Dead()
     {
         //UI

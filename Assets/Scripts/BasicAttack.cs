@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicAttack : MonoBehaviour {
 
-    public bool enemy = true;
+    //public bool enemy = true;
     public int damage;
 
     bool dealtDamage;
@@ -22,36 +22,16 @@ public class BasicAttack : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (enemy)
+        if (other.tag == "Enemy")
         {
-            if (other.tag == "Player")
+            if (!dealtDamage)
             {
-                if (!dealtDamage)
-                {
-                    PlayerDamage();
-                }
+                //Play Hitmarker
+                Camera.main.gameObject.GetComponent<AudioSource>().Play();
+
+                other.GetComponent<HealthSystem>().HealthLoss(damage);
+                dealtDamage = true;
             }
         }
-        else
-        {
-            if (other.tag == "Enemy")
-            {
-                if (!dealtDamage)
-                {
-                    //Play Hitmarker
-                    Camera.main.gameObject.GetComponent<AudioSource>().Play();
-
-                    other.GetComponent<HealthSystem>().HealthLoss(damage);
-                    dealtDamage = true;
-                }
-            }
-        }
-    }
-
-    void PlayerDamage()
-    {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>().HealthLoss(damage);
-        dealtDamage = true;
-        gameObject.SetActive(false);
     }
 }

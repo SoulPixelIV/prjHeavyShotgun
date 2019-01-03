@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour
     public float[] hitboxDelaysSave;
     int randAttack;
     bool dontAttack;
+    bool hitboxActive;
     Vector3 startPos;
     Quaternion startRot;
 
@@ -85,8 +86,12 @@ public class EnemyAI : MonoBehaviour
         //Attack Hitbox
         if (hitboxDelays[randAttack] < 0)
         {
-            Attack();
             hitboxLifetime -= 1 * Time.deltaTime;
+        }
+        if (hitboxDelays[randAttack] < 0 && !hitboxActive)
+        {
+            Attack();
+            hitboxActive = true;
         }
         if (hitboxLifetime < 0)
         {
@@ -98,6 +103,7 @@ public class EnemyAI : MonoBehaviour
             }
             attackCooldown = attackCooldownSave;
             dontAttack = false;
+            hitboxActive = false;
         }
 
         //Reset
