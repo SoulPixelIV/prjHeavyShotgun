@@ -321,6 +321,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1412307683710676, guid: 4601834a3740d9b40b157ab1f760b40c, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4601834a3740d9b40b157ab1f760b40c, type: 2}
   m_IsPrefabAsset: 0
@@ -25863,12 +25867,14 @@ GameObject:
   - component: {fileID: 1355860148}
   - component: {fileID: 1355860147}
   - component: {fileID: 1355860152}
+  - component: {fileID: 1355860153}
+  - component: {fileID: 1355860154}
   m_Layer: 0
   m_Name: DoorBreakable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!64 &1355860147
 MeshCollider:
@@ -26232,6 +26238,36 @@ MonoBehaviour:
   health: 45
   dead: 0
   hitTimer: 0
+--- !u!114 &1355860153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1355860146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9eba53e5809ae458b5b97ee9fedc80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyedVersion: {fileID: 1995724843849926, guid: b666ad5232b794d4cb773e1441aac745,
+    type: 2}
+  marked: 0
+  standardMat: {fileID: 0}
+--- !u!208 &1355860154
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1355860146}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 1.5000001, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1, y: 1.5000001, z: -0.5}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1364607608
 Prefab:
   m_ObjectHideFlags: 0

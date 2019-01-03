@@ -27,8 +27,8 @@ GameObject:
   m_Name: Barrel
   m_TagString: Environment
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4064873848546606
 Transform:
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1412307683710676}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -5.507435, y: 0.0005624879, z: -3.8656683}
+  m_LocalPosition: {x: -2.956543, y: 1.0006624, z: -23.237823}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}

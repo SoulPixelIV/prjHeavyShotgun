@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicAttack : MonoBehaviour {
-
-    //public bool enemy = true;
+public class BasicAttack : MonoBehaviour
+{
     public int damage;
 
     bool dealtDamage;
@@ -29,7 +28,14 @@ public class BasicAttack : MonoBehaviour {
                 //Play Hitmarker
                 Camera.main.gameObject.GetComponent<AudioSource>().Play();
 
-                other.GetComponent<HealthSystem>().HealthLoss(damage);
+                if (tag == "Enemy")
+                {
+                    other.GetComponent<HealthSystem>().HealthLoss(damage / 3);
+                }
+                else
+                {
+                    other.GetComponent<HealthSystem>().HealthLoss(damage);
+                }
                 dealtDamage = true;
             }
         }

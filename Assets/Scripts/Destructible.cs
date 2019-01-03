@@ -16,6 +16,18 @@ public class Destructible : MonoBehaviour {
         }
     }
 
+    //Damage
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hitbox")
+        {
+            if (gameObject.GetComponent<Destructible>() != null)
+            {
+                gameObject.GetComponent<Destructible>().Destroy();
+            }
+        }
+    }
+    
     public void Destroy () {
         Instantiate(destroyedVersion, transform.position, transform.rotation);
         Destroy(gameObject);
