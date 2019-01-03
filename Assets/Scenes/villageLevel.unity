@@ -58,7 +58,7 @@ LightmapSettings:
     serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 512
+    m_AtlasSize: 128
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -1234,7 +1234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4064873848546606, guid: 4601834a3740d9b40b157ab1f760b40c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.001
+      value: 3.066
       objectReference: {fileID: 0}
     - target: {fileID: 4064873848546606, guid: 4601834a3740d9b40b157ab1f760b40c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8383,15 +8383,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4064873848546606, guid: 4601834a3740d9b40b157ab1f760b40c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.393
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 4064873848546606, guid: 4601834a3740d9b40b157ab1f760b40c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.001
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 4064873848546606, guid: 4601834a3740d9b40b157ab1f760b40c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -8.664
+      value: -8.815
       objectReference: {fileID: 0}
     - target: {fileID: 4064873848546606, guid: 4601834a3740d9b40b157ab1f760b40c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -25871,7 +25871,7 @@ GameObject:
   - component: {fileID: 1355860154}
   m_Layer: 0
   m_Name: DoorBreakable
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 119
