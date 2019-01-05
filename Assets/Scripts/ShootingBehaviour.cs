@@ -171,17 +171,20 @@ public class ShootingBehaviour : MonoBehaviour {
                     objHit.GetComponent<Destructible>().Destroy();
                 }
 
-                if (hit.distance < 1.5f)
+                if (objHit.GetComponent<Rigidbody>() != null)
                 {
-                    objHit.GetComponent<Rigidbody>().AddForce(-dir * (power * 1.5f), ForceMode.Impulse);
-                }
-                if (hit.distance > 1.5f && hit.distance < 3)
-                {
-                    objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
-                }
-                if (hit.distance > 3)
-                {
-                    objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 2), ForceMode.Impulse);
+                    if (hit.distance < 1.5f)
+                    {
+                        objHit.GetComponent<Rigidbody>().AddForce(-dir * (power * 1.5f), ForceMode.Impulse);
+                    }
+                    if (hit.distance > 1.5f && hit.distance < 3)
+                    {
+                        objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
+                    }
+                    if (hit.distance > 3)
+                    {
+                        objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 2), ForceMode.Impulse);
+                    }
                 }
             }
             //Enemy Hit
