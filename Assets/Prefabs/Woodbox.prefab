@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54468915455127142}
   - component: {fileID: 65815287926482570}
   - component: {fileID: 114643396214291790}
+  - component: {fileID: 208255992748348344}
   m_Layer: 0
   m_Name: Woodbox
   m_TagString: Environment
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1699444549494658}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5040293, y: 1.00014, z: -5.6383667}
+  m_LocalPosition: {x: -22.003454, y: 3.2504153, z: -17.70907}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,3 +148,18 @@ MonoBehaviour:
     type: 2}
   marked: 0
   standardMat: {fileID: 0}
+--- !u!208 &208255992748348344
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699444549494658}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.25, y: 1.25, z: 1.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
