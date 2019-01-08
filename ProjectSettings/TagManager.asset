@@ -14,6 +14,7 @@ TagManager:
   - ArrowShooter
   - Gate
   - Hitbox
+  - Lift
   layers:
   - Default
   - TransparentFX

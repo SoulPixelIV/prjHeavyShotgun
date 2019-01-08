@@ -46,7 +46,7 @@ public class LiftMovement : MonoBehaviour {
             travelHeight = travelHeightSave;
             waitTime = waitTimeSave;
         }
-        if (!waiting)
+        if (!waiting && active)
         {
             if (dir == 0)
             {

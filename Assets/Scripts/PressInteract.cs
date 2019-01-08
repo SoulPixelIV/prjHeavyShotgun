@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PressInteract : MonoBehaviour {
 
+    public GameObject target;
     public GameObject interactTxt;
     public string openAnimation;
     public bool access;
@@ -17,6 +18,10 @@ public class PressInteract : MonoBehaviour {
             {
                 GetComponent<Animator>().Play("" + openAnimation);
                 showTxt = false;
+                if (target.gameObject.tag == "Lift")
+                {
+                    target.GetComponent<LiftMovement>().active = true;
+                }
             }
         }
 	}

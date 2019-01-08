@@ -13,11 +13,26 @@ ModelImporter:
     400006: //RootNode
     2000000: Camera
     2100000: Material
+    2100002: Material.001
+    2100004: Material.002
     2300000: Cube
+    2300002: //RootNode
     3300000: Cube
+    3300002: //RootNode
     4300000: Cube
+    4300002: Cube.001
     10800000: Lamp
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 78b748bd98e800a42a040311676fc6a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: d94f7d2a12c557340a7f875343e6f648, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
