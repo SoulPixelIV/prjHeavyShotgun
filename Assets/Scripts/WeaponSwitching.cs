@@ -7,16 +7,18 @@ public class WeaponSwitching : MonoBehaviour {
 
     public GameObject hands;
     public GameObject shotgun;
+    public GameObject skadi;
     public TextMeshProUGUI weaponTxt;
 
     public bool shotgunUnlocked;
+    public bool skadiUnlocked;
 
     int lastUsed;
 
-	// Use this for initialization
 	void Start () {
         hands = GameObject.FindGameObjectWithTag("Hands").gameObject;
         shotgun = GameObject.FindGameObjectWithTag("Shotgun").gameObject;
+        skadi = GameObject.FindGameObjectWithTag("Skadi").gameObject;
 
         WeaponSwitch(0);
     }
@@ -34,6 +36,13 @@ public class WeaponSwitching : MonoBehaviour {
                 WeaponSwitch(1);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (skadiUnlocked)
+            {
+                WeaponSwitch(2);
+            }
+        }
         /*
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -49,19 +58,27 @@ public class WeaponSwitching : MonoBehaviour {
         */
     }
 
-    // Update is called once per frame
     public void WeaponSwitch (int weapon) {
         if (weapon == 0)
         {
             hands.SetActive(true);
             shotgun.SetActive(false);
+            skadi.SetActive(false);
             weaponTxt.text = "Fists";
         }
         if (weapon == 1)
         {
             hands.SetActive(false);
             shotgun.SetActive(true);
+            skadi.SetActive(false);
             weaponTxt.text = "ShoMiRü";
+        }
+        if (weapon == 2)
+        {
+            skadi.SetActive(true);
+            shotgun.SetActive(false);
+            hands.SetActive(false);
+            weaponTxt.text = "Skadi";
         }
     }
 }

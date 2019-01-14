@@ -15,6 +15,7 @@ TagManager:
   - Gate
   - Hitbox
   - Lift
+  - Skadi
   layers:
   - Default
   - TransparentFX

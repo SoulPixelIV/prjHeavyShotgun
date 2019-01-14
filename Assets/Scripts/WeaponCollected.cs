@@ -25,6 +25,11 @@ public class WeaponCollected : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<WeaponSwitching>().shotgunUnlocked = true;
                 GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<WeaponSwitching>().WeaponSwitch(1);
             }
+            if (weapon == 2)
+            {
+                GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<WeaponSwitching>().skadiUnlocked = true;
+                GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<WeaponSwitching>().WeaponSwitch(2);
+            }
 
             Destroy(gameObject);
         }
