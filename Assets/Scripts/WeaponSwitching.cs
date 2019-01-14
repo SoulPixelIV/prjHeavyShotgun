@@ -25,7 +25,7 @@ public class WeaponSwitching : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && !GameObject.FindGameObjectWithTag("Shotgun").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("shoot"))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             WeaponSwitch(0);
         }
