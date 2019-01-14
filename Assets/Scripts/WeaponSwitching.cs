@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WeaponSwitching : MonoBehaviour {
 
     public GameObject hands;
     public GameObject shotgun;
+    public TextMeshProUGUI weaponTxt;
 
     public bool shotgunUnlocked;
 
@@ -53,11 +55,13 @@ public class WeaponSwitching : MonoBehaviour {
         {
             hands.SetActive(true);
             shotgun.SetActive(false);
+            weaponTxt.text = "Fists";
         }
         if (weapon == 1)
         {
             hands.SetActive(false);
             shotgun.SetActive(true);
+            weaponTxt.text = "ShoMiRü";
         }
     }
 }
