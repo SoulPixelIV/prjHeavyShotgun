@@ -27,7 +27,6 @@ public class HealthSystem : MonoBehaviour {
         volume.profile.TryGetSettings(out vignette);
     }
 	
-	// Update is called once per frame
 	void Update () {
         if (hit)
         {

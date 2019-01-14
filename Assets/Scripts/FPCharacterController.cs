@@ -160,7 +160,6 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Dash
-        /*
         if (Input.GetKey(KeyCode.F) && dashLength > 0)
         {
             dashLength -= Time.deltaTime;
@@ -170,7 +169,6 @@ public class FPCharacterController : MonoBehaviour
         {
             dashLength = dashTime;
         }
-        */
 
         //Game Over
         if (dead && Input.GetKeyDown(KeyCode.Space))

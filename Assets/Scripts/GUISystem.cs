@@ -16,6 +16,7 @@ public class GUISystem : MonoBehaviour {
 
     void OnGUI()
     {
+        /*
         GUI.BeginGroup(new Rect(posX, posY, sizeX, sizeY));
             GUI.Box(new Rect(0, 0, sizeX, sizeY), healthbarEmpty);
 
@@ -23,8 +24,7 @@ public class GUISystem : MonoBehaviour {
                 GUI.Box(new Rect(0, 0, sizeX, sizeY), healthbarProgress);
             GUI.EndGroup();
         GUI.EndGroup();
-
-
+        */
     }
 
     // Update is called once per frame
