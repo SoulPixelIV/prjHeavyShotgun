@@ -12,6 +12,7 @@ public class SkaDiBehaviour : MonoBehaviour {
     bool punched;
 
     GameObject player;
+    GameObject[] skadis;
 
 	void Start () {
         attackCooldownSave = attackCooldown;
@@ -27,7 +28,16 @@ public class SkaDiBehaviour : MonoBehaviour {
         {
             Punch();
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            skadis = GameObject.FindGameObjectsWithTag("SkadiRB");
+            for (int i = 0; i < skadis.Length; i++)
+            {
+                skadis[i].GetComponent<SkaDiRigidbody>().Explosion();
+            }
+        }
+    }
 
     void Punch()
     {
