@@ -189,7 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3951749378466372813}
   m_Layer: 0
-  m_Name: Skadi
+  m_Name: Ska-Di
   m_TagString: Skadi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,7 +502,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48b9782bf29601a4d900f42642d6fdb5, type: 2}
+  - {fileID: 2100000, guid: ab1d005387e232a4ab07d04279fffd4a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -579,7 +579,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48b9782bf29601a4d900f42642d6fdb5, type: 2}
+  - {fileID: 2100000, guid: ab1d005387e232a4ab07d04279fffd4a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
