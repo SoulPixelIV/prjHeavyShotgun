@@ -28,8 +28,8 @@ TagManager:
   - PostProcessing
   - Gun
   - IgnoreRaycast
-  - 
-  - 
+  - Destructible
+  - Player
   - 
   - 
   - 

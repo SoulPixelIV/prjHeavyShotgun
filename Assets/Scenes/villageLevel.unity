@@ -1113,6 +1113,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269983315}
     m_Modifications:
+    - target: {fileID: 1316231046248664, guid: e8550fa55bcbf484996e4f9f65084be6, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4604775987156982, guid: e8550fa55bcbf484996e4f9f65084be6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.17700073
@@ -1162,6 +1166,10 @@ PrefabInstance:
       propertyPath: ammoTxt
       value: 
       objectReference: {fileID: 2077593641}
+    - target: {fileID: 1234192692449740, guid: e8550fa55bcbf484996e4f9f65084be6, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8550fa55bcbf484996e4f9f65084be6, type: 3}
 --- !u!1001 &183003498
@@ -1768,7 +1776,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16378
+  m_Name: pb_Mesh14786
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3735,7 +3743,7 @@ GameObject:
   - component: {fileID: 393287904}
   - component: {fileID: 393287903}
   - component: {fileID: 393287902}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Hands
   m_TagString: Hands
   m_Icon: {fileID: 0}
@@ -4678,7 +4686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 482561182}
   - component: {fileID: 482561181}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gunmonitorCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11101,7 +11109,7 @@ GameObject:
   - component: {fileID: 693752766}
   - component: {fileID: 693752765}
   - component: {fileID: 693752764}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: HandsAttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11436,6 +11444,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skadi
       objectReference: {fileID: 0}
+    - target: {fileID: 1252933439884790556, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3951749378466372813, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11540,6 +11553,65 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 15.559001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400615765719392531, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030880985987702092, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318631992565427405, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 656295761169632640, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283152340059330474, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221491748829471419, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729843856280851253, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578353725556788358, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654693031799127579, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 822643554327585075, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475778517509708343, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1737315484, guid: 38053dcbe89eea4478b58f0e89d5ebd0, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38053dcbe89eea4478b58f0e89d5ebd0, type: 3}
@@ -27576,7 +27648,7 @@ GameObject:
   - component: {fileID: 1263131901}
   - component: {fileID: 1263131900}
   - component: {fileID: 1263131899}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -27757,7 +27829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269983315}
   - component: {fileID: 1763658390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
