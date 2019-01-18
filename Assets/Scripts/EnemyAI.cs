@@ -34,11 +34,14 @@ public class EnemyAI : MonoBehaviour
         {
             hitboxDelaysSave[i] = hitboxDelays[i];
         }
+        Animator anim = GetComponent<Animator>();
+        GetComponent<NavMeshAgent>().speed = 0; //Reset speed
+        anim.Play(animations[0]); //Play Idle animation
     }
 
     void Update ()
     {
-        Animator anim = GetComponent<Animator>();
+        //Animator anim = GetComponent<Animator>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Player in Sight
@@ -58,8 +61,8 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            GetComponent<NavMeshAgent>().speed = 0; //Reset speed
-            anim.Play("" + animations[0]); //Play Idle animation
+            //GetComponent<NavMeshAgent>().speed = 0; //Reset speed
+            //anim.Play(animations[0]); //Play Idle animation
         }
 
         //Stop near player
@@ -118,7 +121,7 @@ public class EnemyAI : MonoBehaviour
     void Animation()
     {
         Animator anim = GetComponent<Animator>();
-        anim.Play("" + animations[randAttack]);
+        anim.Play(animations[randAttack]);
     }
 
     void Attack ()
