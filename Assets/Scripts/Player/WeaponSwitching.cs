@@ -65,6 +65,7 @@ public class WeaponSwitching : MonoBehaviour {
             shotgun.SetActive(false);
             skadi.SetActive(false);
             weaponTxt.text = "Fists";
+            GameObject.FindGameObjectWithTag("Player").GetComponent<AmmoSystem>().weapon = 0;
         }
         if (weapon == 1)
         {
@@ -72,6 +73,7 @@ public class WeaponSwitching : MonoBehaviour {
             shotgun.SetActive(true);
             skadi.SetActive(false);
             weaponTxt.text = "ShoMiRü";
+            GameObject.FindGameObjectWithTag("Player").GetComponent<AmmoSystem>().weapon = 1;
         }
         if (weapon == 2)
         {
@@ -79,6 +81,7 @@ public class WeaponSwitching : MonoBehaviour {
             shotgun.SetActive(false);
             hands.SetActive(false);
             weaponTxt.text = "Ska-Di";
+            GameObject.FindGameObjectWithTag("Player").GetComponent<AmmoSystem>().weapon = 2;
         }
     }
 }
