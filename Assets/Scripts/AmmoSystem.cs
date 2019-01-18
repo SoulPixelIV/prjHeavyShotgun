@@ -11,8 +11,11 @@ public class AmmoSystem : MonoBehaviour {
     int magazines;
 
 	void Update () {
-        bullets = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShootingBehaviour>().bullets;
-        magazines = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShootingBehaviour>().magazines;
-        ammoTxt.text = ("Ammo: " + bullets + " / " + magazines);
+        if (GameObject.FindGameObjectWithTag("Shotgun") != null && GameObject.FindGameObjectWithTag("Shotgun") != null)
+        {
+            bullets = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShootingBehaviour>().bullets;
+            magazines = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShootingBehaviour>().magazines;
+            ammoTxt.text = ("Ammo: " + bullets + " / " + magazines);
+        }
     }
 }
