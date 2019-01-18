@@ -26,7 +26,7 @@ public class LightFlickering : MonoBehaviour
 
         if (flickerIntervall < 0)
         {
-            GameObject.Find("LampLight").GetComponent<Light>().enabled = true;
+            transform.Find("LampLight").GetComponent<Light>().enabled = true;
             gameObject.GetComponent<MeshRenderer>().material = light;
             lightOn = true;
         }
@@ -38,7 +38,7 @@ public class LightFlickering : MonoBehaviour
 
         if (lightDuration < 0)
         {
-            GameObject.Find("LampLight").gameObject.GetComponent<Light>().enabled = false;
+            transform.Find("LampLight").GetComponent<Light>().enabled = false;
             gameObject.GetComponent<MeshRenderer>().material = lightOff;
             lightDuration = lightDurationSave;
             flickerIntervall = flickerIntervallSave;
