@@ -16,6 +16,7 @@ TagManager:
   - Hitbox
   - Lift
   - Skadi
+  - SkadiRB
   layers:
   - Default
   - TransparentFX

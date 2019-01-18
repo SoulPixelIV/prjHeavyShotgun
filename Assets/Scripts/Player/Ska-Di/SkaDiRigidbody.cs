@@ -5,7 +5,6 @@ using UnityEngine;
 public class SkaDiRigidbody : MonoBehaviour
 {
     public float explosionRadius;
-    public int damage;
 
     GameObject explosion;
 
@@ -20,17 +19,9 @@ public class SkaDiRigidbody : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<HealthSystem>() != null)
-        {
-            other.GetComponent<HealthSystem>().HealthLoss(damage);
-        }
-    }
-
     public void Explosion()
     {
         explosion.SetActive(true);
-        Destroy(gameObject, 0.7f); 
+        Destroy(gameObject, 0.4f); 
     }
 }
