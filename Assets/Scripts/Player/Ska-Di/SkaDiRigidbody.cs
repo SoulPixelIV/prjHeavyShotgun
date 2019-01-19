@@ -6,6 +6,7 @@ public class SkaDiRigidbody : MonoBehaviour
 {
     public float explosionRadius;
 
+    bool exploding;
     GameObject explosion;
 
     void Start()
@@ -22,10 +23,19 @@ public class SkaDiRigidbody : MonoBehaviour
         transform.SetParent(other.transform);
     }
 
+    public void Update()
+    {
+        if (exploding && explosion.transform.localScale.x < explosionRadius)
+        {
+            explosion.transform.localScale += new Vector3(1, 1, 1);
+        }
+    }
+
     public void Explosion()
     {
+        exploding = true;
         gameObject.GetComponent<Rigidbody>().detectCollisions = true;
         explosion.SetActive(true);
-        Destroy(gameObject, 0.4f); 
+        Destroy(gameObject, 0.2f); 
     }
 }
