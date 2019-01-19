@@ -14,13 +14,17 @@ public class SkaDiRigidbody : MonoBehaviour
         explosion.SetActive(false);
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision other)
     {
+        gameObject.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Discrete;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+        transform.SetParent(other.transform);
     }
 
     public void Explosion()
     {
+        gameObject.GetComponent<Rigidbody>().detectCollisions = true;
         explosion.SetActive(true);
         Destroy(gameObject, 0.4f); 
     }

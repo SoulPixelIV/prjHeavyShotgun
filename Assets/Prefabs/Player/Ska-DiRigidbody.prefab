@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3215293524007934383}
   - component: {fileID: 6691639113582790332}
   - component: {fileID: 4530203354334847911}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LampRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5232864513238549141}
   - component: {fileID: 5863207383139656978}
   - component: {fileID: 8173269638477952479}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ExplosionHitbox
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 1467706519479843132}
   - component: {fileID: 391374739124224907}
   - component: {fileID: 9152568481792272819}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2643697863799030083}
   - component: {fileID: 8381288992632823681}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LampLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 1765585896362566787}
   - component: {fileID: 4036961950896161805}
   - component: {fileID: 6213442976819635328}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ska-DiRigidbody
   m_TagString: SkadiRB
   m_Icon: {fileID: 0}
@@ -425,7 +425,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 4.5
-  damage: 160
 --- !u!1 &7552965286665268713
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +436,7 @@ GameObject:
   - component: {fileID: 8791581837381196197}
   - component: {fileID: 791498140141188750}
   - component: {fileID: 2216760345170500933}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Shurikan
   m_TagString: Untagged
   m_Icon: {fileID: 0}

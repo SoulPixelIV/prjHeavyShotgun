@@ -197,14 +197,20 @@ public class ShoMiRüBehaviour : MonoBehaviour {
                 {
                     if (objHit.GetComponent<HealthSystem>().HealthLoss(damage) == true)
                     {
-                        objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
+                        /*
+                        Debug.Log("DEATH");
+                        objHit.gameObject.SetActive(false);
+                        */
                     }
                 }
                 else
                 {
-                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage / 1.5f) == true)
+                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage / 2) == true)
                     {
-                        objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 2.5f) , ForceMode.Impulse);
+                        /*
+                        Debug.Log("DEATH");
+                        objHit.gameObject.SetActive(false);
+                        */
                     }
                 }
 

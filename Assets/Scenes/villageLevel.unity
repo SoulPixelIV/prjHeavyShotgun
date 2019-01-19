@@ -1170,7 +1170,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114922923514071152, guid: e8550fa55bcbf484996e4f9f65084be6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e8550fa55bcbf484996e4f9f65084be6, type: 3}
 --- !u!1001 &183003498
 PrefabInstance:
@@ -1776,7 +1777,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14786
+  m_Name: pb_Mesh21502
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -18574,7 +18575,23 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.15499486
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 54364782166101756, guid: 2c8df21303b2e514b86c382bd97a7a38,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54364782166101756, guid: 2c8df21303b2e514b86c382bd97a7a38,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5038131108123038769, guid: 2c8df21303b2e514b86c382bd97a7a38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 54364782166101756, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
 --- !u!1001 &946529285
 PrefabInstance:
@@ -27510,6 +27527,8 @@ MonoBehaviour:
   skadi: {fileID: 5715113720989128018, guid: bce5e1e54a4687f498452a993134648b, type: 3}
   throwStrength: 4
   attackCooldown: 0.3
+  bullets: 5
+  magazines: 20
 --- !u!95 &1232661863
 Animator:
   serializedVersion: 3
@@ -27648,6 +27667,7 @@ GameObject:
   - component: {fileID: 1263131901}
   - component: {fileID: 1263131900}
   - component: {fileID: 1263131899}
+  - component: {fileID: 1263131906}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -27818,6 +27838,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263131897}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1263131906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263131897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d16cc262cfe374794f71b0066be268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoTxt: {fileID: 2077593641}
+  weapon: 0
 --- !u!1 &1269983314
 GameObject:
   m_ObjectHideFlags: 0

@@ -235,7 +235,6 @@ GameObject:
   - component: {fileID: 33679947932130202}
   - component: {fileID: 23962092488628520}
   - component: {fileID: 95468760735053440}
-  - component: {fileID: 114838572436233136}
   - component: {fileID: 65113996824676802}
   - component: {fileID: 114313834474232024}
   m_Layer: 0
@@ -326,27 +325,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114838572436233136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730654979317222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eeccd4efc4ac9442afaa60f8617b308, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 54703714476740858, guid: a9bd72d6cd56b414aabafd2f2caeabb0, type: 3}
-  bullethole: {fileID: 1932977864213452, guid: 81aa7b6d89dd5d544a85ae438c24f01a, type: 3}
-  damage: 40
-  power: 40
-  shootCooldown: 1.5
-  bullets: 6
-  magazines: 12
-  aiming: 0
-  aimingSneak: 0
 --- !u!65 &65113996824676802
 BoxCollider:
   m_ObjectHideFlags: 0
