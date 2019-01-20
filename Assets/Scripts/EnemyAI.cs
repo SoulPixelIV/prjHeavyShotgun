@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public bool bowActive;
+    public float shootTime;
+    public GameObject arrow;
     public float attackCooldown;
     public float hitboxLifetime;
     public float walkSpeed;
@@ -42,6 +44,7 @@ public class EnemyAI : MonoBehaviour
         if (bowActive)
         {
             transform.Find("Bow").gameObject.SetActive(true);
+            InvokeRepeating("BowShoot", shootTime, shootTime);
         }
     }
 
@@ -133,5 +136,15 @@ public class EnemyAI : MonoBehaviour
     void Attack ()
     {
         transform.Find("AttackHitbox").gameObject.SetActive(true);
+    }
+
+    void BowShoot()
+    {
+        //Instantiate Arrow
+        var goalRotation = transform.rotation;
+        goalRotation *= Quaternion.Euler(0, 270, 90);
+        var arrowShot = Instantiate(arrow, transform.position + transform.forward + new Vector3(0, 2, 0), goalRotation);
+        arrowShot.GetComponent<Rigidbody>().AddForce((transform.forward * 1.5f) + new Vector3(0, 0, 0), ForceMode.Impulse);
+        Debug.Log("SHOOT");       
     }
 }
