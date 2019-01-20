@@ -45,6 +45,7 @@ public class EnemyAI : MonoBehaviour
         {
             transform.Find("Bow").gameObject.SetActive(true);
             InvokeRepeating("BowShoot", shootTime, shootTime);
+            ClosestDistanceToPlayer = ClosestDistanceToPlayer * 2.2f;
         }
     }
 
@@ -61,12 +62,10 @@ public class EnemyAI : MonoBehaviour
                 GetComponent<NavMeshAgent>().speed = walkSpeed;
                 gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
             }
-            //Activate Arrow Shooter
-            if (GetComponent<ArrowShooter>() != null)
+            if (!bowActive)
             {
-                GetComponent<ArrowShooter>().activated = true;
+                attackCooldown -= 1 * Time.deltaTime; //Attack Cooldown going down
             }
-            attackCooldown -= 1 * Time.deltaTime; //Attack Cooldown going down
         }
         else
         {
@@ -78,7 +77,7 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) <= ClosestDistanceToPlayer)
         {
             GetComponent<NavMeshAgent>().speed = 0; //Reset speed
-            if (Vector3.Distance(transform.position, player.transform.position) >= 6)
+            if (Vector3.Distance(transform.position, player.transform.position) >= ClosestDistanceToPlayer * 2)
             {
                 transform.LookAt(player.transform.position);
             }
@@ -140,11 +139,13 @@ public class EnemyAI : MonoBehaviour
 
     void BowShoot()
     {
-        //Instantiate Arrow
-        var goalRotation = transform.rotation;
-        goalRotation *= Quaternion.Euler(0, 270, 90);
-        var arrowShot = Instantiate(arrow, transform.position + transform.forward + new Vector3(0, 2, 0), goalRotation);
-        arrowShot.GetComponent<Rigidbody>().AddForce((transform.forward * 1.5f) + new Vector3(0, 0, 0), ForceMode.Impulse);
-        Debug.Log("SHOOT");       
+        if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Check if aggro
+        {
+            //Instantiate Arrow
+            var goalRotation = transform.rotation;
+            goalRotation *= Quaternion.Euler(0, 270, 90);
+            var arrowShot = Instantiate(arrow, transform.position + transform.forward + new Vector3(0, 2, 0), goalRotation);
+            arrowShot.GetComponent<Rigidbody>().AddForce((transform.forward * 1.5f) + new Vector3(0, 0, 0), ForceMode.Impulse);
+        }    
     }
 }
