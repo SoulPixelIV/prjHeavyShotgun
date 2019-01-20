@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 2373565076855628971}
   - component: {fileID: 2373565076855628972}
   - component: {fileID: 2373565076855628973}
-  - component: {fileID: 2914901122338498680}
   m_Layer: 0
   m_Name: WoodPlank
-  m_TagString: Environment
+  m_TagString: Static
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -374,19 +373,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
---- !u!114 &2914901122338498680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2373565076855628974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9eba53e5809ae458b5b97ee9fedc80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyedVersion: {fileID: 1995724843849926, guid: b666ad5232b794d4cb773e1441aac745,
-    type: 3}
-  marked: 0
-  standardMat: {fileID: 0}
