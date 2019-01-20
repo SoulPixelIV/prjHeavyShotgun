@@ -77,9 +77,9 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) <= ClosestDistanceToPlayer)
         {
             GetComponent<NavMeshAgent>().speed = 0; //Reset speed
-            if (Vector3.Distance(transform.position, player.transform.position) >= ClosestDistanceToPlayer * 2)
+            if (Vector3.Distance(transform.position, player.transform.position) >= 5f)
             {
-                transform.LookAt(player.transform.position);
+                transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, transform.position.z));
             }
         }
 
