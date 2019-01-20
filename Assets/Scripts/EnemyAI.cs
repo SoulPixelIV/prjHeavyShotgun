@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    public bool bowActive;
     public float attackCooldown;
     public float hitboxLifetime;
     public float walkSpeed;
@@ -37,6 +38,11 @@ public class EnemyAI : MonoBehaviour
         Animator anim = GetComponent<Animator>();
         GetComponent<NavMeshAgent>().speed = 0; //Reset speed
         anim.Play(animations[0]); //Play Idle animation
+        //Bow
+        if (bowActive)
+        {
+            transform.Find("Bow").gameObject.SetActive(true);
+        }
     }
 
     void Update ()
