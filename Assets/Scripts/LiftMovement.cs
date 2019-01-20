@@ -9,12 +9,13 @@ public class LiftMovement : MonoBehaviour {
     public bool active;
 
     int dir;
+    bool activated;
 
-    void Start()
+    public void Start()
     {
         if (active)
         {
-            InvokeRepeating("CallLift", travelHeight, travelHeight);
+            WakeUp();
         }
     }
 
@@ -22,6 +23,10 @@ public class LiftMovement : MonoBehaviour {
     {  
         if (active)
         {
+            if (!activated)
+            {
+                WakeUp();
+            }
             if (dir == 0)
             {
                 gameObject.GetComponent<Rigidbody>().MovePosition((transform.position + transform.up * Time.deltaTime));
@@ -43,5 +48,11 @@ public class LiftMovement : MonoBehaviour {
         {
             dir = 0;
         }
+    }
+
+    void WakeUp()
+    {
+        InvokeRepeating("CallLift", travelHeight, travelHeight);
+        activated = true;
     }
 }

@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   travelHeight: 5.5
   travelSpeed: 1.4
-  active: 0
+  active: 1
 --- !u!54 &54388563936167500
 Rigidbody:
   m_ObjectHideFlags: 0
