@@ -83,6 +83,13 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
+        //Bow rotation
+        if (bowActive)
+        {
+            GameObject bow = transform.Find("Bow").gameObject;
+            bow.transform.LookAt(player.transform.position);
+        }
+
         //Attack Animation
         if (attackCooldown < 0 && !dontAttack && gameObject.GetComponentInChildren<SightChecking>().aggro)
         {
@@ -139,13 +146,15 @@ public class EnemyAI : MonoBehaviour
 
     void BowShoot()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject bow = transform.Find("Bow").gameObject;
         if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Check if aggro
         {
             //Instantiate Arrow
             var goalRotation = transform.rotation;
-            goalRotation *= Quaternion.Euler(0, 270, 90);
-            var arrowShot = Instantiate(arrow, transform.position + transform.forward + new Vector3(0, 2, 0), goalRotation);
-            arrowShot.GetComponent<Rigidbody>().AddForce((transform.forward * 1.5f) + new Vector3(0, 0, 0), ForceMode.Impulse);
+            goalRotation *= Quaternion.Euler(-90, -90, 0);
+            var arrowShot = Instantiate(arrow, bow.transform.position + bow.transform.forward, bow.transform.rotation * goalRotation);
+            arrowShot.GetComponent<Rigidbody>().AddForce((bow.transform.forward * 1.5f), ForceMode.Impulse);
         }    
     }
 }

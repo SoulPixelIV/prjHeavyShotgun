@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class FPCharacterController : MonoBehaviour
 {
@@ -174,6 +175,12 @@ public class FPCharacterController : MonoBehaviour
         if (dead && Input.GetKeyDown(KeyCode.Space))
         {
             Dead();
+        }
+
+        //Restart
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
