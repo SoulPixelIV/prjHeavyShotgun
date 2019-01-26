@@ -17,6 +17,7 @@ TagManager:
   - Lift
   - Skadi
   - SkadiRB
+  - AlarmLight
   layers:
   - Default
   - TransparentFX

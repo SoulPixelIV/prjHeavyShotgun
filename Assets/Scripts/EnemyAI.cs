@@ -49,6 +49,17 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "AlarmLight")
+        {
+            if (gameObject.GetComponentInChildren<SightChecking>().aggro)
+            {
+                other.transform.parent.GetComponent<LightFlickering>().enabled = true;
+            }
+        }
+    }
+
     void Update ()
     {
         //Animator anim = GetComponent<Animator>();
