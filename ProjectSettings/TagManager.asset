@@ -33,7 +33,7 @@ TagManager:
   - Destructible
   - Player
   - Throwable
-  - 
+  - IgnoreCollisions
   - 
   - 
   - 

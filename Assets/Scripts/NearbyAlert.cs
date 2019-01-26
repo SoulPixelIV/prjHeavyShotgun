@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NearbyAlert : MonoBehaviour {
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.tag == "Enemy")
         {

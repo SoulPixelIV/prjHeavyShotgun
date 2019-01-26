@@ -2,32 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalDamage : MonoBehaviour
+public class BasicAttack : MonoBehaviour
 {
     public int damage;
+    public bool damageEnemies;
 
     bool dealtDamage;
-    float attackCooldown = 2f;
-	
-	void Update () {
+    float attackCooldown = 0.02f;
+
+    void Update()
+    {
         attackCooldown -= 1 * Time.deltaTime;
 
         if (attackCooldown <= 0)
         {
             dealtDamage = false;
-            attackCooldown = 2f;
+            attackCooldown = 0.02f;
         }
-	}
+    }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!dealtDamage && other.GetComponent<HealthSystem>() != null)
+        if (other.GetComponent<HealthSystem>() != null)
         {
-            //Play Hitmarker
-            Camera.main.gameObject.GetComponent<AudioSource>().Play();
-
-            other.GetComponent<HealthSystem>().HealthLoss(damage);
-            dealtDamage = true;
+            if (!dealtDamage)
+            {
+                if (other.tag == "Enemy")
+                {
+                    if (damageEnemies)
+                    {
+                        other.GetComponent<HealthSystem>().HealthLoss(damage / 3);
+                        //Play Hitmarker
+                        Camera.main.gameObject.GetComponent<AudioSource>().Play();
+                    }
+                }
+                else
+                {
+                    other.GetComponent<HealthSystem>().HealthLoss(damage);
+                    //Play Hitmarker
+                    Camera.main.gameObject.GetComponent<AudioSource>().Play();
+                }
+                dealtDamage = true;
+            }
         }
     }
 }

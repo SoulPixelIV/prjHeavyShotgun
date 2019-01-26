@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 3209145946830460556}
   - component: {fileID: 6303577366270144653}
   - component: {fileID: 832271364287536181}
-  m_Layer: 2
+  - component: {fileID: 2761426808109288478}
+  - component: {fileID: 8597590613372192351}
+  m_Layer: 0
   m_Name: Arrow
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
@@ -94,7 +96,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &6303577366270144653
 BoxCollider:
@@ -122,3 +124,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
+  damageEnemies: 0
+--- !u!114 &2761426808109288478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112604758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fff22367cd80f14fa13275536fa0ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invTime: 0.1
+--- !u!65 &8597590613372192351
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112604758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05996208, y: 0.013002139, z: 0.05996206}
+  m_Center: {x: -0.00000018626453, y: 0.010616119, z: 0.000000145694}
