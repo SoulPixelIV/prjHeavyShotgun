@@ -6,6 +6,7 @@ public class BasicAttack : MonoBehaviour
 {
     public int damage;
     public bool damageEnemies;
+    public bool damagePlayer;
 
     bool dealtDamage;
     float attackCooldown = 0.02f;
@@ -38,9 +39,21 @@ public class BasicAttack : MonoBehaviour
                 }
                 else
                 {
-                    other.GetComponent<HealthSystem>().HealthLoss(damage);
-                    //Play Hitmarker
-                    Camera.main.gameObject.GetComponent<AudioSource>().Play();
+                    if (other.tag == "Player")
+                    {
+                        if (damagePlayer)
+                        {
+                            other.GetComponent<HealthSystem>().HealthLoss(damage);
+                            //Play Hitmarker
+                            Camera.main.gameObject.GetComponent<AudioSource>().Play();
+                        }
+                    }
+                    else
+                    {
+                        other.GetComponent<HealthSystem>().HealthLoss(damage);
+                        //Play Hitmarker
+                        Camera.main.gameObject.GetComponent<AudioSource>().Play();
+                    }
                 }
                 dealtDamage = true;
             }
