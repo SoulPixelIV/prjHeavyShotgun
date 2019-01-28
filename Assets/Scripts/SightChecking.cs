@@ -6,6 +6,7 @@ public class SightChecking : MonoBehaviour {
 
     public bool aggro;
     public float fovAngle = 110;
+	public float nearbyAlertRadius = 0.3f;
 
     SphereCollider col;
     int layerMask;
@@ -17,6 +18,7 @@ public class SightChecking : MonoBehaviour {
 
     void Update()
     {
+		//Shift Layermask to Ignore Raycast
         layerMask = 1 << 2;
         layerMask = ~layerMask;
     }
@@ -46,5 +48,20 @@ public class SightChecking : MonoBehaviour {
                 Debug.DrawRay(transform.position + new Vector3(0, 2, 0), direction, Color.red);
             }
         }
+		if (other.gameObject.tag == "Enemy") 
+		{
+			Vector3 direction = other.transform.position - transform.position - new Vector3(0, 2, 0);
+			float angle = Vector3.Angle(direction, transform.forward);
+
+			RaycastHit hit;
+
+			if (Physics.Raycast(transform.position + new Vector3(0, 2, 2), direction.normalized, out hit, col.radius * nearbyAlertRadius, layerMask))
+			{
+				if (hit.collider.gameObject.tag == "Enemy" && hit.collider.transform.Find("Sight").GetComponent<SightChecking>().aggro)
+				{
+					aggro = true;
+				}
+			}
+		}
     }
 }
