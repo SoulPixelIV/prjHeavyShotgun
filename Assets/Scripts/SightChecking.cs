@@ -17,7 +17,7 @@ public class SightChecking : MonoBehaviour {
 
     void Update()
     {
-        layerMask = 1 << 15;
+        layerMask = 1 << 2;
         layerMask = ~layerMask;
     }
 
@@ -33,7 +33,7 @@ public class SightChecking : MonoBehaviour {
                 Debug.DrawRay(transform.position + new Vector3(0, 2, 0), direction, Color.green);
                 RaycastHit hit;
 
-                if (Physics.Raycast(transform.position + new Vector3(0, 2, 0), direction.normalized, out hit, col.radius, layerMask))
+                if (Physics.Raycast(transform.position + new Vector3(0, 2, 2), direction.normalized, out hit, col.radius, layerMask))
                 {
                     if (hit.collider.gameObject.tag == "Player")
                     {
