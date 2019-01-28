@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5239984666005395169}
   - component: {fileID: 5239984666005395183}
   - component: {fileID: 5239984666005395173}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AlarmLight
   m_TagString: AlarmLight
   m_Icon: {fileID: 0}
