@@ -1142,7 +1142,7 @@ GameObject:
   - component: {fileID: 3558348253565359121}
   - component: {fileID: 5822734870335099234}
   - component: {fileID: 7254533025409874541}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

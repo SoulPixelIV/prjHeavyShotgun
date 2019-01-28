@@ -150,7 +150,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
         bullets -= 1;
 
         //Set Sight Layer
-        int layerMask = 1 << 10;
+        int layerMask = 1 << 2;
         layerMask = ~layerMask;
 
         var direction = Camera.main.transform.TransformDirection(new Vector3(0, 0, 1));
