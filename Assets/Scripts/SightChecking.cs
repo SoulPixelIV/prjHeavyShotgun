@@ -36,7 +36,6 @@ public class SightChecking : MonoBehaviour {
 
                 if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), direction.normalized, out hit, col.radius, layerMask))
                 {
-                    Debug.Log(hit.collider);
                     if (hit.collider.gameObject.tag == "Player")
                     {
                         aggro = true;

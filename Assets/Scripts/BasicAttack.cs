@@ -32,7 +32,7 @@ public class BasicAttack : MonoBehaviour
                 {
                     if (damageEnemies)
                     {
-                        other.GetComponent<HealthSystem>().HealthLoss(damage / 3);
+                        other.GetComponent<HealthSystem>().HealthLoss(damage);
                         //Play Hitmarker
                         Camera.main.gameObject.GetComponent<AudioSource>().Play();
                     }
