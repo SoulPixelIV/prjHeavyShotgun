@@ -7,10 +7,8 @@ I accept suggestions and feedback!
 This project uses the Unity3D 2018.3 engine.
 
 To Do List:
-- Add "Skadi"
 - Fix animations
 - Fix dash
-- Change enemy view system
 - Add basic sounds
 - Add stamina system
 
