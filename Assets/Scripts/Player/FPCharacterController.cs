@@ -79,8 +79,8 @@ public class FPCharacterController : MonoBehaviour
     void Update()
     {
         //Mouse Movement
-        float rotH = Input.GetAxis("Mouse X") * speedCam + rotHKeyboard;
-        rotV -= Input.GetAxis("Mouse Y") * speedCam;
+        float rotH = (Input.GetAxis("Mouse X") * speedCam + rotHKeyboard) * Time.deltaTime;
+        rotV -= (Input.GetAxis("Mouse Y") * speedCam) * Time.deltaTime;
         rotV = Mathf.Clamp(rotV, -tiltRange, tiltRange);
         transform.Rotate(0, rotH, 0);
         if (Camera.main != null)
@@ -108,11 +108,11 @@ public class FPCharacterController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.I))
         {
-            rotV -= 1.4f * speedCam;
+            rotV -= (1.4f * speedCam) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.K))
         {
-            rotV += 1.4f * speedCam;
+            rotV += (1.4f * speedCam) * Time.deltaTime;
         }
 
         //Movement
@@ -187,7 +187,7 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Restart
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             SceneManager.LoadScene(0);
         }

@@ -42,7 +42,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
         if (!GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().dead)
         {
             //Shooting
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.U))
             {
                 if (shootCooldown <= 0 && bullets > 0 && aiming)
                 {
@@ -53,7 +53,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
             }
 
             //Aiming
-            if (Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.O) && !Input.GetKey(KeyCode.LeftShift))
             {
                 if (!aiming)
                 {
@@ -75,7 +75,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
             }
 
             //Stop aiming
-            if (!Input.GetKey(KeyCode.Mouse1))
+            if (!Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.O))
             {
                 if (aiming && !anim.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
                 {
@@ -88,7 +88,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
                     }
                 }
             }
-            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.Mouse1))
+            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.O))
             {
                 if (aimingSneak && !anim.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
                 {
