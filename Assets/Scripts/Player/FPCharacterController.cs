@@ -11,10 +11,7 @@ public class FPCharacterController : MonoBehaviour
     public Text gameOverText;
     public float crosshairPercentage = 0.05f;
 
-    //public Text healthTxt;
-
     [Header("Movement")]
-    //public int health;
     public float speedCam;
     public float speedMov;
     public float speedMovSlow;
@@ -33,6 +30,7 @@ public class FPCharacterController : MonoBehaviour
 
     float speedMovSave;
     float rotV = 0;
+    float rotHKeyboard = 0;
     bool duckLock = true;
     float verVelocity;
     int jumpCount;
@@ -81,13 +79,40 @@ public class FPCharacterController : MonoBehaviour
     void Update()
     {
         //Mouse Movement
-        float rotH = Input.GetAxis("Mouse X") * speedCam;
+        float rotH = Input.GetAxis("Mouse X") * speedCam + rotHKeyboard;
         rotV -= Input.GetAxis("Mouse Y") * speedCam;
         rotV = Mathf.Clamp(rotV, -tiltRange, tiltRange);
         transform.Rotate(0, rotH, 0);
         if (Camera.main != null)
         {
-            UnityEngine.Camera.main.transform.localRotation = Quaternion.Euler(rotV, 0, 0);
+            Camera.main.transform.localRotation = Quaternion.Euler(rotV, 0, 0);
+        }
+        //Keyboard-Mouse Movement
+        if (Input.GetKey(KeyCode.J))
+        {
+            if (rotHKeyboard > -1)
+            {
+                rotHKeyboard -= 1.4f * speedCam;
+            }
+        }
+        if (Input.GetKey(KeyCode.L))
+        {
+            if (rotHKeyboard < 1)
+            {
+                rotHKeyboard += 1.4f * speedCam;
+            }
+        }
+        if (!Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.J))
+        {
+            rotHKeyboard = 0;
+        }
+        if (Input.GetKey(KeyCode.I))
+        {
+            rotV -= 1.4f * speedCam;
+        }
+        if (Input.GetKey(KeyCode.K))
+        {
+            rotV += 1.4f * speedCam;
         }
 
         //Movement
@@ -122,22 +147,6 @@ public class FPCharacterController : MonoBehaviour
         {
             speedMov = speedMovSave;
         }
-
-        //Duck
-        /*
-        if (Input.GetKeyDown(KeyCode.LeftControl) && cc.isGrounded)
-        {
-            duckLock = false;
-            Vector3 duck = new Vector3(0, -1.5f, 0);
-            UnityEngine.Camera.main.transform.position = Vector3.Lerp(UnityEngine.Camera.main.transform.position, UnityEngine.Camera.main.transform.position + duck, 25f * Time.deltaTime);
-        }
-        if (Input.GetKeyUp(KeyCode.LeftControl) && duckLock == false)
-        {
-            duckLock = true;
-            Vector3 duck = new Vector3(0, 1.5f, 0);
-            UnityEngine.Camera.main.transform.position = Vector3.Lerp(UnityEngine.Camera.main.transform.position, UnityEngine.Camera.main.transform.position + duck, 25f * Time.deltaTime);
-        }
-        */
 
         //Gravity
         verVelocity -= gravity * Time.deltaTime;
@@ -178,7 +187,7 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Restart
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             SceneManager.LoadScene(0);
         }
