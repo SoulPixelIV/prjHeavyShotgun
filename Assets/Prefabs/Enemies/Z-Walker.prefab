@@ -158,6 +158,7 @@ MonoBehaviour:
   health: 100
   dead: 0
   hitTimer: 0
+  flashColor: {fileID: 2100000, guid: d53a7b30ad47c0848b276e030d502a9d, type: 2}
 --- !u!65 &5038131108123038769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -814,7 +815,7 @@ GameObject:
   - component: {fileID: 4160025194960370}
   - component: {fileID: 137446695479400540}
   m_Layer: 0
-  m_Name: Icosphere
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1077,6 +1078,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4527026664623774}
     m_Modifications:
+    - target: {fileID: 100000, guid: 43543ac21e7abcb4e84f7d98b0aee668, type: 3}
+      propertyPath: m_Name
+      value: Bow
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 43543ac21e7abcb4e84f7d98b0aee668, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 43543ac21e7abcb4e84f7d98b0aee668, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.141
@@ -1128,14 +1137,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 43543ac21e7abcb4e84f7d98b0aee668, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 43543ac21e7abcb4e84f7d98b0aee668, type: 3}
-      propertyPath: m_Name
-      value: Bow
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 43543ac21e7abcb4e84f7d98b0aee668, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 43543ac21e7abcb4e84f7d98b0aee668, type: 3}
       propertyPath: m_Materials.Array.data[0]
