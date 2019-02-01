@@ -14,7 +14,7 @@ public class HealthSystem : MonoBehaviour {
     float hitTimerSave;
     bool hit;
     bool flash;
-    float flashTime = 0.2f;
+    float flashTime = 0.1f;
     Renderer[] allRenderers;
 
     ChromaticAberration chrom = null;
@@ -52,7 +52,7 @@ public class HealthSystem : MonoBehaviour {
         if (flashTime < 0)
         {
             flash = false;
-            flashTime = 0.2f;
+            flashTime = 0.1f;
             foreach (Renderer rend in allRenderers)
             {
                 for (int z = 0; z < rend.materials.Length; z++)
@@ -66,6 +66,10 @@ public class HealthSystem : MonoBehaviour {
     public bool HealthLoss (float damage)
     {
         health -= damage;
+        if (health < 0)
+        {
+            health = 0;
+        }
 
         //Enemy Flash
         if (gameObject.tag == "Enemy")
@@ -80,7 +84,7 @@ public class HealthSystem : MonoBehaviour {
             }
         }
 
-        if (health <= 0)
+        if (health == 0)
         {
             dead = true;
             if (gameObject.tag == "Player")
