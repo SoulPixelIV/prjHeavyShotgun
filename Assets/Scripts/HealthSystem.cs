@@ -13,13 +13,19 @@ public class HealthSystem : MonoBehaviour {
 
     float hitTimerSave;
     bool hit;
+    bool flash;
+    float flashTime = 0.2f;
+    Renderer[] allRenderers;
 
     ChromaticAberration chrom = null;
     Vignette vignette = null;
 
-    // Use this for initialization
     void Start () {
         hitTimerSave = hitTimer;
+        if (transform.Find("Model") != null)
+        {
+            allRenderers = transform.Find("Model").gameObject.GetComponents<Renderer>();
+        }
 
         //Postprocessing
         PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
@@ -30,7 +36,7 @@ public class HealthSystem : MonoBehaviour {
 	void Update () {
         if (hit)
         {
-            hitTimer -= 1 * Time.deltaTime;
+            hitTimer -= Time.deltaTime;
         }
         if (hitTimer < 0)
         {
@@ -39,11 +45,41 @@ public class HealthSystem : MonoBehaviour {
             hit = false;
             hitTimer = hitTimerSave;
         }
+        if (flash)
+        {
+            flashTime -= Time.deltaTime;
+        }
+        if (flashTime < 0)
+        {
+            flash = false;
+            flashTime = 0.2f;
+            foreach (Renderer rend in allRenderers)
+            {
+                for (int z = 0; z < rend.materials.Length; z++)
+                {
+                    rend.materials[z].SetColor("_EmissionColor", new Color(0, 0, 0));
+                }
+            }
+        }
     }
 
     public bool HealthLoss (float damage)
     {
         health -= damage;
+
+        //Enemy Flash
+        if (gameObject.tag == "Enemy")
+        {
+            flash = true;
+            foreach (Renderer rend in allRenderers)
+            {
+                for (int z = 0; z < rend.materials.Length; z++)
+                {
+                    rend.materials[z].SetColor("_EmissionColor", new Color(1, 0.4f, 0.4f));
+                }
+            }
+        }
+
         if (health <= 0)
         {
             dead = true;
