@@ -59,7 +59,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
                 {
                     anim.Play("shotgunAim");
                 }
-                dof.active = true; //Depth of field
+                //dof.active = true; //Depth of field
                 aiming = true;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = true;
             }
@@ -70,7 +70,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
                 {
                     anim.Play("shotgunAimSneak");
                     aimingSneak = true;
-                    dof.active = true; //Depth of field
+                    //dof.active = true; //Depth of field
                 }
             }
 
@@ -84,7 +84,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
                         anim.Play("shotgunMoveBack");
                         aiming = false;
                         GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
-                        dof.active = false; //Depth of field
+                        //dof.active = false; //Depth of field
                     }
                 }
             }
@@ -97,7 +97,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
                         anim.Play("shotgunMoveBackSneak");
                         aimingSneak = false;
                         GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().aimingGun = false;
-                        dof.active = false; //Depth of field
+                        //dof.active = false; //Depth of field
                     }
                 }
             }
