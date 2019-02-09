@@ -97,9 +97,9 @@ public class HealthSystem : MonoBehaviour {
             }
 
             //Deactivate NavMeshAgent
-            if (gameObject.GetComponent<NavMeshAgent>() != null)
+            if (GetComponent<NavMeshAgent>() != null)
             {
-                gameObject.GetComponent<NavMeshAgent>().enabled = false; 
+                GetComponent<NavMeshAgent>().enabled = false; 
             }
         }
 

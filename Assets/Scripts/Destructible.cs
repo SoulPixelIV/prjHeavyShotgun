@@ -6,6 +6,8 @@ public class Destructible : MonoBehaviour {
 
     public GameObject destroyedVersion;
     public bool marked;
+    public bool explosive;
+    public GameObject explosionHitbox;
     public Material standardMat;
 
     private void Start()
@@ -29,6 +31,10 @@ public class Destructible : MonoBehaviour {
     }
     
     public void Destroy () {
+        if (explosive)
+        {
+            Instantiate(explosionHitbox, transform.position, Quaternion.identity);
+        }
         Instantiate(destroyedVersion, transform.position, transform.rotation);
         Destroy(gameObject);
 	}
