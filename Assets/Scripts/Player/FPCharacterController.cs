@@ -212,6 +212,13 @@ public class FPCharacterController : MonoBehaviour
         transform.position = startPos;
         GetComponent<HealthSystem>().health = 100;
 
+        //Reset Enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int z = 0; z < enemies.Length; z++)
+        {
+            enemies[z].gameObject.SetActive(true);
+        }
+
         //Reset Processing
         chrom.intensity.value = 0;
         vignette.intensity.value = 0;

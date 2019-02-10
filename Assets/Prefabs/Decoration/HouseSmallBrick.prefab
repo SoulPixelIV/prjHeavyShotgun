@@ -7254,6 +7254,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2573540353034138116, guid: 97d5c3daed8a2144f823246409a4e520,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573540353034138114, guid: 97d5c3daed8a2144f823246409a4e520,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2573540353034138117, guid: 97d5c3daed8a2144f823246409a4e520,
         type: 3}
       propertyPath: m_Tangents.Array.size
@@ -11709,15 +11719,20 @@ PrefabInstance:
       propertyPath: m_Tangents.Array.data[227].w
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 2573540353034138116, guid: 97d5c3daed8a2144f823246409a4e520,
+    - target: {fileID: 14929367580820550, guid: 97d5c3daed8a2144f823246409a4e520,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2573540353034138114, guid: 97d5c3daed8a2144f823246409a4e520,
+    - target: {fileID: 14929367580820550, guid: 97d5c3daed8a2144f823246409a4e520,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 14929367580820550, guid: 97d5c3daed8a2144f823246409a4e520,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2573540353034138121, guid: 97d5c3daed8a2144f823246409a4e520,
         type: 3}

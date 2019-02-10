@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour
         {
             transform.Find("Bow").gameObject.SetActive(true);
             InvokeRepeating("BowShoot", shootTime, shootTime);
-            ClosestDistanceToPlayer = ClosestDistanceToPlayer * 2.2f;
+            //ClosestDistanceToPlayer = ClosestDistanceToPlayer * 2.2f;
         }
     }
 
