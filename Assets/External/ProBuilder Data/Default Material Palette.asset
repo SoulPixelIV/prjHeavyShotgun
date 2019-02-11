@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1357528570, guid: e98d45d69e2c4936a7382af00fd45e58, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f1ca63a91b17724bbd99c8fa67e0180, type: 3}
   m_Name: Default Material Palette
   m_EditorClassIdentifier: 
   array:
   - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
-  - {fileID: 2100000, guid: 9d55b30cc68e7424db852fcd4fb5b2ed, type: 2}
-  - {fileID: 2100000, guid: 1f97f42ff9903ca46afca89f6bcc18ec, type: 2}
-  - {fileID: 2100000, guid: 48b9782bf29601a4d900f42642d6fdb5, type: 2}
-  - {fileID: 2100000, guid: 78b748bd98e800a42a040311676fc6a8, type: 2}
-  - {fileID: 2100000, guid: abd97897cb35f3b4eb66595f8d1bd862, type: 2}
-  - {fileID: 2100000, guid: 57834793ebaca0f4b91e8c4c3d9a8551, type: 2}
-  - {fileID: 2100000, guid: 73222346231d06d4a8aafea8a0d6d649, type: 2}
-  - {fileID: 2100000, guid: d94f7d2a12c557340a7f875343e6f648, type: 2}
-  - {fileID: 2100000, guid: eaa364d6c8735194d9d8c2fdcfa11c29, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
