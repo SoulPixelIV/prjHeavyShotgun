@@ -59,6 +59,7 @@ public class FPCharacterController : MonoBehaviour
         if (other.tag == "Ladder")
         {
             onLadder = false;
+            verVelocity = jumpSpeed;
         }
     }
 
@@ -173,13 +174,14 @@ public class FPCharacterController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                transform.Translate((Vector3.up * 10) * Time.deltaTime);
+                transform.Translate((Vector3.up * 5) * Time.deltaTime);
             }
+            verVelocity = 0;
         }
         Vector3 speed = new Vector3(sideSpeed, verVelocity, forwardSpeed);
 
         //Jump
-        if (Input.GetKeyDown(KeyCode.Space) && jumpNum != 0)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpNum != 0 && !onLadder)
         {
             verVelocity = jumpSpeed;
             jumpNum -= 1;
