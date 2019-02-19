@@ -19,6 +19,7 @@ TagManager:
   - SkadiRB
   - AlarmLight
   - Null
+  - Ladder
   layers:
   - Default
   - TransparentFX

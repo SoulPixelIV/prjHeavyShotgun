@@ -32,6 +32,7 @@ public class FPCharacterController : MonoBehaviour
     float rotV = 0;
     float rotHKeyboard = 0;
     bool duckLock = true;
+    bool onLadder = false;
     float verVelocity;
     int jumpCount;
     float dashTime;
@@ -45,6 +46,21 @@ public class FPCharacterController : MonoBehaviour
 
     ChromaticAberration chrom = null;
     Vignette vignette = null;
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Ladder")
+        {
+            onLadder = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Ladder")
+        {
+            onLadder = false;
+        }
+    }
 
     void Start()
     {
@@ -149,7 +165,17 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Gravity
-        verVelocity -= gravity * Time.deltaTime;
+        if (!onLadder)
+        {
+            verVelocity -= gravity * Time.deltaTime;
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate((Vector3.up * 10) * Time.deltaTime);
+            }
+        }
         Vector3 speed = new Vector3(sideSpeed, verVelocity, forwardSpeed);
 
         //Jump
