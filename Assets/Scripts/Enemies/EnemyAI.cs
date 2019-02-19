@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     public float hitboxLifetime;
     public float walkSpeed;
     public float ClosestDistanceToPlayer = 4;
+    public GameObject InterestPoint;
     [Header("[0,1] -> Non-Attack Animations|[>1] -> Attack Animations")]
     public string[] animations;
     public float[] hitboxDelays;
@@ -67,7 +68,7 @@ public class EnemyAI : MonoBehaviour
         if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Player in Sight
         {
             //Set speed and destination
-            if (gameObject.GetComponent<NavMeshAgent>().enabled == true)
+            if (gameObject.GetComponent<NavMeshAgent>().enabled == true && InterestPoint == null)
             {
                 GetComponent<NavMeshAgent>().speed = walkSpeed;
                 gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
@@ -90,6 +91,23 @@ public class EnemyAI : MonoBehaviour
             if (Vector3.Distance(transform.position, player.transform.position) >= 5f)
             {
                 transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, transform.position.z));
+            }
+        }
+
+        //Interest Point
+        if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Player in Sight
+        {
+            if (InterestPoint != null && gameObject.GetComponent<NavMeshAgent>().enabled == true)
+            {
+                if (Vector3.Distance(transform.position, InterestPoint.transform.position) > 2)
+                {
+                    GetComponent<NavMeshAgent>().speed = walkSpeed;
+                    gameObject.GetComponent<NavMeshAgent>().destination = InterestPoint.transform.position;
+                }
+                else
+                {
+                    InterestPoint = null;
+                }
             }
         }
 

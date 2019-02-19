@@ -9,19 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1012161624563988, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_Name
-      value: Z-WalkerBow
+      value: Z-WalkerBow Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.973198
+      value: 55.32
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.578661
+      value: 14.182753
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41.32265
+      value: -38.6
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_LocalRotation.x
@@ -29,15 +29,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99716747
+      value: -0.6992743
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.07521362
+      value: 0.7148535
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_RootOrder
@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -188.627
+      value: -88.73801
       objectReference: {fileID: 0}
     - target: {fileID: 4527026664623774, guid: 2c8df21303b2e514b86c382bd97a7a38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -59,6 +59,11 @@ PrefabInstance:
         type: 3}
       propertyPath: bowActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114617403382570122, guid: 2c8df21303b2e514b86c382bd97a7a38,
+        type: 3}
+      propertyPath: ClosestDistanceToPlayer
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 137446695479400540, guid: 2c8df21303b2e514b86c382bd97a7a38,
         type: 3}

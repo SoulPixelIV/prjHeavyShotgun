@@ -16,12 +16,7 @@ public class PressInteract : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                GetComponent<Animator>().Play("" + openAnimation);
-                showTxt = false;
-                if (target.gameObject.tag == "Lift")
-                {
-                    target.GetComponent<LiftMovement>().active = true;
-                }
+                Activate();
             }
         }
 	}
@@ -37,12 +32,30 @@ public class PressInteract : MonoBehaviour {
             access = true;         
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("FOUNDENEMY");
+            Activate();
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
             interactTxt.SetActive(false);
             access = false;
+        }
+    }
+
+    void Activate()
+    {
+        GetComponent<Animator>().Play("" + openAnimation);
+        showTxt = false;
+        if (target.gameObject.tag == "Lift")
+        {
+            target.GetComponent<LiftMovement>().active = true;
         }
     }
 }
