@@ -29,15 +29,7 @@ public class PressInteract : MonoBehaviour {
             {
                 interactTxt.SetActive(true);
             }
-            access = true;         
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Debug.Log("FOUNDENEMY");
-            Activate();
+            access = true;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -49,9 +41,9 @@ public class PressInteract : MonoBehaviour {
         }
     }
 
-    void Activate()
+    public void Activate()
     {
-        GetComponent<Animator>().Play("" + openAnimation);
+        GetComponent<Animator>().Play(openAnimation);
         showTxt = false;
         if (target.gameObject.tag == "Lift")
         {

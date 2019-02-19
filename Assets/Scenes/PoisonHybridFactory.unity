@@ -770,7 +770,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-16270
+  m_Name: pb_Mesh8402
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -24872,7 +24872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4305244305218190, guid: e19fbc248f4d0f545b9863f50d56d860, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.61
+      value: 18.548
       objectReference: {fileID: 0}
     - target: {fileID: 4305244305218190, guid: e19fbc248f4d0f545b9863f50d56d860, type: 3}
       propertyPath: m_LocalPosition.y
