@@ -49,5 +49,9 @@ public class PressInteract : MonoBehaviour {
         {
             target.GetComponent<LiftMovement>().active = true;
         }
+        if (target.gameObject.tag == "Poison")
+        {
+            target.GetComponent<PoisonMovement>().active = true;
+        }
     }
 }

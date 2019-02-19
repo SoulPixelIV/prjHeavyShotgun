@@ -21,6 +21,7 @@ TagManager:
   - Null
   - Ladder
   - Lever
+  - Poison
   layers:
   - Default
   - TransparentFX

@@ -7,18 +7,24 @@ public class BasicAttack : MonoBehaviour
     public int damage;
     public bool damageEnemies;
     public bool damagePlayer;
+    public float attackCooldown = 0.02f;
 
     bool dealtDamage;
-    float attackCooldown = 0.02f;
+    float attackCooldownSave;
+
+    void Start()
+    {
+        attackCooldownSave = attackCooldown;
+    }
 
     void Update()
     {
-        attackCooldown -= 1 * Time.deltaTime;
+        attackCooldown -= Time.deltaTime;
 
         if (attackCooldown <= 0)
         {
             dealtDamage = false;
-            attackCooldown = 0.02f;
+            attackCooldown = attackCooldownSave;
         }
     }
 
