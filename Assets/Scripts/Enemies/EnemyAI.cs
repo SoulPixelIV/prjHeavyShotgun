@@ -186,4 +186,9 @@ public class EnemyAI : MonoBehaviour
             arrowShot.GetComponent<Rigidbody>().AddForce((bow.transform.forward * 1.5f), ForceMode.Impulse);
         }    
     }
+
+    public void ToggleBow()
+    {
+        CancelInvoke("BowShoot");
+    }
 }

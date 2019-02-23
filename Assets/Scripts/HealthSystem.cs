@@ -94,7 +94,10 @@ public class HealthSystem : MonoBehaviour {
             if (gameObject.tag == "Enemy")
             {
                 gameObject.SetActive(false);
-                CancelInvoke("BowShoot");
+                if (GetComponent<EnemyAI>().bowActive)
+                {
+                    GetComponent<EnemyAI>().ToggleBow();
+                }
             }
 
             //Deactivate NavMeshAgent
