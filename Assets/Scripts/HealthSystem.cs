@@ -70,6 +70,10 @@ public class HealthSystem : MonoBehaviour {
         {
             health = 0;
         }
+        if (health > 100)
+        {
+            health = 100;
+        }
 
         //Enemy Flash
         if (gameObject.tag == "Enemy")

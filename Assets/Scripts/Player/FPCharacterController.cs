@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class FPCharacterController : MonoBehaviour
 {
@@ -19,12 +20,15 @@ public class FPCharacterController : MonoBehaviour
     public float gravity;
     public float tiltRange;
     public int jumpNum;
+    public int medSyringes;
     public float dashLength;
     public bool aimingGun;
     public bool dead;
 
     public float forwardSpeed;
     public float sideSpeed;
+
+    public TextMeshProUGUI syringeTxt;
 
     public Vector3 startPos;
 
@@ -36,6 +40,7 @@ public class FPCharacterController : MonoBehaviour
     float verVelocity;
     int jumpCount;
     float dashTime;
+    int medSyringesSave;
 
     [Header("Audio")]
     public AudioSource audio1;
@@ -83,6 +88,7 @@ public class FPCharacterController : MonoBehaviour
         //Reset
         jumpCount = jumpNum;
         dashTime = dashLength;
+        medSyringesSave = medSyringes;
 
         //Crosshair
         float crosshairSize = Screen.width * crosshairPercentage / 100;
@@ -91,6 +97,7 @@ public class FPCharacterController : MonoBehaviour
                                  crosshairSize, crosshairSize);
 
         Cursor.lockState = CursorLockMode.Locked;
+        syringeTxt.text = "Med-Syringes x" + medSyringes;
     }
 
     void Update()
@@ -165,6 +172,12 @@ public class FPCharacterController : MonoBehaviour
             speedMov = speedMovSave;
         }
 
+        //Healing
+        if (Input.GetKeyDown(KeyCode.F) && medSyringes > 0)
+        {
+            Heal();
+        }
+
         //Gravity
         if (!onLadder)
         {
@@ -198,6 +211,7 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Dash
+        /*
         if (Input.GetKey(KeyCode.F) && dashLength > 0)
         {
             dashLength -= Time.deltaTime;
@@ -207,6 +221,7 @@ public class FPCharacterController : MonoBehaviour
         {
             dashLength = dashTime;
         }
+        */
 
         //Game Over
         if (dead && Input.GetKeyDown(KeyCode.Space))
@@ -257,5 +272,12 @@ public class FPCharacterController : MonoBehaviour
     void OnGUI()
     {
         GUI.DrawTexture(crosshairRect, crosshairTexture);
+    }
+
+    public void Heal()
+    {
+        medSyringes--;
+        GetComponent<HealthSystem>().health += 55;
+        syringeTxt.text = "Med-Syringes x" + medSyringes;
     }
 }
