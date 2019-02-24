@@ -13,6 +13,12 @@ public class WeaponSwitching : MonoBehaviour {
     public bool shotgunUnlocked;
     public bool skadiUnlocked;
 
+    Animator animShoMiRü;
+    Animator animSkadi;
+    Animator animFists;
+
+    Animation shotgunReload;
+
     int lastUsed;
 
 	void Start () {
@@ -20,23 +26,34 @@ public class WeaponSwitching : MonoBehaviour {
         shotgun = GameObject.FindGameObjectWithTag("Shotgun").gameObject;
         skadi = GameObject.FindGameObjectWithTag("Skadi").gameObject;
 
+        animShoMiRü = transform.Find("PlayerCamera").transform.Find("GunCamera").transform.Find("ShoMiRü").GetComponent<Animator>();
+        animSkadi = transform.Find("PlayerCamera").transform.Find("GunCamera").transform.Find("Skadi").GetComponent<Animator>();
+        animFists = transform.Find("PlayerCamera").transform.Find("GunCamera").transform.Find("Hands").GetComponent<Animator>();
+
         WeaponSwitch(0);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !animShoMiRü.GetCurrentAnimatorStateInfo(0).IsName("shotgunReload") && 
+            !animSkadi.GetCurrentAnimatorStateInfo(0).IsName("skadiAttack") && 
+            !animShoMiRü.GetCurrentAnimatorStateInfo(0).IsName("shoot") &&
+            !animShoMiRü.GetCurrentAnimatorStateInfo(0).IsName("shotgunMoveBack"))
         {
             WeaponSwitch(0);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && !animSkadi.GetCurrentAnimatorStateInfo(0).IsName("skadiAttack") &&
+            !animFists.GetCurrentAnimatorStateInfo(0).IsName("handsAttack"))
         {
             if (shotgunUnlocked)
             {
                 WeaponSwitch(1);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && !animShoMiRü.GetCurrentAnimatorStateInfo(0).IsName("shotgunReload") && 
+            !animShoMiRü.GetCurrentAnimatorStateInfo(0).IsName("shoot") &&
+            !animShoMiRü.GetCurrentAnimatorStateInfo(0).IsName("shotgunMoveBack") &&
+            !animFists.GetCurrentAnimatorStateInfo(0).IsName("handsAttack"))
         {
             if (skadiUnlocked)
             {
