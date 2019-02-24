@@ -28,7 +28,7 @@ public class BasicAttack : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<HealthSystem>() != null)
         {
@@ -43,24 +43,23 @@ public class BasicAttack : MonoBehaviour
                         Camera.main.gameObject.GetComponent<AudioSource>().Play();
                     }
                 }
-                else
+
+                if (other.tag == "Player")
                 {
-                    if (other.tag == "Player")
-                    {
-                        if (damagePlayer)
-                        {
-                            other.GetComponent<HealthSystem>().HealthLoss(damage);
-                            //Play Hitmarker
-                            Camera.main.gameObject.GetComponent<AudioSource>().Play();
-                        }
-                    }
-                    else
+                    if (damagePlayer)
                     {
                         other.GetComponent<HealthSystem>().HealthLoss(damage);
                         //Play Hitmarker
                         Camera.main.gameObject.GetComponent<AudioSource>().Play();
                     }
                 }
+                /*
+                else
+                {
+                    other.GetComponent<HealthSystem>().HealthLoss(damage);
+                    //Play Hitmarker
+                    Camera.main.gameObject.GetComponent<AudioSource>().Play();
+                } */
                 dealtDamage = true;
             }
         }

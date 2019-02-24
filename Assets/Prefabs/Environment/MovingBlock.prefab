@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 241896185819531443}
   - component: {fileID: 241896185819531442}
   - component: {fileID: 241896185819531441}
+  - component: {fileID: 5138178344902191806}
   m_Layer: 0
-  m_Name: MovingBlock (4)
+  m_Name: MovingBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -581,3 +582,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!208 &5138178344902191806
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241896185819531440}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.5620003, y: 0.74500006, z: 1.021}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 3.5620003, y: 0.74500006, z: -1.021}
+  m_TimeToStationary: 0.5

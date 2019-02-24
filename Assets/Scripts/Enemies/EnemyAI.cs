@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     public bool bowActive;
     public float shootTime;
     public GameObject arrow;
+    public bool friendly;
     public float attackCooldown;
     public float hitboxLifetime;
     public float walkSpeed;
@@ -120,7 +121,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         //Attack Animation
-        if (attackCooldown < 0 && !dontAttack && gameObject.GetComponentInChildren<SightChecking>().aggro)
+        if (attackCooldown < 0 && !dontAttack && gameObject.GetComponentInChildren<SightChecking>().aggro && !friendly)
         {
             Animation();
             randAttack = Random.Range(2, animations.Length);
@@ -135,7 +136,7 @@ public class EnemyAI : MonoBehaviour
         {
             hitboxLifetime -= 1 * Time.deltaTime;
         }
-        if (hitboxDelays[randAttack] < 0 && !hitboxActive)
+        if (hitboxDelays[randAttack] < 0 && !hitboxActive && !friendly)
         {
             Attack();
             hitboxActive = true;
