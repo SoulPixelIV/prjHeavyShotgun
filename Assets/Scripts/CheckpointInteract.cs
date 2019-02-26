@@ -21,7 +21,7 @@ public class CheckpointInteract : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                GetComponent<Animator>().Play("checkpointRotate");
+                //GetComponent<Animator>().Play("checkpointRotate");
                 GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().startPos = transform.position + spawnOffset;
                 showTxt = false;
             }

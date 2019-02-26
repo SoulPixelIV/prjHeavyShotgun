@@ -188,7 +188,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &1060899576320302
 GameObject:
@@ -640,7 +640,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659019644271882}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -698,7 +698,7 @@ MonoBehaviour:
   damage: 35
   damageEnemies: 0
   damagePlayer: 0
-  attackCooldown: 0.02
+  attackCooldown: 0.1
 --- !u!1 &1659306842233508
 GameObject:
   m_ObjectHideFlags: 0

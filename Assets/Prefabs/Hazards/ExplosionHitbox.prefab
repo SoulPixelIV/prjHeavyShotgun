@@ -109,7 +109,7 @@ MonoBehaviour:
   damage: 75
   damageEnemies: 1
   damagePlayer: 1
-  attackCooldown: 0.02
+  attackCooldown: 5
 --- !u!114 &8313057496434078011
 MonoBehaviour:
   m_ObjectHideFlags: 0
