@@ -17,9 +17,16 @@ public class ShoMiRüBehaviour : MonoBehaviour {
     public bool aiming;
     public bool aimingSneak;
 
+    [Header("Audio")]
+    public float reloadDelay;
+    public AudioClip shotSound;
+    public AudioClip reloadSound;
+    bool shotActive;
+
     int bulletsMax;
     float shootCooldownSave;
     bool startCooldown;
+    float reloadDelaySave;
 
     DepthOfField dof = null;
 
@@ -28,6 +35,7 @@ public class ShoMiRüBehaviour : MonoBehaviour {
         bulletsMax = bullets;
         shootCooldownSave = shootCooldown;
         startCooldown = true;
+        reloadDelaySave = reloadDelay;
 
         //Postprocessing
         PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
@@ -139,7 +147,19 @@ public class ShoMiRüBehaviour : MonoBehaviour {
         {
             startCooldown = false;
         }
-	}
+
+        //Audio
+        if (shotActive)
+        {
+            reloadDelay -= Time.deltaTime;
+        }
+        if (reloadDelay < 0)
+        {
+            GetComponent<AudioSource>().PlayOneShot(reloadSound, 1);
+            shotActive = false;
+            reloadDelay = reloadDelaySave;
+        }
+    }
 
     void Shoot ()
     {
@@ -228,7 +248,8 @@ public class ShoMiRüBehaviour : MonoBehaviour {
         anim.Play("shoot");
         if (!gameObject.GetComponent<AudioSource>().isPlaying)
         {
-            gameObject.GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().PlayOneShot(shotSound, 1);
+            shotActive = true;
         }
     }
 }

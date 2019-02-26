@@ -20461,6 +20461,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6319334449773291206, guid: 151dbb3ef6582b64db919aefdac36ec8,
+        type: 3}
+      propertyPath: shotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ae29605333e007447a02dd05fc62fd7b, type: 3}
+    - target: {fileID: 6319334449773291206, guid: 151dbb3ef6582b64db919aefdac36ec8,
+        type: 3}
+      propertyPath: reloadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2badd70d3aaff8345b2272202a0627bb, type: 3}
+    - target: {fileID: 6319334449773291206, guid: 151dbb3ef6582b64db919aefdac36ec8,
+        type: 3}
+      propertyPath: reloadDelay
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151dbb3ef6582b64db919aefdac36ec8, type: 3}
 --- !u!1001 &546960018
