@@ -21,6 +21,7 @@ public class FPCharacterController : MonoBehaviour
     public float tiltRange;
     public int jumpNum;
     public int medSyringes;
+    public float healTime;
     public float dashLength;
     public bool aimingGun;
     public bool dead;
@@ -38,10 +39,12 @@ public class FPCharacterController : MonoBehaviour
     bool duckLock = true;
     bool onLadder = false;
     bool isMoving = false;
+    bool isHealing;
     float verVelocity;
     int jumpCount;
     float dashTime;
     int medSyringesSave;
+    float healTimeSave;
     int stepCount = 0;
 
 
@@ -54,6 +57,8 @@ public class FPCharacterController : MonoBehaviour
 
     ChromaticAberration chrom = null;
     Vignette vignette = null;
+
+    Animator animSyringe;
 
     private void OnTriggerStay(Collider other)
     {
@@ -74,6 +79,7 @@ public class FPCharacterController : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
+        animSyringe = transform.Find("PlayerCamera").transform.Find("GunCamera").transform.Find("Syringe").GetComponent<Animator>();
 
         //Character Controller
         cc = GetComponent<CharacterController>();
@@ -92,6 +98,7 @@ public class FPCharacterController : MonoBehaviour
         jumpCount = jumpNum;
         dashTime = dashLength;
         medSyringesSave = medSyringes;
+        healTimeSave = healTime;
 
         //Crosshair
         float crosshairSize = Screen.width * crosshairPercentage / 100;
@@ -176,9 +183,27 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Healing
-        if (Input.GetKeyDown(KeyCode.F) && medSyringes > 0)
+        if (Input.GetKeyDown(KeyCode.F) && medSyringes > 0 && !animSyringe.GetCurrentAnimatorStateInfo(0).IsName("healSyringe"))
         {
             Heal();
+        }
+        if (isHealing)
+        {
+            healTime -= Time.deltaTime;
+        }
+        if (healTime > 0 && isHealing)
+        {
+            speedMov = 1;
+        }
+        if (healTime < 0 && isHealing)
+        {
+            speedMov = speedMovSave;
+            healTime = healTimeSave;
+            isHealing = false;
+            if (GetComponent<HealthSystem>().HealthGain(55) > 100)
+            {
+                GetComponent<HealthSystem>().health = 100;
+            }
         }
 
         //Gravity
@@ -303,7 +328,8 @@ public class FPCharacterController : MonoBehaviour
     public void Heal()
     {
         medSyringes--;
-        GetComponent<HealthSystem>().health += 55;
+        animSyringe.Play("healSyringe");
+        isHealing = true;
         syringeTxt.text = "Med-Syringes x" + medSyringes;
     }
 }

@@ -63,17 +63,15 @@ public class HealthSystem : MonoBehaviour {
         }
     }
 
+    public float HealthGain(float heal)
+    {
+        health += heal;
+        return health;
+    }
+
     public bool HealthLoss (float damage)
     {
         health -= damage;
-        if (health < 0)
-        {
-            health = 0;
-        }
-        if (health > 100)
-        {
-            health = 100;
-        }
 
         //Enemy Flash
         if (gameObject.tag == "Enemy")
@@ -88,7 +86,7 @@ public class HealthSystem : MonoBehaviour {
             }
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
             dead = true;
             if (gameObject.tag == "Player")

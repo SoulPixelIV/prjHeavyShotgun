@@ -222,17 +222,17 @@ public class ShoMiRüBehaviour : MonoBehaviour {
                     objHit.GetComponent<HealthSystem>().HealthLoss(damage / 1.5f);
                     Camera.main.gameObject.GetComponent<AudioSource>().Play();
                 }
-                if (hit.distance > 1.5f && hit.distance < 5)
+                if (hit.distance > 1.5f && hit.distance < 8)
                 {
                     objHit.GetComponent<HealthSystem>().HealthLoss(damage);
                     Camera.main.gameObject.GetComponent<AudioSource>().Play();
                 }
-                if (hit.distance > 5 && hit.distance < 7)
+                if (hit.distance > 8 && hit.distance < 13)
                 {
                     objHit.GetComponent<HealthSystem>().HealthLoss(damage / 2);
                     Camera.main.gameObject.GetComponent<AudioSource>().Play();
                 }
-                if (hit.distance > 7 && hit.distance < 10)
+                if (hit.distance > 13 && hit.distance < 17)
                 {
                     objHit.GetComponent<HealthSystem>().HealthLoss(damage / 4);
                     Camera.main.gameObject.GetComponent<AudioSource>().Play();
