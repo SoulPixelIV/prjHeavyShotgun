@@ -37,14 +37,17 @@ public class FPCharacterController : MonoBehaviour
     float rotHKeyboard = 0;
     bool duckLock = true;
     bool onLadder = false;
+    bool isMoving = false;
     float verVelocity;
     int jumpCount;
     float dashTime;
     int medSyringesSave;
+    int stepCount = 0;
+
 
     [Header("Audio")]
-    public AudioSource audio1;
-    public AudioSource audio2;
+    public AudioClip stepStone1;
+    public AudioClip stepStone2;
     private float stepSpeed;
 
     CharacterController cc;
@@ -192,6 +195,14 @@ public class FPCharacterController : MonoBehaviour
             verVelocity = 0;
         }
         Vector3 speed = new Vector3(sideSpeed, verVelocity, forwardSpeed);
+        if (sideSpeed > 4 || sideSpeed < -4 || forwardSpeed > 4 || forwardSpeed < -4)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
 
         //Jump
         if (Input.GetKeyDown(KeyCode.Space) && jumpNum != 0 && !onLadder)
@@ -233,6 +244,21 @@ public class FPCharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F1))
         {
             SceneManager.LoadScene(0);
+        }
+
+        //Audio
+        if (!GetComponent<AudioSource>().isPlaying && isMoving)
+        {
+            if (stepCount == 0)
+            {
+                GetComponent<AudioSource>().PlayOneShot(stepStone1, 1);
+                stepCount = 1;
+            }
+            else
+            {
+                GetComponent<AudioSource>().PlayOneShot(stepStone2, 1);
+                stepCount = 0;
+            }
         }
     }
 
