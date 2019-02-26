@@ -201,9 +201,13 @@ public class ShoMiRüBehaviour : MonoBehaviour {
                     {
                         objHit.GetComponent<Rigidbody>().AddForce(-dir * power, ForceMode.Impulse);
                     }
-                    if (hit.distance > 3)
+                    if (hit.distance > 3 && hit.distance < 4)
                     {
                         objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 2), ForceMode.Impulse);
+                    }
+                    if (hit.distance > 4 && hit.distance < 6)
+                    {
+                        objHit.GetComponent<Rigidbody>().AddForce(-dir * (power / 4), ForceMode.Impulse);
                     }
                 }
             }
@@ -213,29 +217,26 @@ public class ShoMiRüBehaviour : MonoBehaviour {
                 //Direction between player and enemy
                 Vector3 dir = (transform.position - objHit.transform.position).normalized;
 
-                if (hit.distance < 3)
+                if (hit.distance < 1.5f)
                 {
-                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage) == true)
-                    {
-                        /*
-                        Debug.Log("DEATH");
-                        objHit.gameObject.SetActive(false);
-                        */
-                    }
+                    objHit.GetComponent<HealthSystem>().HealthLoss(damage / 1.5f);
+                    Camera.main.gameObject.GetComponent<AudioSource>().Play();
                 }
-                else
+                if (hit.distance > 1.5f && hit.distance < 5)
                 {
-                    if (objHit.GetComponent<HealthSystem>().HealthLoss(damage / 2) == true)
-                    {
-                        /*
-                        Debug.Log("DEATH");
-                        objHit.gameObject.SetActive(false);
-                        */
-                    }
+                    objHit.GetComponent<HealthSystem>().HealthLoss(damage);
+                    Camera.main.gameObject.GetComponent<AudioSource>().Play();
                 }
-
-                //Play Hitmarker
-                Camera.main.gameObject.GetComponent<AudioSource>().Play();
+                if (hit.distance > 5 && hit.distance < 7)
+                {
+                    objHit.GetComponent<HealthSystem>().HealthLoss(damage / 2);
+                    Camera.main.gameObject.GetComponent<AudioSource>().Play();
+                }
+                if (hit.distance > 7 && hit.distance < 10)
+                {
+                    objHit.GetComponent<HealthSystem>().HealthLoss(damage / 4);
+                    Camera.main.gameObject.GetComponent<AudioSource>().Play();
+                }
             }
             else if (objHit.tag == "Static")
             {
