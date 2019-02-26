@@ -8,6 +8,7 @@ using UnityEngine.Rendering.PostProcessing;
 public class HealthSystem : MonoBehaviour {
 
     public float health;
+    public float healthSave;
     public bool dead;
     public float hitTimer;
 
@@ -22,6 +23,7 @@ public class HealthSystem : MonoBehaviour {
 
     void Start () {
         hitTimerSave = hitTimer;
+        healthSave = health;
         if (transform.Find("Model") != null)
         {
             allRenderers = transform.Find("Model").gameObject.GetComponents<Renderer>();

@@ -6,19 +6,23 @@ public class WeaponCollected : MonoBehaviour {
 
     public int weapon;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    Animator animShoMiRü;
+    Animator animSkadi;
+    Animator animFists;
+
+    void Start () {
+        animShoMiRü = GameObject.FindGameObjectWithTag("Player").transform.Find("PlayerCamera").transform.Find("GunCamera").transform.Find("ShoMiRü").GetComponent<Animator>();
+        animSkadi = GameObject.FindGameObjectWithTag("Player").transform.Find("PlayerCamera").transform.Find("GunCamera").transform.Find("Skadi").GetComponent<Animator>();
+        animFists = GameObject.FindGameObjectWithTag("Player").transform.Find("PlayerCamera").transform.Find("GunCamera").transform.Find("Hands").GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !animShoMiRü.GetCurrentAnimatorStateInfo(0).IsName("shotgunReload") &&
+            !animSkadi.GetCurrentAnimatorStateInfo(0).IsName("skadiAttack") &&
+            !animShoMiRü.GetCurrentAnimatorStateInfo(0).IsName("shoot") &&
+            !animShoMiRü.GetCurrentAnimatorStateInfo(0).IsName("shotgunMoveBack") &&
+            !animFists.GetCurrentAnimatorStateInfo(0).IsName("handsAttack"))
         {
             if (weapon == 1)
             {

@@ -268,7 +268,7 @@ public class FPCharacterController : MonoBehaviour
         //Restart
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         //Audio
@@ -310,6 +310,8 @@ public class FPCharacterController : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for (int z = 0; z < enemies.Length; z++)
         {
+            enemies[z].gameObject.GetComponent<HealthSystem>().health = enemies[z].gameObject.GetComponent<HealthSystem>().healthSave;
+            enemies[z].gameObject.GetComponent<HealthSystem>().dead = false;
             enemies[z].gameObject.SetActive(true);
         }
 
@@ -318,6 +320,7 @@ public class FPCharacterController : MonoBehaviour
         vignette.intensity.value = 0;
 
         dead = false;
+        SceneManager.LoadScene(1);
     }
 
     void OnGUI()
