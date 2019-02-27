@@ -202,7 +202,7 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Healing
-        if (Input.GetKeyDown(KeyCode.F) && medSyringes > 0 && !animSyringe.GetCurrentAnimatorStateInfo(0).IsName("healSyringe"))
+        if (Input.GetKeyDown(KeyCode.F) && medSyringes > 0 && !animSyringe.GetCurrentAnimatorStateInfo(0).IsName("healSyringe") && !dead)
         {
             Heal();
         }

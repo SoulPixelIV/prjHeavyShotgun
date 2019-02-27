@@ -32,9 +32,12 @@ public class Destructible : MonoBehaviour {
     //Falldamage
     void OnCollisionEnter(Collision collision)
     {
-        if (GetComponent<Rigidbody>().velocity.x > 3 || GetComponent<Rigidbody>().velocity.y > 3 || GetComponent<Rigidbody>().velocity.z > 3)
+        if (GetComponent<Rigidbody>() != null)
         {
-            Destroy();
+            if (GetComponent<Rigidbody>().velocity.x > 3 || GetComponent<Rigidbody>().velocity.y > 3 || GetComponent<Rigidbody>().velocity.z > 3)
+            {
+                Destroy();
+            }
         }
     }
 
