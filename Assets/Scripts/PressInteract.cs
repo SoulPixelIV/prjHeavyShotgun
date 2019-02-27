@@ -9,10 +9,12 @@ public class PressInteract : MonoBehaviour {
     public string openAnimation;
     public bool access;
     public bool showTxt = true;
+
+    public bool activated;
 	
 	// Update is called once per frame
 	void Update () {
-		if (access)
+		if (access && !activated)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -53,5 +55,6 @@ public class PressInteract : MonoBehaviour {
         {
             target.GetComponent<PoisonMovement>().active = true;
         }
+        activated = true;
     }
 }

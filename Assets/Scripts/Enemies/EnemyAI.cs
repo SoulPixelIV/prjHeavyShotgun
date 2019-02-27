@@ -107,7 +107,10 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
-                    InterestPoint.transform.Find("LeverObject").GetComponent<PressInteract>().Activate();
+                    if (!InterestPoint.transform.Find("LeverObject").GetComponent<PressInteract>().activated)
+                    {
+                        InterestPoint.transform.Find("LeverObject").GetComponent<PressInteract>().Activate();
+                    }
                     InterestPoint = null;
                 }
             }
