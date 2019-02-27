@@ -287,7 +287,7 @@ public class FPCharacterController : MonoBehaviour
         //Restart
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
 
         //Audio
@@ -368,7 +368,7 @@ public class FPCharacterController : MonoBehaviour
         vignette.intensity.value = 0;
 
         dead = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     void OnGUI()
