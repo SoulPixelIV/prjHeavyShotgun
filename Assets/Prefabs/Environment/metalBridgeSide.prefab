@@ -397,9 +397,10 @@ GameObject:
   - component: {fileID: 536412499544026308}
   - component: {fileID: 339084622478641855}
   - component: {fileID: 7897771375604466883}
+  - component: {fileID: 1314387961160855426}
   m_Layer: 0
   m_Name: metalBridgeSide
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,6 +535,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 2, z: 0.1}
   m_Center: {x: 2, y: 1, z: 1}
+--- !u!65 &1314387961160855426
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820512671638955253}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 2, z: 4}
+  m_Center: {x: 2, y: 1, z: -1}
 --- !u!1 &829349323260034679
 GameObject:
   m_ObjectHideFlags: 0

@@ -4108,9 +4108,10 @@ GameObject:
   - component: {fileID: 4010173956940709511}
   - component: {fileID: 4010173956940709508}
   - component: {fileID: 7918226554329725472}
+  - component: {fileID: 2710587898949926380}
   m_Layer: 0
   m_Name: MetalBridgeBroken
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4299,6 +4300,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.23, y: 2, z: 0.1}
   m_Center: {x: 2.93, y: 1, z: -3}
+--- !u!65 &2710587898949926380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010173956940709505}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 2, z: 4}
+  m_Center: {x: 0, y: 1, z: -1}
 --- !u!1 &4245116076292320690
 GameObject:
   m_ObjectHideFlags: 0

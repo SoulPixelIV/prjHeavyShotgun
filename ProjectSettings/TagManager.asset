@@ -22,6 +22,8 @@ TagManager:
   - Ladder
   - Lever
   - Poison
+  - Stone
+  - Metal
   layers:
   - Default
   - TransparentFX

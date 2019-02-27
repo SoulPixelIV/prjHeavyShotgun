@@ -46,11 +46,14 @@ public class FPCharacterController : MonoBehaviour
     int medSyringesSave;
     float healTimeSave;
     int stepCount = 0;
+    string ground;
 
 
     [Header("Audio")]
     public AudioClip stepStone1;
     public AudioClip stepStone2;
+    public AudioClip stepMetal1;
+    public AudioClip stepMetal2;
     private float stepSpeed;
 
     CharacterController cc;
@@ -66,6 +69,14 @@ public class FPCharacterController : MonoBehaviour
         {
             onLadder = true;
         }
+        if (other.tag == "Stone")
+        {
+            ground = "Stone";
+        }
+        if (other.tag == "Metal")
+        {
+            ground = "Metal";
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -73,6 +84,14 @@ public class FPCharacterController : MonoBehaviour
         {
             onLadder = false;
             verVelocity = jumpSpeed;
+        }
+        if (other.tag == "Stone")
+        {
+            ground = null;
+        }
+        if (other.tag == "Metal")
+        {
+            ground = null;
         }
     }
 
@@ -272,17 +291,46 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Audio
-        if (!GetComponent<AudioSource>().isPlaying && isMoving)
+        if (!GetComponent<AudioSource>().isPlaying && isMoving && cc.isGrounded)
         {
-            if (stepCount == 0)
+            if (ground == "Stone")
             {
-                GetComponent<AudioSource>().PlayOneShot(stepStone1, 1);
-                stepCount = 1;
+                if (stepCount == 0)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepStone1, 1);
+                    stepCount = 1;
+                }
+                else
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepStone2, 1);
+                    stepCount = 0;
+                }
+            }
+            else if (ground == "Metal")
+            {
+                if (stepCount == 0)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepMetal1, 1);
+                    stepCount = 1;
+                }
+                else
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepMetal2, 1);
+                    stepCount = 0;
+                }
             }
             else
             {
-                GetComponent<AudioSource>().PlayOneShot(stepStone2, 1);
-                stepCount = 0;
+                if (stepCount == 0)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepStone1, 1);
+                    stepCount = 1;
+                }
+                else
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepStone2, 1);
+                    stepCount = 0;
+                }
             }
         }
     }
