@@ -22,6 +22,7 @@ public class FPCharacterController : MonoBehaviour
     public int jumpNum;
     public int medSyringes;
     public float healTime;
+    public int orbCount;
     public float dashLength;
     public bool aimingGun;
     public bool dead;
@@ -30,6 +31,7 @@ public class FPCharacterController : MonoBehaviour
     public float sideSpeed;
 
     public TextMeshProUGUI syringeTxt;
+    public TextMeshProUGUI orbCountTxt;
 
     public Vector3 startPos;
 
