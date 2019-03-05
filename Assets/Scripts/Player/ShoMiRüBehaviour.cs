@@ -111,7 +111,9 @@ public class ShoMiRüBehaviour : MonoBehaviour {
             }
 
             //Reload
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && !anim.GetCurrentAnimatorStateInfo(0).IsName("shotgunReload") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("shoot") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("shotgunMoveBack"))
             {
                 if (bullets < bulletsMax && magazines > 0)
                 {
