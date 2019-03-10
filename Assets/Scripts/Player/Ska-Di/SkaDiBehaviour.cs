@@ -24,6 +24,8 @@ public class SkaDiBehaviour : MonoBehaviour {
     }
 
 	void Update () {
+        Animator anim = GetComponent<Animator>();
+
         if (attackCooldown > 0)
         {
             attackCooldown -= 1 * Time.deltaTime;
@@ -60,6 +62,13 @@ public class SkaDiBehaviour : MonoBehaviour {
                     magazines = 0;
                 }
             }
+        }
+
+        //Moving Animation
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().isMoving &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("skadiAttack"))
+        {
+            anim.Play("skadiWalk");
         }
     }
 

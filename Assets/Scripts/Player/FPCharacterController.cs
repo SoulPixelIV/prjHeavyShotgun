@@ -40,7 +40,7 @@ public class FPCharacterController : MonoBehaviour
     float rotHKeyboard = 0;
     bool duckLock = true;
     bool onLadder = false;
-    bool isMoving = false;
+    public bool isMoving = false;
     bool isHealing;
     float verVelocity;
     int jumpCount;

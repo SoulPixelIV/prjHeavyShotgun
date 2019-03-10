@@ -150,6 +150,15 @@ public class ShoMiRüBehaviour : MonoBehaviour {
             startCooldown = false;
         }
 
+        //Moving Animation
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().isMoving &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("shotgunReload") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("shoot") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("shotgunMoveBack"))
+        {
+            anim.Play("shotgunWalk");
+        }
+
         //Audio
         if (shotActive)
         {
