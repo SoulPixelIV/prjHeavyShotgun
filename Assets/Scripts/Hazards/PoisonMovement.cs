@@ -8,10 +8,12 @@ public class PoisonMovement : MonoBehaviour
     public float riseLevel;
 
     float riseLevelSave;
+    GameObject[] poisonPipes;
 
     void Start()
     {
         riseLevelSave = riseLevel;
+        poisonPipes = GameObject.FindGameObjectsWithTag("PoisonPipe");
     }
 
     void Update()
@@ -20,6 +22,10 @@ public class PoisonMovement : MonoBehaviour
         {
             riseLevel -= Time.deltaTime;
             transform.Translate(Vector3.up * Time.deltaTime);
+            for (int i = 0; i < poisonPipes.Length; i++)
+            {
+                poisonPipes[i].GetComponent<PoisonPipeSpawning>().active = true;
+            }
         }
         if (riseLevel < 0)
         {

@@ -6,6 +6,8 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: No Name
+    2100002: Normal
+    2100004: Poison
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cylinder
@@ -15,6 +17,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: No Name
     second: {fileID: 2100000, guid: 1b8db509bb8695c469cbac13af05d0ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Normal
+    second: {fileID: 2100000, guid: 1b8db509bb8695c469cbac13af05d0ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Poison
+    second: {fileID: 2100000, guid: 0b3a43d3a1a757142aae00c9d0e45eeb, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

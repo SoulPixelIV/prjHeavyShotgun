@@ -25,6 +25,7 @@ TagManager:
   - Stone
   - Metal
   - Orb
+  - PoisonPipe
   layers:
   - Default
   - TransparentFX
