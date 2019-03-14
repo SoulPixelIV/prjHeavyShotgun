@@ -9,11 +9,13 @@ public class PoisonMovement : MonoBehaviour
 
     float riseLevelSave;
     GameObject[] poisonPipes;
+    GameObject[] alarmLights;
 
     void Start()
     {
         riseLevelSave = riseLevel;
         poisonPipes = GameObject.FindGameObjectsWithTag("PoisonPipe");
+        alarmLights = GameObject.FindGameObjectsWithTag("AlarmLightRotation");
     }
 
     void Update()
@@ -25,6 +27,10 @@ public class PoisonMovement : MonoBehaviour
             for (int i = 0; i < poisonPipes.Length; i++)
             {
                 poisonPipes[i].GetComponent<PoisonPipeSpawning>().active = true;
+            }
+            for (int i = 0; i < alarmLights.Length; i++)
+            {
+                alarmLights[i].GetComponent<AlarmLightRotation>().active = true;
             }
         }
         if (riseLevel < 0)

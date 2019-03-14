@@ -26,6 +26,7 @@ TagManager:
   - Metal
   - Orb
   - PoisonPipe
+  - AlarmLightRotation
   layers:
   - Default
   - TransparentFX
