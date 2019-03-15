@@ -345,6 +345,13 @@ public class FPCharacterController : MonoBehaviour
             GetComponent<HealthSystem>().HealthLoss(other.GetComponent<BasicAttack>().damage);
             other.gameObject.SetActive(false);
         }
+        if (other.gameObject.tag == "Teleport")
+        {
+            if (other.gameObject.name == "TeleportVillageLevel")
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
     }
 
     void Dead()

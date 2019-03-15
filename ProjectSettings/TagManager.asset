@@ -28,6 +28,7 @@ TagManager:
   - PoisonPipe
   - AlarmLightRotation
   - Wood
+  - Teleport
   layers:
   - Default
   - TransparentFX
