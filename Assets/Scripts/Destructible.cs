@@ -47,6 +47,6 @@ public class Destructible : MonoBehaviour {
             Instantiate(explosionHitbox, transform.position, Quaternion.identity);
         }
         Instantiate(destroyedVersion, transform.position, transform.rotation);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
 	}
 }

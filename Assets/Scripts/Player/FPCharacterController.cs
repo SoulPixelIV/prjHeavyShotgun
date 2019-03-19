@@ -50,7 +50,6 @@ public class FPCharacterController : MonoBehaviour
     int stepCount = 0;
     string ground;
 
-
     [Header("Audio")]
     public AudioClip stepStone1;
     public AudioClip stepStone2;
@@ -64,6 +63,13 @@ public class FPCharacterController : MonoBehaviour
     Vignette vignette = null;
 
     Animator animSyringe;
+
+    [HideInInspector]
+    public GameObject[] enemies;
+    public GameObject[] orbs;
+    public GameObject[] environment;
+    public GameObject[] levers;
+    public GameObject[] poisons;
 
     private void OnTriggerStay(Collider other)
     {
@@ -120,6 +126,12 @@ public class FPCharacterController : MonoBehaviour
         dashTime = dashLength;
         medSyringesSave = medSyringes;
         healTimeSave = healTime;
+
+        orbs = GameObject.FindGameObjectsWithTag("Orb");
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        environment = GameObject.FindGameObjectsWithTag("Environment");
+        levers = GameObject.FindGameObjectsWithTag("Lever");
+        poisons = GameObject.FindGameObjectsWithTag("Poison");
 
         //Crosshair
         float crosshairSize = Screen.width * crosshairPercentage / 100;
@@ -364,12 +376,31 @@ public class FPCharacterController : MonoBehaviour
         GetComponent<HealthSystem>().health = 100;
 
         //Reset Enemies
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for (int z = 0; z < enemies.Length; z++)
         {
             enemies[z].gameObject.GetComponent<HealthSystem>().health = enemies[z].gameObject.GetComponent<HealthSystem>().healthSave;
             enemies[z].gameObject.GetComponent<HealthSystem>().dead = false;
             enemies[z].gameObject.SetActive(true);
+        }
+        //Reset Orbs
+        for (int v = 0; v < orbs.Length; v++)
+        {
+            orbs[v].gameObject.SetActive(true);
+        }
+        //Reset Environment
+        for (int x = 0; x < environment.Length; x++)
+        {
+            environment[x].gameObject.SetActive(true);
+        }
+        //Reset Levers
+        for (int l = 0; l < levers.Length; l++)
+        {
+            levers[l].gameObject.transform.Find("LeverObject").GetComponent<PressInteract>().activated = false;
+        }
+        //Reset Poisons
+        for (int u = 0; u < poisons.Length; u++)
+        {
+            poisons[u].gameObject.GetComponent<PoisonMovement>().ResetPos();
         }
 
         //Reset Processing
@@ -377,7 +408,7 @@ public class FPCharacterController : MonoBehaviour
         vignette.intensity.value = 0;
 
         dead = false;
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
     }
 
     void OnGUI()

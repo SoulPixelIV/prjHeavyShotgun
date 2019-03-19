@@ -7,12 +7,14 @@ public class PoisonMovement : MonoBehaviour
     public bool active;
     public float riseLevel;
 
+    Vector3 startPos;
     float riseLevelSave;
     GameObject[] poisonPipes;
     GameObject[] alarmLights;
 
     void Start()
     {
+        startPos = transform.position;
         riseLevelSave = riseLevel;
         poisonPipes = GameObject.FindGameObjectsWithTag("PoisonPipe");
         alarmLights = GameObject.FindGameObjectsWithTag("AlarmLightRotation");
@@ -38,5 +40,12 @@ public class PoisonMovement : MonoBehaviour
             riseLevel = riseLevelSave;
             active = false;
         }
+    }
+
+    public void ResetPos()
+    {
+        transform.position = startPos;
+        active = false;
+        riseLevel = riseLevelSave;
     }
 }

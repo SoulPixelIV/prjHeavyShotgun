@@ -10,7 +10,7 @@ public class OrbCollection : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().orbCount++;
             GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().orbCountTxt.text = "Orbs x" + GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().orbCount;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

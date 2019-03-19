@@ -10,7 +10,7 @@ public class AmmoPickup : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponSwitching>().WeaponSwitch(1);
             GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShoMiRüBehaviour>().magazines += 6;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
