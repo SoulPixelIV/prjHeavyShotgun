@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PushingBlockMovement : MonoBehaviour
 {
-
     public float travelHeight;
     public float travelSpeed;
     public bool active;
