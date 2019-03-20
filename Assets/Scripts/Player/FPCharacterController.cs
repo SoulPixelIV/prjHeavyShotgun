@@ -50,6 +50,9 @@ public class FPCharacterController : MonoBehaviour
     int stepCount = 0;
     string ground;
 
+    static int spawnPlace;
+    static Quaternion spawnRotation;
+
     [Header("Audio")]
     public AudioClip stepStone1;
     public AudioClip stepStone2;
@@ -115,6 +118,9 @@ public class FPCharacterController : MonoBehaviour
 
         //Position
         startPos = transform.position;
+        GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawnpoint");
+        transform.position = spawns[spawnPlace].gameObject.transform.position;
+        transform.rotation = spawnRotation;
 
         //Postprocessing
         PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
@@ -359,9 +365,16 @@ public class FPCharacterController : MonoBehaviour
         }
         if (other.gameObject.tag == "Teleport")
         {
+            spawnRotation = transform.rotation;
             if (other.gameObject.name == "TeleportVillageLevel")
             {
+                spawnPlace = 1;
                 SceneManager.LoadScene(1);
+            }
+            else if (other.gameObject.name == "TeleportPoisonHybridFactory")
+            {
+                spawnPlace = 1;
+                SceneManager.LoadScene(0);
             }
         }
     }

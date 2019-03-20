@@ -29,6 +29,7 @@ TagManager:
   - AlarmLightRotation
   - Wood
   - Teleport
+  - Spawnpoint
   layers:
   - Default
   - TransparentFX
