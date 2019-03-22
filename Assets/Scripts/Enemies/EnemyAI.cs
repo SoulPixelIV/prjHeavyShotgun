@@ -25,10 +25,12 @@ public class EnemyAI : MonoBehaviour
     int randAttack;
     bool dontAttack;
     bool hitboxActive;
-    Vector3 startPos;
-    Quaternion startRot;
+    [HideInInspector]
+    public Vector3 startPos;
+    public Quaternion startRot;
+    public bool reachedInterestPoint;
 
-    void Start()
+    public void Start()
     {
         attackCooldownSave = attackCooldown;
         hitboxLifetimeSave = hitboxLifetime;
@@ -69,10 +71,13 @@ public class EnemyAI : MonoBehaviour
         if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Player in Sight
         {
             //Set speed and destination
-            if (gameObject.GetComponent<NavMeshAgent>().enabled == true && InterestPoint == null)
+            if (gameObject.GetComponent<NavMeshAgent>().enabled == true)
             {
-                GetComponent<NavMeshAgent>().speed = walkSpeed;
-                gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
+                if (InterestPoint == null || reachedInterestPoint)
+                {
+                    GetComponent<NavMeshAgent>().speed = walkSpeed;
+                    gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
+                }
             }
             if (!bowActive)
             {
@@ -98,7 +103,7 @@ public class EnemyAI : MonoBehaviour
         //Interest Point
         if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Player in Sight
         {
-            if (InterestPoint != null && gameObject.GetComponent<NavMeshAgent>().enabled == true)
+            if (InterestPoint != null && !reachedInterestPoint && gameObject.GetComponent<NavMeshAgent>().enabled == true)
             {
                 if (Vector3.Distance(transform.position, InterestPoint.transform.position) > 2)
                 {
@@ -111,7 +116,7 @@ public class EnemyAI : MonoBehaviour
                     {
                         InterestPoint.transform.Find("LeverObject").GetComponent<PressInteract>().Activate();
                     }
-                    InterestPoint = null;
+                    reachedInterestPoint = true;
                 }
             }
         }
@@ -157,6 +162,7 @@ public class EnemyAI : MonoBehaviour
             hitboxActive = false;
         }
 
+        /*
         //Reset
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().dead)
         {
@@ -164,6 +170,7 @@ public class EnemyAI : MonoBehaviour
             transform.rotation = startRot;
             GetComponentInChildren<SightChecking>().aggro = false;
         }
+        */
 	}
 
     void Animation()

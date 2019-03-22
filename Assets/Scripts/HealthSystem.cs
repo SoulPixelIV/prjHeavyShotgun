@@ -103,12 +103,13 @@ public class HealthSystem : MonoBehaviour {
                     GetComponent<EnemyAI>().ToggleBow();
                 }
             }
-
+            /*
             //Deactivate NavMeshAgent
             if (GetComponent<NavMeshAgent>() != null)
             {
                 GetComponent<NavMeshAgent>().enabled = false; 
             }
+            */
         }
 
         //AI

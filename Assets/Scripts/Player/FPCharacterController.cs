@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 using TMPro;
 
 public class FPCharacterController : MonoBehaviour
@@ -393,6 +394,16 @@ public class FPCharacterController : MonoBehaviour
         {
             enemies[z].gameObject.GetComponent<HealthSystem>().health = enemies[z].gameObject.GetComponent<HealthSystem>().healthSave;
             enemies[z].gameObject.GetComponent<HealthSystem>().dead = false;
+            enemies[z].gameObject.transform.Find("Sight").gameObject.GetComponent<SightChecking>().aggro = false;
+            enemies[z].gameObject.transform.position = enemies[z].GetComponent<EnemyAI>().startPos;
+            enemies[z].gameObject.transform.rotation = enemies[z].GetComponent<EnemyAI>().startRot;
+            enemies[z].gameObject.GetComponent<NavMeshAgent>().speed = 0;
+            enemies[z].gameObject.GetComponent<EnemyAI>().reachedInterestPoint = false;
+            if (enemies[z].gameObject.GetComponent<EnemyAI>().bowActive)
+            {
+                enemies[z].gameObject.GetComponent<EnemyAI>().ToggleBow();
+                enemies[z].gameObject.GetComponent<EnemyAI>().InvokeRepeating("BowShoot", enemies[z].gameObject.GetComponent<EnemyAI>().shootTime, enemies[z].gameObject.GetComponent<EnemyAI>().shootTime);
+            }
             enemies[z].gameObject.SetActive(true);
         }
         //Reset Orbs
