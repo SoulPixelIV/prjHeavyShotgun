@@ -10,8 +10,7 @@ public class FPCharacterController : MonoBehaviour
     //Crosshair
     Rect crosshairRect;
     public Texture crosshairTexture;
-    public Text gameOverText;
-    public float crosshairPercentage = 0.05f;
+    public float crosshairScalePercentage = 0.05f;
 
     [Header("Movement")]
     public float speedCam;
@@ -25,23 +24,23 @@ public class FPCharacterController : MonoBehaviour
     public float healTime;
     public int orbCount;
     public float dashLength;
-    public bool aimingGun;
-    public bool dead;
 
-    public float forwardSpeed;
-    public float sideSpeed;
-
+    public Text gameOverText;
     public TextMeshProUGUI syringeTxt;
     public TextMeshProUGUI orbCountTxt;
 
+    [HideInInspector]
+    public float forwardSpeed, sideSpeed;
+    [HideInInspector]
     public Vector3 startPos;
+    [HideInInspector]
+    public bool isMoving = false, aimingGun, dead;
 
     float speedMovSave;
     float rotV = 0;
     float rotHKeyboard = 0;
     bool duckLock = true;
     bool onLadder = false;
-    public bool isMoving = false;
     bool isHealing;
     float verVelocity;
     int jumpCount;
@@ -62,18 +61,12 @@ public class FPCharacterController : MonoBehaviour
     private float stepSpeed;
 
     CharacterController cc;
-
     ChromaticAberration chrom = null;
     Vignette vignette = null;
-
     Animator animSyringe;
 
     [HideInInspector]
-    public GameObject[] enemies;
-    public GameObject[] orbs;
-    public GameObject[] environment;
-    public GameObject[] levers;
-    public GameObject[] poisons;
+    public GameObject[] enemies, orbs, environment, levers, poisons;
 
     private void OnTriggerStay(Collider other)
     {
@@ -109,12 +102,14 @@ public class FPCharacterController : MonoBehaviour
 
     void Start()
     {
+        //Misc
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         animSyringe = transform.Find("PlayerCamera").transform.Find("GunCamera").transform.Find("Syringe").GetComponent<Animator>();
+        syringeTxt.text = "Med-Syringes x" + medSyringes;
 
         //Character Controller
         cc = GetComponent<CharacterController>();
-
         speedMovSave = speedMov;
 
         //Position
@@ -122,11 +117,6 @@ public class FPCharacterController : MonoBehaviour
         GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawnpoint");
         transform.position = spawns[spawnPlace].gameObject.transform.position;
         transform.rotation = spawnRotation;
-
-        //Postprocessing
-        PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
-        volume.profile.TryGetSettings(out chrom);
-        volume.profile.TryGetSettings(out vignette);
 
         //Reset
         jumpCount = jumpNum;
@@ -141,13 +131,15 @@ public class FPCharacterController : MonoBehaviour
         poisons = GameObject.FindGameObjectsWithTag("Poison");
 
         //Crosshair
-        float crosshairSize = Screen.width * crosshairPercentage / 100;
+        float crosshairSize = Screen.width * crosshairScalePercentage / 100;
         crosshairRect = new Rect(Screen.width / 2 - crosshairSize / 2,
                                  Screen.height / 2 - crosshairSize / 2,
                                  crosshairSize, crosshairSize);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        syringeTxt.text = "Med-Syringes x" + medSyringes;
+        //Postprocessing
+        PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
+        volume.profile.TryGetSettings(out chrom);
+        volume.profile.TryGetSettings(out vignette);
     }
 
     void Update()
@@ -420,6 +412,7 @@ public class FPCharacterController : MonoBehaviour
         for (int l = 0; l < levers.Length; l++)
         {
             levers[l].gameObject.transform.Find("LeverObject").GetComponent<PressInteract>().activated = false;
+            levers[l].gameObject.transform.Find("LeverObject").GetComponent<Animator>().Play("leverReset");
         }
         //Reset Poisons
         for (int u = 0; u < poisons.Length; u++)
