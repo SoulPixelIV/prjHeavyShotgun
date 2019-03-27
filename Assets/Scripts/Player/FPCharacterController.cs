@@ -49,6 +49,8 @@ public class FPCharacterController : MonoBehaviour
     float healTimeSave;
     int stepCount = 0;
     string ground;
+    float ladderDelay = -1;
+    bool ladderExit;
 
     static int spawnPlace;
     static Quaternion spawnRotation;
@@ -70,7 +72,7 @@ public class FPCharacterController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Ladder")
+        if (other.tag == "Ladder" && ladderDelay == 1)
         {
             onLadder = true;
         }
@@ -88,6 +90,7 @@ public class FPCharacterController : MonoBehaviour
         if (other.tag == "Ladder")
         {
             onLadder = false;
+            ladderExit = true;
             verVelocity = jumpSpeed;
         }
         if (other.tag == "Stone")
@@ -239,7 +242,7 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Gravity
-        if (!onLadder)
+        if (!onLadder && ladderDelay < 0)
         {
             verVelocity -= gravity * Time.deltaTime;
         }
@@ -259,6 +262,17 @@ public class FPCharacterController : MonoBehaviour
         else
         {
             isMoving = false;
+        }
+
+        //Ladder
+        if (ladderExit)
+        {
+            ladderDelay -= Time.deltaTime;
+        }
+        if (ladderDelay < 0 && !onLadder)
+        {
+            ladderExit = false;
+            ladderDelay = -1;
         }
 
         //Jump
