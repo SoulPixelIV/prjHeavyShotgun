@@ -49,7 +49,7 @@ public class FPCharacterController : MonoBehaviour
     float healTimeSave;
     int stepCount = 0;
     string ground;
-    float ladderDelay = -1;
+    float ladderDelay = 0.2f;
     bool ladderExit;
 
     static int spawnPlace;
@@ -72,7 +72,7 @@ public class FPCharacterController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Ladder" && ladderDelay == 1)
+        if (other.tag == "Ladder")
         {
             onLadder = true;
         }
@@ -89,8 +89,8 @@ public class FPCharacterController : MonoBehaviour
     {
         if (other.tag == "Ladder")
         {
-            onLadder = false;
             ladderExit = true;
+            ladderDelay = 0.2f;
             verVelocity = jumpSpeed;
         }
         if (other.tag == "Stone")
@@ -100,6 +100,31 @@ public class FPCharacterController : MonoBehaviour
         if (other.tag == "Metal")
         {
             ground = null;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Damage
+        if (other.tag == "Hitbox")
+        {
+            GetComponent<HealthSystem>().HealthLoss(other.GetComponent<BasicAttack>().damage);
+            other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "Teleport")
+        {
+            spawnRotation = transform.rotation;
+            if (other.gameObject.name == "TeleportVillageLevel")
+            {
+                spawnPlace = 1;
+                SceneManager.LoadScene(1);
+            }
+            else if (other.gameObject.name == "TeleportPoisonHybridFactory")
+            {
+                spawnPlace = 1;
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
@@ -242,7 +267,7 @@ public class FPCharacterController : MonoBehaviour
         }
 
         //Gravity
-        if (!onLadder && ladderDelay < 0)
+        if (!onLadder)
         {
             verVelocity -= gravity * Time.deltaTime;
         }
@@ -269,10 +294,9 @@ public class FPCharacterController : MonoBehaviour
         {
             ladderDelay -= Time.deltaTime;
         }
-        if (ladderDelay < 0 && !onLadder)
+        if (ladderDelay < 0)
         {
-            ladderExit = false;
-            ladderDelay = -1;
+            onLadder = false;
         }
 
         //Jump
@@ -358,30 +382,6 @@ public class FPCharacterController : MonoBehaviour
                     GetComponent<AudioSource>().PlayOneShot(stepStone2, 1);
                     stepCount = 0;
                 }
-            }
-        }
-    }
-
-    //Damage
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Hitbox")
-        {
-            GetComponent<HealthSystem>().HealthLoss(other.GetComponent<BasicAttack>().damage);
-            other.gameObject.SetActive(false);
-        }
-        if (other.gameObject.tag == "Teleport")
-        {
-            spawnRotation = transform.rotation;
-            if (other.gameObject.name == "TeleportVillageLevel")
-            {
-                spawnPlace = 1;
-                SceneManager.LoadScene(1);
-            }
-            else if (other.gameObject.name == "TeleportPoisonHybridFactory")
-            {
-                spawnPlace = 1;
-                SceneManager.LoadScene(0);
             }
         }
     }
