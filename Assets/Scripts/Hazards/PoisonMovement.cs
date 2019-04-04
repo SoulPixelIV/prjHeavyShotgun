@@ -28,7 +28,7 @@ public class PoisonMovement : MonoBehaviour
             transform.Translate(Vector3.up * Time.deltaTime);
             for (int i = 0; i < poisonPipes.Length; i++)
             {
-                poisonPipes[i].GetComponent<PoisonPipeSpawning>().active = true;
+                poisonPipes[i].GetComponent<PoisonPipeSpawning>().dropPoison();
             }
             for (int i = 0; i < alarmLights.Length; i++)
             {
