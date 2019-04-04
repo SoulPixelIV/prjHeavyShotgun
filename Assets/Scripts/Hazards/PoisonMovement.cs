@@ -11,6 +11,7 @@ public class PoisonMovement : MonoBehaviour
     float riseLevelSave;
     GameObject[] poisonPipes;
     GameObject[] alarmLights;
+    bool activated;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class PoisonMovement : MonoBehaviour
 
     void Update()
     {
-        if (riseLevel > 0 && active)
+        if (riseLevel > 0 && active && !activated)
         {
             riseLevel -= Time.deltaTime;
             transform.Translate(Vector3.up * Time.deltaTime);
@@ -34,11 +35,13 @@ public class PoisonMovement : MonoBehaviour
             {
                 alarmLights[i].GetComponent<AlarmLightRotation>().active = true;
             }
+            activated = true;
         }
         if (riseLevel < 0)
         {
             riseLevel = riseLevelSave;
             active = false;
+            activated = false;
         }
     }
 
