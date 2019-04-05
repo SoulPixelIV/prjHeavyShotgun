@@ -57,6 +57,12 @@ public class PoisonRunnerAI : MonoBehaviour
         }
     }
 
+    public void RestartAnimation()
+    {
+        Animator anim = GameObject.Find("Model").GetComponent<Animator>();
+        anim.Play("PoisonRunnerIdle");
+    }
+
     void Update ()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

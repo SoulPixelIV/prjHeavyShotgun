@@ -406,30 +406,31 @@ public class FPCharacterController : MonoBehaviour
         {
             if (enemies[z].gameObject.GetComponent<EnemyAI>() != null)
             {
-                enemies[z].gameObject.GetComponent<HealthSystem>().health = enemies[z].gameObject.GetComponent<HealthSystem>().healthSave;
-                enemies[z].gameObject.GetComponent<HealthSystem>().dead = false;
-                enemies[z].gameObject.transform.Find("Sight").gameObject.GetComponent<SightChecking>().aggro = false;
-                enemies[z].gameObject.transform.position = enemies[z].GetComponent<EnemyAI>().startPos;
-                enemies[z].gameObject.transform.rotation = enemies[z].GetComponent<EnemyAI>().startRot;
-                enemies[z].gameObject.GetComponent<NavMeshAgent>().speed = 0;
-                enemies[z].gameObject.GetComponent<EnemyAI>().reachedInterestPoint = false;
-                if (enemies[z].gameObject.GetComponent<EnemyAI>().bowActive)
+                enemies[z].GetComponent<HealthSystem>().health = enemies[z].GetComponent<HealthSystem>().healthSave;
+                enemies[z].GetComponent<HealthSystem>().dead = false;
+                enemies[z].transform.Find("Sight").GetComponent<SightChecking>().aggro = false;
+                enemies[z].transform.position = enemies[z].GetComponent<EnemyAI>().startPos;
+                enemies[z].transform.rotation = enemies[z].GetComponent<EnemyAI>().startRot;
+                enemies[z].GetComponent<NavMeshAgent>().speed = 0;
+                enemies[z].GetComponent<EnemyAI>().reachedInterestPoint = false;
+                if (enemies[z].GetComponent<EnemyAI>().bowActive)
                 {
-                    enemies[z].gameObject.GetComponent<EnemyAI>().ToggleBow();
-                    enemies[z].gameObject.GetComponent<EnemyAI>().InvokeRepeating("BowShoot", enemies[z].gameObject.GetComponent<EnemyAI>().shootTime, enemies[z].gameObject.GetComponent<EnemyAI>().shootTime);
+                    enemies[z].GetComponent<EnemyAI>().ToggleBow();
+                    enemies[z].GetComponent<EnemyAI>().InvokeRepeating("BowShoot", enemies[z].gameObject.GetComponent<EnemyAI>().shootTime, enemies[z].gameObject.GetComponent<EnemyAI>().shootTime);
                 }
-                enemies[z].gameObject.SetActive(true);
+                enemies[z].SetActive(true);
             }
-            if (enemies[z].gameObject.GetComponent<PoisonRunnerAI>() != null)
+            if (enemies[z].GetComponent<PoisonRunnerAI>() != null)
             {
-                enemies[z].gameObject.GetComponent<HealthSystem>().health = enemies[z].gameObject.GetComponent<HealthSystem>().healthSave;
-                enemies[z].gameObject.GetComponent<HealthSystem>().dead = false;
-                enemies[z].gameObject.transform.Find("Sight").gameObject.GetComponent<SightChecking>().aggro = false;
-                enemies[z].gameObject.transform.position = enemies[z].GetComponent<PoisonRunnerAI>().startPos;
-                enemies[z].gameObject.transform.rotation = enemies[z].GetComponent<PoisonRunnerAI>().startRot;
-                enemies[z].gameObject.GetComponent<NavMeshAgent>().speed = 0;
-                enemies[z].gameObject.GetComponent<PoisonRunnerAI>().reachedInterestPoint = false;
-                enemies[z].gameObject.SetActive(true);
+                enemies[z].GetComponent<HealthSystem>().health = enemies[z].gameObject.GetComponent<HealthSystem>().healthSave;
+                enemies[z].GetComponent<HealthSystem>().dead = false;
+                enemies[z].transform.Find("Sight").gameObject.GetComponent<SightChecking>().aggro = false;
+                enemies[z].transform.position = enemies[z].GetComponent<PoisonRunnerAI>().startPos;
+                enemies[z].transform.rotation = enemies[z].GetComponent<PoisonRunnerAI>().startRot;
+                enemies[z].GetComponent<NavMeshAgent>().speed = 0;
+                enemies[z].GetComponent<PoisonRunnerAI>().reachedInterestPoint = false;
+                enemies[z].SetActive(true);
+                enemies[z].GetComponent<PoisonRunnerAI>().RestartAnimation();
             }
         }
         //Reset Orbs
