@@ -75,11 +75,6 @@ public class PoisonRunnerAI : MonoBehaviour
             }
             attackCooldown -= 1 * Time.deltaTime; //Attack Cooldown going down
         }
-        else
-        {
-            //GetComponent<NavMeshAgent>().speed = 0; //Reset speed
-            //anim.Play(animations[0]); //Play Idle animation
-        }
 
         //Stop near player
         if (Vector3.Distance(transform.position, player.transform.position) <= ClosestDistanceToPlayer)
@@ -125,47 +120,9 @@ public class PoisonRunnerAI : MonoBehaviour
         }
         if (explodeDelay < 0)
         {
-            GameObject.Find("PoisonBomb").GetComponent<Destructible>().Destroy();
-        }
-
-        /*
-        //Attack Animation
-        if (attackCooldown < 0 && !dontAttack && gameObject.GetComponentInChildren<SightChecking>().aggro && !friendly)
-        {
-            Animation();
-            randAttack = Random.Range(2, animations.Length);
-            dontAttack = true;
-        }
-        if (attackCooldown < 0)
-        {
-            if (hitboxDelays.Length != 0)
+            if (GameObject.Find("PoisonBomb") != null)
             {
-                hitboxDelays[randAttack] -= 1 * Time.deltaTime;
-            }
-        }
-        //Attack Hitbox
-        if (hitboxDelays.Length != 0)
-        {
-            if (hitboxDelays[randAttack] < 0)
-            {
-                hitboxLifetime -= 1 * Time.deltaTime;
-            }
-            if (hitboxDelays[randAttack] < 0 && !hitboxActive && !friendly)
-            {
-                Attack();
-                hitboxActive = true;
-            }
-            if (hitboxLifetime < 0)
-            {
-                transform.Find("AttackHitbox").gameObject.SetActive(false);
-                hitboxLifetime = hitboxLifetimeSave;
-                for (int i = 0; i < hitboxDelays.Length; i++)
-                {
-                    hitboxDelays[i] = hitboxDelaysSave[i];
-                }
-                attackCooldown = attackCooldownSave;
-                dontAttack = false;
-                hitboxActive = false;
+                GameObject.Find("PoisonBomb").GetComponent<Destructible>().Destroy();
             }
         }
 
@@ -179,15 +136,4 @@ public class PoisonRunnerAI : MonoBehaviour
         }
         */
 	}
-
-    void Animation()
-    {
-        Animator anim = GameObject.Find("Model").GetComponent<Animator>();
-        anim.Play(animations[randAttack]);
-    }
-
-    void Attack ()
-    {
-        transform.Find("AttackHitbox").gameObject.SetActive(true);
-    }
 }
