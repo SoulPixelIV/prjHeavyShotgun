@@ -10,8 +10,9 @@ public class PoisonRunnerAI : MonoBehaviour
     public float hitboxLifetime;
     public float walkSpeed;
     public float ClosestDistanceToPlayer = 4;
+    public float explodeDelay;
     public GameObject InterestPoint;
-    [Header("[0,1] -> Non-Attack Animations|[>1] -> Attack Animations")]
+    [Header("[0,1] -> Non-Attack Animations|[3] -> Explosion Animation")]
     public string[] animations;
     public float[] hitboxDelays;
 
@@ -22,6 +23,7 @@ public class PoisonRunnerAI : MonoBehaviour
     int randAttack;
     bool dontAttack;
     bool hitboxActive;
+    float explodeDelaySave;
     [HideInInspector]
     public Vector3 startPos;
     public Quaternion startRot;
@@ -33,6 +35,7 @@ public class PoisonRunnerAI : MonoBehaviour
         hitboxLifetimeSave = hitboxLifetime;
         startPos = transform.position;
         startRot = transform.rotation;
+        explodeDelaySave = explodeDelay;
         randAttack = Random.Range(2, animations.Length);
         for (int i = 0; i < hitboxDelays.Length; i++)
         {
@@ -57,6 +60,7 @@ public class PoisonRunnerAI : MonoBehaviour
     void Update ()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Animator anim = GameObject.Find("Model").GetComponent<Animator>();
 
         if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Player in Sight
         {
@@ -81,10 +85,16 @@ public class PoisonRunnerAI : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) <= ClosestDistanceToPlayer)
         {
             GetComponent<NavMeshAgent>().speed = 0; //Reset speed
+            anim.Play(animations[2]);
             if (Vector3.Distance(transform.position, player.transform.position) >= 5f)
             {
                 transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, transform.position.z));
             }
+        }
+        else if (gameObject.GetComponentInChildren<SightChecking>().aggro)
+        {
+            anim.Play(animations[1]);
+            explodeDelay = explodeDelaySave;
         }
 
         //Interest Point
@@ -108,6 +118,17 @@ public class PoisonRunnerAI : MonoBehaviour
             }
         }
 
+        //Explosion
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("poisonRunnerExploding"))
+        {
+            explodeDelay -= Time.deltaTime;
+        }
+        if (explodeDelay < 0)
+        {
+            GameObject.Find("PoisonBomb").GetComponent<Destructible>().Destroy();
+        }
+
+        /*
         //Attack Animation
         if (attackCooldown < 0 && !dontAttack && gameObject.GetComponentInChildren<SightChecking>().aggro && !friendly)
         {

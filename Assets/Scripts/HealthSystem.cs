@@ -98,9 +98,12 @@ public class HealthSystem : MonoBehaviour {
             if (gameObject.tag == "Enemy")
             {
                 gameObject.SetActive(false);
-                if (GetComponent<EnemyAI>().bowActive)
+                if (GetComponent<EnemyAI>() != null)
                 {
-                    GetComponent<EnemyAI>().ToggleBow();
+                    if (GetComponent<EnemyAI>().bowActive)
+                    {
+                        GetComponent<EnemyAI>().ToggleBow();
+                    }
                 }
             }
             /*
