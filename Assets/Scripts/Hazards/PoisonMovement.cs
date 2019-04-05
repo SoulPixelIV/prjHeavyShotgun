@@ -23,25 +23,30 @@ public class PoisonMovement : MonoBehaviour
 
     void Update()
     {
-        if (riseLevel > 0 && active && !activated)
+        if (riseLevel > 0 && active)
         {
             riseLevel -= Time.deltaTime;
             transform.Translate(Vector3.up * Time.deltaTime);
-            for (int i = 0; i < poisonPipes.Length; i++)
-            {
-                poisonPipes[i].GetComponent<PoisonPipeSpawning>().dropPoison();
-            }
             for (int i = 0; i < alarmLights.Length; i++)
             {
                 alarmLights[i].GetComponent<AlarmLightRotation>().active = true;
             }
-            activated = true;
         }
         if (riseLevel < 0)
         {
             riseLevel = riseLevelSave;
             active = false;
-            activated = false;
+        }
+    }
+
+    public void spawnPoisonDropping()
+    {
+        for (int i = 0; i < poisonPipes.Length; i++)
+        {
+            if (poisonPipes[i].GetComponent<PoisonPipeSpawning>() != null)
+            {
+                poisonPipes[i].GetComponent<PoisonPipeSpawning>().dropPoison();
+            }
         }
     }
 

@@ -101,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2993926255822754489}
   - component: {fileID: 1091821773793092325}
+  - component: {fileID: 6495408041169838800}
   m_Layer: 0
   m_Name: Poison-Waterfall
   m_TagString: Untagged
@@ -117,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 6154245248031292088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 5660960966640700360}
   m_Father: {fileID: 0}
@@ -142,3 +143,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6495408041169838800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154245248031292088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea0618370831b745adb5d719df6bbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAnimation: poisonDropping
