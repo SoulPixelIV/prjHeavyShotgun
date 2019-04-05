@@ -142,8 +142,14 @@ public class FPCharacterController : MonoBehaviour
 
         //Position
         startPos = transform.position;
-        GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawnpoint");
-        transform.position = spawns[spawnPlace].gameObject.transform.position;
+        if (spawnPlace == 0)
+        {
+            transform.position = GameObject.Find("Spawn0").gameObject.transform.position;
+        }
+        if (spawnPlace == 1)
+        {
+            transform.position = GameObject.Find("Spawn1").gameObject.transform.position;
+        }
         transform.rotation = spawnRotation;
 
         //Reset

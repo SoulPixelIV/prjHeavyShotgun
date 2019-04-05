@@ -663,8 +663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshairTexture: {fileID: 2800000, guid: fa5f8842b28e170408868cfe2fa03718, type: 3}
-  gameOverText: {fileID: 0}
-  crosshairPercentage: 2
+  crosshairScalePercentage: 2
   speedCam: 30
   speedMov: 7
   speedMovSlow: 2.75
@@ -676,18 +675,24 @@ MonoBehaviour:
   healTime: 2
   orbCount: 0
   dashLength: 0.1
-  aimingGun: 0
-  dead: 0
-  forwardSpeed: 0
-  sideSpeed: 0
+  gameOverText: {fileID: 0}
   syringeTxt: {fileID: 0}
   orbCountTxt: {fileID: 0}
+  forwardSpeed: 0
+  sideSpeed: 0
   startPos: {x: 0, y: 0, z: 0}
   isMoving: 0
+  aimingGun: 0
+  dead: 0
   stepStone1: {fileID: 8300000, guid: 6d8c45aaa1669914c9e00a19d0031f05, type: 3}
   stepStone2: {fileID: 8300000, guid: 780826087284c4a48a895aa0584bdd22, type: 3}
   stepMetal1: {fileID: 8300000, guid: 5f33322ccc501b642875cd46fdeff1cb, type: 3}
   stepMetal2: {fileID: 8300000, guid: c335d2931a870f345b06424eeb26a2f7, type: 3}
+  enemies: []
+  orbs: []
+  environment: []
+  levers: []
+  poisons: []
 --- !u!143 &143485469620699922
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1028,8 +1033,8 @@ MonoBehaviour:
   skadi: {fileID: 5715113720989128018, guid: bce5e1e54a4687f498452a993134648b, type: 3}
   throwStrength: 4
   attackCooldown: 0.3
-  bullets: 5
-  magazines: 20
+  bullets: 3
+  magazines: 6
 --- !u!1001 &2511384527109245872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1042,6 +1047,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: "ShoMiR\xFC"
       objectReference: {fileID: 0}
+    - target: {fileID: 7895993606595516515, guid: eb79e17a706ade645bfd4375713c05db,
+        type: 3}
+      propertyPath: weapon
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460280011459554678, guid: eb79e17a706ade645bfd4375713c05db,
+        type: 3}
+      propertyPath: reloadDelay
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460280011459554678, guid: eb79e17a706ade645bfd4375713c05db,
+        type: 3}
+      propertyPath: shotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ae29605333e007447a02dd05fc62fd7b, type: 3}
+    - target: {fileID: 8460280011459554678, guid: eb79e17a706ade645bfd4375713c05db,
+        type: 3}
+      propertyPath: reloadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2badd70d3aaff8345b2272202a0627bb, type: 3}
     - target: {fileID: 6516999430660441588, guid: eb79e17a706ade645bfd4375713c05db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1112,26 +1137,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100.00031
       objectReference: {fileID: 0}
-    - target: {fileID: 7895993606595516515, guid: eb79e17a706ade645bfd4375713c05db,
-        type: 3}
-      propertyPath: weapon
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460280011459554678, guid: eb79e17a706ade645bfd4375713c05db,
-        type: 3}
-      propertyPath: reloadDelay
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460280011459554678, guid: eb79e17a706ade645bfd4375713c05db,
-        type: 3}
-      propertyPath: shotSound
-      value: 
-      objectReference: {fileID: 8300000, guid: ae29605333e007447a02dd05fc62fd7b, type: 3}
-    - target: {fileID: 8460280011459554678, guid: eb79e17a706ade645bfd4375713c05db,
-        type: 3}
-      propertyPath: reloadSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 2badd70d3aaff8345b2272202a0627bb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb79e17a706ade645bfd4375713c05db, type: 3}
 --- !u!1 &8695099167425564231 stripped
