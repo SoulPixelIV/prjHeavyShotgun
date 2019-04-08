@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 1817201077540726915}
   - component: {fileID: 3775560131375334755}
   - component: {fileID: 3217306286576279458}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: PoisonRunner
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957903008219121365}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.304945, y: 13.41, z: -34.259846}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
