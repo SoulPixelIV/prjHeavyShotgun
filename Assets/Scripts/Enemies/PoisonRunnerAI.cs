@@ -175,7 +175,7 @@ public class PoisonRunnerAI : MonoBehaviour
         }
         */
         //Audio
-        if (!GetComponent<AudioSource>().isPlaying)
+        if (!GetComponent<AudioSource>().isPlaying && GetComponent<NavMeshAgent>().speed != 0)
         {
             if (ground == "Stone")
             {
