@@ -50,7 +50,7 @@ public class PoisonRunnerAI : MonoBehaviour
         {
             hitboxDelaysSave[i] = hitboxDelays[i];
         }
-        Animator anim = GameObject.Find("Model").GetComponent<Animator>();
+        Animator anim = GetComponent<Animator>();
         GetComponent<NavMeshAgent>().speed = 0; //Reset speed
         anim.Play(animations[0]); //Play Idle animation
     }
@@ -92,14 +92,14 @@ public class PoisonRunnerAI : MonoBehaviour
 
     public void RestartAnimation()
     {
-        Animator anim = GameObject.Find("Model").GetComponent<Animator>();
+        Animator anim = GetComponent<Animator>();
         anim.Play("PoisonRunnerIdle");
     }
 
     void Update ()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Animator anim = GameObject.Find("Model").GetComponent<Animator>();
+        Animator anim = GetComponent<Animator>();
 
         if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Player in Sight
         {
