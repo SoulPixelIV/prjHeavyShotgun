@@ -23,7 +23,8 @@ public class PoisonRunnerAI : MonoBehaviour
     int randAttack;
     bool dontAttack;
     bool hitboxActive;
-    float explodeDelaySave;
+    [HideInInspector]
+    public float explodeDelaySave;
     [HideInInspector]
     public Vector3 startPos;
     public Quaternion startRot;

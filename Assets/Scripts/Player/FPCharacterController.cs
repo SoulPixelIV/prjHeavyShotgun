@@ -430,6 +430,7 @@ public class FPCharacterController : MonoBehaviour
                 enemies[z].GetComponent<NavMeshAgent>().speed = 0;
                 enemies[z].GetComponent<PoisonRunnerAI>().reachedInterestPoint = false;
                 enemies[z].SetActive(true);
+                enemies[z].GetComponent<PoisonRunnerAI>().explodeDelay = enemies[z].GetComponent<PoisonRunnerAI>().explodeDelaySave;
                 enemies[z].GetComponent<PoisonRunnerAI>().RestartAnimation();
             }
         }
