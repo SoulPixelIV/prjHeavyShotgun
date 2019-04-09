@@ -24,7 +24,7 @@ public class HealthSystem : MonoBehaviour {
     void Start () {
         hitTimerSave = hitTimer;
         healthSave = health;
-        allRenderers = GetComponents<Renderer>();
+        allRenderers = GetComponentsInChildren<Renderer>();
 
         //Postprocessing
         PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
