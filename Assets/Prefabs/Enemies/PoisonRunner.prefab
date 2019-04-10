@@ -822,7 +822,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1957903008219421365}
-  - component: {fileID: 1957903008209614199}
   - component: {fileID: 8448041722959747290}
   - component: {fileID: 1886541831106115554}
   - component: {fileID: 5662248295722200787}
@@ -830,6 +829,7 @@ GameObject:
   - component: {fileID: 1817201077540726915}
   - component: {fileID: 3775560131375334755}
   - component: {fileID: 3217306286576279458}
+  - component: {fileID: 1504686408317562278}
   m_Layer: 0
   m_Name: PoisonRunner
   m_TagString: Enemy
@@ -855,25 +855,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1957903008209614199
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957903008219121365}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6e440693d4c929342aacdb0bbbc19ac8, type: 3}
-  m_Controller: {fileID: 9100000, guid: 38c2ec2d7aee74e4a9a9be0631b3c5a5, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!195 &8448041722959747290
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -966,6 +947,7 @@ MonoBehaviour:
   - poisonRunnerExploding
   hitboxDelays: []
   hitboxDelaysSave: []
+  explodeDelaySave: 0
   startPos: {x: 0, y: 0, z: 0}
   startRot: {x: 0, y: 0, z: 0, w: 0}
   reachedInterestPoint: 0
@@ -1082,6 +1064,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1504686408317562278
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957903008219121365}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 6e440693d4c929342aacdb0bbbc19ac8, type: 3}
+  m_Controller: {fileID: 9100000, guid: 38c2ec2d7aee74e4a9a9be0631b3c5a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1957903008219121367
 GameObject:
   m_ObjectHideFlags: 0

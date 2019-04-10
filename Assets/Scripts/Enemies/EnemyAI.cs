@@ -30,6 +30,15 @@ public class EnemyAI : MonoBehaviour
     public Quaternion startRot;
     public bool reachedInterestPoint;
 
+    [Header("Audio")]
+    public AudioClip stepStone1;
+    public AudioClip stepStone2;
+    public AudioClip stepMetal1;
+    public AudioClip stepMetal2;
+    private float stepSpeed;
+    string ground;
+    int stepCount = 0;
+
     public void Start()
     {
         attackCooldownSave = attackCooldown;
@@ -67,6 +76,7 @@ public class EnemyAI : MonoBehaviour
     {
         //Animator anim = GetComponent<Animator>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Animator anim = GetComponent<Animator>();
 
         if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Player in Sight
         {
@@ -83,6 +93,7 @@ public class EnemyAI : MonoBehaviour
             {
                 attackCooldown -= 1 * Time.deltaTime; //Attack Cooldown going down
             }
+            anim.Play(animations[1]);
         }
         else
         {
@@ -171,6 +182,50 @@ public class EnemyAI : MonoBehaviour
             GetComponentInChildren<SightChecking>().aggro = false;
         }
         */
+
+        //Audio
+        if (!GetComponent<AudioSource>().isPlaying && GetComponent<NavMeshAgent>().speed != 0)
+        {
+            if (ground == "Stone")
+            {
+                if (stepCount == 0)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepStone1, 1);
+                    stepCount = 1;
+                }
+                else
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepStone2, 1);
+                    stepCount = 0;
+                }
+            }
+            else if (ground == "Metal")
+            {
+                if (stepCount == 0)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepMetal1, 1);
+                    stepCount = 1;
+                }
+                else
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepMetal2, 1);
+                    stepCount = 0;
+                }
+            }
+            else
+            {
+                if (stepCount == 0)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepStone1, 1);
+                    stepCount = 1;
+                }
+                else
+                {
+                    GetComponent<AudioSource>().PlayOneShot(stepStone2, 1);
+                    stepCount = 0;
+                }
+            }
+        }
 	}
 
     void Animation()
