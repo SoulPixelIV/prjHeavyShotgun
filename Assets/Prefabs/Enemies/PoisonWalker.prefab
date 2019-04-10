@@ -416,7 +416,7 @@ MonoBehaviour:
   attackCooldown: 0
   hitboxLifetime: 0
   walkSpeed: 2
-  ClosestDistanceToPlayer: 4
+  ClosestDistanceToPlayer: 2
   InterestPoint: {fileID: 0}
   animations:
   - poisonWalkerIdle
@@ -433,10 +433,10 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   startRot: {x: 0, y: 0, z: 0, w: 0}
   reachedInterestPoint: 0
-  stepStone1: {fileID: 0}
-  stepStone2: {fileID: 0}
-  stepMetal1: {fileID: 0}
-  stepMetal2: {fileID: 0}
+  stepStone1: {fileID: 8300000, guid: 6d8c45aaa1669914c9e00a19d0031f05, type: 3}
+  stepStone2: {fileID: 8300000, guid: 780826087284c4a48a895aa0584bdd22, type: 3}
+  stepMetal1: {fileID: 8300000, guid: 5f33322ccc501b642875cd46fdeff1cb, type: 3}
+  stepMetal2: {fileID: 8300000, guid: c335d2931a870f345b06424eeb26a2f7, type: 3}
 --- !u!114 &1234140861939706264
 MonoBehaviour:
   m_ObjectHideFlags: 0
