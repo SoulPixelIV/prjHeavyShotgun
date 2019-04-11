@@ -4,56 +4,33 @@ using UnityEngine;
 
 public class PushingBlockMovement : MonoBehaviour
 {
-    public float travelHeight;
     public float travelSpeed;
-    public bool active;
 
-    int dir;
-    bool activated;
+    int dir = 1;
 
-    public void Start()
-    {
-        if (active)
-        {
-            WakeUp();
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (active)
-        {
-            if (!activated)
-            {
-                WakeUp();
-            }
-            if (dir == 0)
-            {
-                gameObject.GetComponent<Rigidbody>().MovePosition((transform.position + transform.right * Time.deltaTime * travelSpeed));
-            }
-            else
-            {
-                gameObject.GetComponent<Rigidbody>().MovePosition((transform.position + -transform.right * Time.deltaTime * travelSpeed));
-            }
-        }
-    }
-
-    void CallLift()
+    void Update()
     {
         if (dir == 0)
         {
-            dir = 1;
+            gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + transform.right * travelSpeed * Time.deltaTime);
         }
         else
         {
-            dir = 0;
+            gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + -transform.right * travelSpeed * Time.deltaTime);
         }
     }
-
-    void WakeUp()
+    void OnTriggerEnter(Collider other)
     {
-        InvokeRepeating("CallLift", travelHeight, travelHeight);
-        activated = true;
+        if (other.tag == "PushLimit")
+        {
+            if (dir == 0)
+            {
+                dir = 1;
+            }
+            else
+            {
+                dir = 0;
+            }
+        }
     }
 }
-
