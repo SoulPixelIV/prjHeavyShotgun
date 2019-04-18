@@ -22,14 +22,11 @@ public class AlarmLightRotation : MonoBehaviour
 
     void Update()
     {
-        Animator anim = GetComponent<Animator>();
-
         if (active)
         {
             timer -= Time.deltaTime;
             if (!rotating)
             {
-                anim.speed = 1;
                 light1.SetActive(true);
                 light2.SetActive(true);
                 rotating = true;
@@ -41,7 +38,6 @@ public class AlarmLightRotation : MonoBehaviour
             active = false;
             timer = timerSave;
             rotating = false;
-            anim.speed = 0;
             light1.SetActive(false);
             light2.SetActive(false);
         }
