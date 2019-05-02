@@ -66,7 +66,8 @@ public class SkaDiBehaviour : MonoBehaviour {
 
         //Moving Animation
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().isMoving &&
-            !anim.GetCurrentAnimatorStateInfo(0).IsName("skadiAttack"))
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("skadiAttack") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("skadiWalk"))
         {
             anim.Play("skadiWalk");
         }
@@ -74,15 +75,16 @@ public class SkaDiBehaviour : MonoBehaviour {
 
     void Punch()
     {
-        //Ammo
-        bullets -= 1;
-
         Animator anim = GetComponent<Animator>();
-        anim.Play("skadiAttack");
-        attackCooldown = attackCooldownSave;
-        punched = true;
-		//Instantiate Skadi
-		var skadiThrow = Instantiate(skadi, Camera.main.transform.position + Camera.main.transform.forward, Quaternion.identity);
-		skadiThrow.GetComponent<Rigidbody>().AddForce((Camera.main.transform.forward * throwStrength) + new Vector3(0, 0, 0), ForceMode.Impulse);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("skadiAttack"))
+        {
+            bullets -= 1; //Ammo
+            anim.Play("skadiAttack");
+            attackCooldown = attackCooldownSave;
+            punched = true;
+            //Instantiate Skadi
+            var skadiThrow = Instantiate(skadi, Camera.main.transform.position + Camera.main.transform.forward, Quaternion.identity);
+            skadiThrow.GetComponent<Rigidbody>().AddForce((Camera.main.transform.forward * throwStrength) + new Vector3(0, 0, 0), ForceMode.Impulse);
+        }
     }
 }
