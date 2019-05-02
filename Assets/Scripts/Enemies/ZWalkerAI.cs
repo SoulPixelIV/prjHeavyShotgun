@@ -5,14 +5,19 @@ using UnityEngine.AI;
 
 public class ZWalkerAI : MonoBehaviour
 {
-    //public bool bowActive;
-    //public float shootTime;
-    //public GameObject arrow;
     public bool friendly;
     public float attackCooldown;
     public float hitboxLifetime;
     public float walkSpeed;
     public float ClosestDistanceToPlayer = 4;
+
+    int randAttack;
+    bool dontAttack;
+    bool hitboxActive;
+    float attackCooldownSave;
+    float hitboxLifetimeSave;
+    string ground;
+    int stepCount = 0;
 
     [Header("Destination before normal AI movement")]
     public GameObject InterestPoint;
@@ -20,14 +25,10 @@ public class ZWalkerAI : MonoBehaviour
     [Header("[0,1] -> Non-Attack Animations|[>1] -> Attack Animations")]
     public string[] animations;
     public float[] hitboxDelays;
-
-    float attackCooldownSave;
-    float hitboxLifetimeSave;
+    
     [Header("Keep same number of arguments as Hitbox Delays")]
     public float[] hitboxDelaysSave;
-    int randAttack;
-    bool dontAttack;
-    bool hitboxActive;
+  
     [HideInInspector]
     public Vector3 startPos;
     public Quaternion startRot;
@@ -39,29 +40,24 @@ public class ZWalkerAI : MonoBehaviour
     public AudioClip stepMetal1;
     public AudioClip stepMetal2;
     private float stepSpeed;
-    string ground;
-    int stepCount = 0;
 
-    public void Start()
+    void Start()
     {
+        Animator anim = GetComponent<Animator>();
+
         attackCooldownSave = attackCooldown;
         hitboxLifetimeSave = hitboxLifetime;
         startPos = transform.position;
         startRot = transform.rotation;
+
+        GetComponent<NavMeshAgent>().speed = 0; //Reset speed
+        anim.Play(animations[0]); //Play Idle animation
+
         randAttack = Random.Range(2, animations.Length);
         for (int i = 0; i < hitboxDelays.Length; i++)
         {
             hitboxDelaysSave[i] = hitboxDelays[i];
-        }
-        Animator anim = GetComponent<Animator>();
-        GetComponent<NavMeshAgent>().speed = 0; //Reset speed
-        anim.Play(animations[0]); //Play Idle animation
-        //Bow
-        if (bowActive)
-        {
-            transform.Find("Bow").gameObject.SetActive(true);
-            InvokeRepeating("BowShoot", shootTime, shootTime);
-        }
+        }        
     }
 
     void OnTriggerEnter(Collider other)
@@ -77,7 +73,6 @@ public class ZWalkerAI : MonoBehaviour
 
     void Update ()
     {
-        //Animator anim = GetComponent<Animator>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Animator anim = GetComponent<Animator>();
 
@@ -92,16 +87,10 @@ public class ZWalkerAI : MonoBehaviour
                     gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
                 }
             }
-            if (!bowActive)
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName(animations[0]) || anim.GetCurrentAnimatorStateInfo(0).IsName(animations[1]))
             {
-                attackCooldown -= 1 * Time.deltaTime; //Attack Cooldown going down
+                anim.Play(animations[1]);
             }
-            anim.Play(animations[1]);
-        }
-        else
-        {
-            //GetComponent<NavMeshAgent>().speed = 0; //Reset speed
-            //anim.Play(animations[0]); //Play Idle animation
         }
 
         //Stop near player
@@ -135,14 +124,11 @@ public class ZWalkerAI : MonoBehaviour
             }
         }
 
-        //Bow rotation
-        if (bowActive)
-        {
-            GameObject bow = transform.Find("Bow").gameObject;
-            bow.transform.LookAt(player.transform.position);
-        }
-
         //Attack Animation
+        if (!friendly && gameObject.GetComponentInChildren<SightChecking>().aggro)
+        {
+            attackCooldown -= Time.deltaTime;
+        }
         if (attackCooldown < 0 && !dontAttack && gameObject.GetComponentInChildren<SightChecking>().aggro && !friendly)
         {
             Animation();
@@ -175,16 +161,6 @@ public class ZWalkerAI : MonoBehaviour
             dontAttack = false;
             hitboxActive = false;
         }
-
-        /*
-        //Reset
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<FPCharacterController>().dead)
-        {
-            transform.position = startPos;
-            transform.rotation = startRot;
-            GetComponentInChildren<SightChecking>().aggro = false;
-        }
-        */
 
         //Audio
         if (!GetComponent<AudioSource>().isPlaying && GetComponent<NavMeshAgent>().speed != 0)
@@ -240,24 +216,5 @@ public class ZWalkerAI : MonoBehaviour
     void Attack ()
     {
         transform.Find("AttackHitbox").gameObject.SetActive(true);
-    }
-
-    void BowShoot()
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        GameObject bow = transform.Find("Bow").gameObject;
-        if (gameObject.GetComponentInChildren<SightChecking>().aggro) //Check if aggro
-        {
-            //Instantiate Arrow
-            var goalRotation = transform.rotation;
-            goalRotation *= Quaternion.Euler(-90, -90, 0);
-            var arrowShot = Instantiate(arrow, bow.transform.position + bow.transform.forward, bow.transform.rotation * goalRotation);
-            arrowShot.GetComponent<Rigidbody>().AddForce((bow.transform.forward * 1.5f), ForceMode.Impulse);
-        }    
-    }
-
-    public void ToggleBow()
-    {
-        CancelInvoke("BowShoot");
     }
 }
