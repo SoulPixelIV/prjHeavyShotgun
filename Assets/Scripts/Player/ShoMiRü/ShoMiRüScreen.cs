@@ -20,7 +20,7 @@ public class ShoMiRüScreen : MonoBehaviour
 
     void Update()
     {
-        transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(transform.rotation.x, player.transform.rotation.y, transform.rotation.z), Time.deltaTime);
+        //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(transform.rotation.x, player.transform.rotation.y, transform.rotation.z), Time.deltaTime);
     }
 
     void ScanForEnemies()
@@ -37,10 +37,7 @@ public class ShoMiRüScreen : MonoBehaviour
                 else
                 {
                     GameObject targetDot = GameObject.Find("" + enemies[i]);
-                    if (transform.position + (CalcPos(enemies[i].transform.position)) != targetDot.transform.position)
-                    {
-                        targetDot.transform.position = transform.position + (CalcPos(enemies[i].transform.position));
-                    }
+                    targetDot.transform.position = transform.position + (CalcPos(enemies[i].transform.position));
                 }
             }
             else
@@ -57,7 +54,7 @@ public class ShoMiRüScreen : MonoBehaviour
     Vector3 CalcPos(Vector3 enemyPos)
     {
         Debug.Log("CALC");
-        Vector3 dotPos = new Vector3((player.transform.position.x - enemyPos.x) / 5, (player.transform.position.y - enemyPos.y) / 5, 0);
+        Vector3 dotPos = new Vector3((enemyPos.x - player.transform.position.x), (enemyPos.y - player.transform.position.y), 0);
         return dotPos;
     }
 }
