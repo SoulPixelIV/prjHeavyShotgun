@@ -805,7 +805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7ee3198a9c9c64d94f96e31a0b6d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 10
+  maxRange: 50
+  scale: 0
   enemyDot: {fileID: 2997002998251066224, guid: f91793201861f5f4b80a2b443d230af4,
     type: 3}
   player: {fileID: 0}
