@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShoMiRüScreen : MonoBehaviour
 {
     public float maxRange;
+    public float scale;
     public GameObject enemyDot;
 
     public GameObject player;
@@ -15,7 +16,7 @@ public class ShoMiRüScreen : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        InvokeRepeating("ScanForEnemies", 1.0f, 0.1f);
+        InvokeRepeating("ScanForEnemies", 1.0f, 0.4f);
     }
 
     void Update()
@@ -54,7 +55,7 @@ public class ShoMiRüScreen : MonoBehaviour
     Vector3 CalcPos(Vector3 enemyPos)
     {
         Debug.Log("CALC");
-        Vector3 dotPos = new Vector3((enemyPos.x - player.transform.position.x), (enemyPos.y - player.transform.position.y), 0);
-        return dotPos;
+        Vector3 dotPos = new Vector3(player.transform.position.x - enemyPos.x, player.transform.position.y - enemyPos.y, 0);
+        return dotPos.normalized * (Vector3.Distance(player.transform.position, enemyPos) * scale);
     }
 }
