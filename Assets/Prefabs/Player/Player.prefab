@@ -589,7 +589,7 @@ MonoBehaviour:
   tiltRange: 90
   jumpNum: 1
   medSyringes: 3
-  healTime: 2
+  healTime: 1.5
   orbCount: 0
   dashLength: 0.1
   gameOverText: {fileID: 0}
@@ -732,7 +732,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1075,16 +1075,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4003700152956940}
     m_Modifications:
-    - target: {fileID: 6944778587949821379, guid: cdf4995f5baa2e54595923c7c2c8ae08,
-        type: 3}
-      propertyPath: m_Name
-      value: Syringe
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944778587949821379, guid: cdf4995f5baa2e54595923c7c2c8ae08,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 8221424982243422758, guid: cdf4995f5baa2e54595923c7c2c8ae08,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1155,6 +1145,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 7.069265
       objectReference: {fileID: 0}
+    - target: {fileID: 6944778587949821379, guid: cdf4995f5baa2e54595923c7c2c8ae08,
+        type: 3}
+      propertyPath: m_Name
+      value: Syringe
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944778587949821379, guid: cdf4995f5baa2e54595923c7c2c8ae08,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdf4995f5baa2e54595923c7c2c8ae08, type: 3}
 --- !u!1 &3566297254686879933 stripped
@@ -1176,21 +1176,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4003700152956940}
     m_Modifications:
-    - target: {fileID: 5446262590624581897, guid: 09990eafd6f8eb147a46d7419bef62db,
-        type: 3}
-      propertyPath: m_Name
-      value: Bistolz
-      objectReference: {fileID: 0}
-    - target: {fileID: 5446262590624581897, guid: 09990eafd6f8eb147a46d7419bef62db,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5446262590624581897, guid: 09990eafd6f8eb147a46d7419bef62db,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6632427762396066168, guid: 09990eafd6f8eb147a46d7419bef62db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1250,6 +1235,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.7287569
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446262590624581897, guid: 09990eafd6f8eb147a46d7419bef62db,
+        type: 3}
+      propertyPath: m_Name
+      value: Bistolz
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446262590624581897, guid: 09990eafd6f8eb147a46d7419bef62db,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446262590624581897, guid: 09990eafd6f8eb147a46d7419bef62db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3207009396864780208, guid: 09990eafd6f8eb147a46d7419bef62db,
         type: 3}
@@ -1411,16 +1411,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4003700152956940}
     m_Modifications:
-    - target: {fileID: 1252933439884790556, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
-        type: 3}
-      propertyPath: m_Name
-      value: Skadi
-      objectReference: {fileID: 0}
-    - target: {fileID: 1252933439884790556, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 3951749378466372813, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1475,6 +1465,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -34.122
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252933439884790556, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Name
+      value: Skadi
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252933439884790556, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7400615765719392531, guid: 38053dcbe89eea4478b58f0e89d5ebd0,
         type: 3}
