@@ -13,7 +13,8 @@ public class FPCharacterController : MonoBehaviour
     public float crosshairScalePercentage = 0.05f;
 
     [Header("Movement")]
-    public float speedCam;
+    public float speedCamX;
+    public float speedCamY;
     public float speedMov;
     public float speedMovSlow;
     public float jumpSpeed;
@@ -179,8 +180,8 @@ public class FPCharacterController : MonoBehaviour
     void Update()
     {
         //Mouse Movement
-        float rotH = (Input.GetAxis("Mouse X") * speedCam + rotHKeyboard) * Time.deltaTime;
-        rotV -= (Input.GetAxis("Mouse Y") * speedCam) * Time.deltaTime;
+        float rotH = (Input.GetAxis("Mouse X") * speedCamX + rotHKeyboard) * Time.deltaTime;
+        rotV -= (Input.GetAxis("Mouse Y") * speedCamY) * Time.deltaTime;
         rotV = Mathf.Clamp(rotV, -tiltRange, tiltRange);
         transform.Rotate(0, rotH, 0);
         if (Camera.main != null)
@@ -192,14 +193,14 @@ public class FPCharacterController : MonoBehaviour
         {
             if (rotHKeyboard > -1)
             {
-                rotHKeyboard -= 1.4f * speedCam;
+                rotHKeyboard -= 1.4f * speedCamX;
             }
         }
         if (Input.GetKey(KeyCode.L))
         {
             if (rotHKeyboard < 1)
             {
-                rotHKeyboard += 1.4f * speedCam;
+                rotHKeyboard += 1.4f * speedCamX;
             }
         }
         if (!Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.J))
@@ -208,11 +209,11 @@ public class FPCharacterController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.I))
         {
-            rotV -= (1.4f * speedCam) * Time.deltaTime;
+            rotV -= (1.4f * speedCamY) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.K))
         {
-            rotV += (1.4f * speedCam) * Time.deltaTime;
+            rotV += (1.4f * speedCamY) * Time.deltaTime;
         }
 
         //Movement
