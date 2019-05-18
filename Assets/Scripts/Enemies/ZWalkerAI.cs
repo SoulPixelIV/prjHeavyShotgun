@@ -91,6 +91,7 @@ public class ZWalkerAI : MonoBehaviour
             {
                 anim.Play(animations[1]);
             }
+            attackCooldown -= 1 * Time.deltaTime; //Attack Cooldown going down
         }
 
         //Stop near player
