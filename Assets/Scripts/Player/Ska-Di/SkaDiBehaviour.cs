@@ -30,12 +30,12 @@ public class SkaDiBehaviour : MonoBehaviour {
         {
             attackCooldown -= 1 * Time.deltaTime;
         }
-		if (Input.GetKeyDown(KeyCode.Mouse0) && attackCooldown <= 0 && bullets > 0)
+		if (Input.GetKeyDown(KeyCode.Mouse0) && attackCooldown <= 0 && bullets > 0 || Input.GetKey(KeyCode.U) && attackCooldown <= 0 && bullets > 0 )
         {
             Punch();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKey(KeyCode.O))
         {
             skadis = GameObject.FindGameObjectsWithTag("SkadiRB");
             for (int i = 0; i < skadis.Length; i++)
